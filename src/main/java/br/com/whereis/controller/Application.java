@@ -2,7 +2,6 @@ package br.com.whereis.controller;
 
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import br.com.whereis.entity.Company;
+import br.com.whereis.entity.Language;
 import br.com.whereis.entity.Status;
 import br.com.whereis.entity.Test;
 import br.com.whereis.entity.User;
@@ -43,15 +43,15 @@ public class Application implements CommandLineRunner{
 		
 		System.out.println(">> Criando Companies e usuários");
 		companyRepo.save(new Company("123456789", "UOL Diveo", Arrays.asList(
-				new User("jgm.melogmail.com", "***", "Jonas Goulart"),
-				new User("jgm.melogmail.com", "***", "Jonas Goulart")
+				new User("jgm.melogmail.com", "***", "Jonas Goulart", Status.ACTIVE),
+				new User("jgm.melogmail.com", "***", "Jonas Goulart", Status.ACTIVE)
 				), Status.ACTIVE, new Date()
 			)
 		);	
 		
 		
 		
-		Test test = new Test("Test name", "Test describe");
+		Test test = new Test("Test name", "Test describe", Language.JAVA, Status.ACTIVE);
 		test.addFeature("Feature name", "feature describe");
 						
 		Object[] testCaseOneparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};

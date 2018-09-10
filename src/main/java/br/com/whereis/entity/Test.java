@@ -15,15 +15,19 @@ public class Test {
 	private String name;
 	private String describe;
 	private List<Feature> features = new ArrayList<Feature>();
+	private Language language;
+	private Status status;
 	 
 	public Test() {
 		super();
 	}
 	
-	public Test(String name, String describe) {
+	public Test(String name, String describe, Language language, Status status) {
 		super();
 		this.name = name;
 		this.describe = describe;
+		this.language = language;
+		this.status = status;	
 	}
 
 	public String getName() {
@@ -48,6 +52,22 @@ public class Test {
 
 	public void setFeatures(List<Feature> features) {
 		this.features = features;
+	}
+		
+	public Language getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public void addFeature(String name, String describe) {		
