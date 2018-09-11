@@ -3,6 +3,8 @@ package br.com.whereis.entity;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -12,6 +14,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 @Document(collection="company")
 public class Company {
 
+	@Id
+	private ObjectId id;
     private String document;
     private String name;
     private List<User> users;
@@ -22,15 +26,20 @@ public class Company {
 		super();
 	}
 
-	public Company(String document, String name, List<User> users, Status status, Date include) {
+	public Company(String document, String name, Status status, Date include) {
 		super();
 		this.document = document;
 		this.name = name;
-		this.users = users;
 		this.status = status;
 		this.include = include;
 	}
-	
+		
+	public ObjectId getId() {
+		return id;
+	}
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
 	public String getDocument() {
 		return document;
 	}

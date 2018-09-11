@@ -1,49 +1,36 @@
 package br.com.whereis.controller;
 
-import java.util.Arrays;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import br.com.whereis.entity.Company;
-import br.com.whereis.entity.Language;
-import br.com.whereis.entity.Status;
-import br.com.whereis.entity.Test;
-import br.com.whereis.entity.User;
 import br.com.whereis.repository.CompanyRepository;
 import br.com.whereis.repository.TestRepository;
-import br.com.whereis.repository.UserRepository;
-import br.com.whereis.util.ParameterUtil;
 
 @SpringBootApplication
-@EnableMongoRepositories({"br.com.whereis.repository"})
+@EnableMongoRepositories({"br.com.whereis.repository", "br.com.whereis.service.impl"})
 public class Application implements CommandLineRunner{
 	
 	@Autowired
-	private CompanyRepository companyRepo;
+	private static CompanyRepository companyRepo;
 	
 	@Autowired
-	private UserRepository userRepo;
-	
-	@Autowired
-	private TestRepository testRepo;
+	private static TestRepository testRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println(">>> Limpando base...");
-		companyRepo.deleteAll();
-		testRepo.deleteAll();
+		//System.out.println(">>> Limpando base...");
+		//companyRepo.deleteAll();
+		//testRepo.deleteAll();
 		
-		System.out.println(">>> Criando dados iniciais");
+		/*System.out.println(">>> Criando dados iniciais");
 		
 		System.out.println(">> Criando Companies e usuários");
 		companyRepo.save(new Company("123456789", "UOL Diveo", Arrays.asList(
@@ -66,8 +53,8 @@ public class Application implements CommandLineRunner{
 		System.out.println(">> Criando Teste");
 		testRepo.save(test);
 		
-		System.out.println(testRepo.findByName("Test name"));
-		
-		System.out.println(userRepo.findByEmail("jgm.melo@gmail.com"));
+		System.out.println(">> Listando companies...");
+		companyRepo.findAll().forEach(System.out::println);
+		*/
 	}
 }
