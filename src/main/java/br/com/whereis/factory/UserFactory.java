@@ -11,12 +11,18 @@ public class UserFactory {
 	}
 	public static User create(String email, String password, Company company) {
 		
-		for(User user : company.getUsers()) {
-			if(user.getEmail().equals(email) && user.getPassword().equals(PasswordUtil.encripty(password))) {
-				return user;
-			}
+		try {
+				for(User user : company.getUsers()) {
+					if(user.getEmail().equals(email) && user.getPassword().equals(PasswordUtil.encripty(password))) {
+						return user;
+					}
+				}
+				
+				return null;
+				
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
 		}
-		
-		return null;
 	}
 }
