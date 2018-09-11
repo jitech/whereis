@@ -16,6 +16,7 @@ import br.com.whereis.entity.Test;
 import br.com.whereis.entity.User;
 import br.com.whereis.repository.CompanyRepository;
 import br.com.whereis.repository.TestRepository;
+import br.com.whereis.repository.UserRepository;
 import br.com.whereis.util.ParameterUtil;
 
 @SpringBootApplication
@@ -24,6 +25,9 @@ public class Application implements CommandLineRunner{
 	
 	@Autowired
 	private CompanyRepository companyRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
 	
 	@Autowired
 	private TestRepository testRepo;
@@ -44,26 +48,26 @@ public class Application implements CommandLineRunner{
 		System.out.println(">> Criando Companies e usuários");
 		companyRepo.save(new Company("123456789", "UOL Diveo", Arrays.asList(
 				new User("jgm.melogmail.com", "***", "Jonas Goulart", Status.ACTIVE),
-				new User("jgm.melogmail.com", "***", "Jonas Goulart", Status.ACTIVE)
+				new User("jgm.meloogmail.com", "***", "Jonas Goulart", Status.ACTIVE)
 				), Status.ACTIVE, new Date()
 			)
 		);	
 		
 		
-		
 		Test test = new Test("Test name", "Test describe", Language.JAVA, Status.ACTIVE);
-		test.addFeature("Feature name", "feature describe");
 						
 		Object[] testCaseOneparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};
-		test.addTestCase("Feature name", "sum", testCaseOneparameters, (Integer.parseInt(testCaseOneparameters[0].toString()) + Integer.parseInt(testCaseOneparameters[1].toString())));
+		test.addTestCase("sum", testCaseOneparameters, (Integer.parseInt(testCaseOneparameters[0].toString()) + Integer.parseInt(testCaseOneparameters[1].toString())));
 				
 		Object[] testCaseTwoparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};
-		test.addTestCase("Feature name", "sum", testCaseTwoparameters, (Integer.parseInt(testCaseTwoparameters[0].toString()) + Integer.parseInt(testCaseTwoparameters[1].toString())));
+		test.addTestCase("sum", testCaseTwoparameters, (Integer.parseInt(testCaseTwoparameters[0].toString()) + Integer.parseInt(testCaseTwoparameters[1].toString())));
 		
 		
 		System.out.println(">> Criando Teste");
 		testRepo.save(test);
 		
+		System.out.println(testRepo.findByName("Test name"));
 		
+		System.out.println(userRepo.findByEmail("jgm.melo@gmail.com"));
 	}
 }

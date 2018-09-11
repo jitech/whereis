@@ -14,7 +14,7 @@ public class Test {
 
 	private String name;
 	private String describe;
-	private List<Feature> features = new ArrayList<Feature>();
+	private List<TestCase> testCases = new ArrayList<TestCase>();
 	private Language language;
 	private Status status;
 	 
@@ -46,14 +46,14 @@ public class Test {
 		this.describe = describe;
 	}
 
-	public List<Feature> getFeatures() {
-		return features;
+	public List<TestCase> getTestCases() {
+		return testCases;
 	}
 
-	public void setFeatures(List<Feature> features) {
-		this.features = features;
+	public void setTestCases(List<TestCase> testCases) {
+		this.testCases = testCases;
 	}
-		
+
 	public Language getLanguage() {
 		return language;
 	}
@@ -70,18 +70,8 @@ public class Test {
 		this.status = status;
 	}
 
-	public void addFeature(String name, String describe) {		
-		this.getFeatures().add(new Feature(name, describe));
-	}
-
-	public void addTestCase(String featureName, String methodToTest, Object[] parameters, Object expected) {
-		
-		for(Feature feature : getFeatures()) {			
-			if(feature.getName().equals(featureName)) {						
-				feature.getTestCases().add(new TestCase(methodToTest, parameters, expected));
-				break;
-			}
-		}	
+	public void addTestCase(String methodToTest, Object[] parameters, Object expected) {							
+		getTestCases().add(new TestCase(methodToTest, parameters, expected));
 	}
 	
 	@Override
