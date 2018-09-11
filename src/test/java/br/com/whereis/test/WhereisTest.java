@@ -1,4 +1,4 @@
-package br.com.whereis.boot;
+package br.com.whereis.test;
 
 import java.util.Arrays;
 

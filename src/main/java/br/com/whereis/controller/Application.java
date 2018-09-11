@@ -30,14 +30,18 @@ public class Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		System.out.println(">> Limpando base...");
 		companyRepo.deleteAll();
 		testRepo.deleteAll();
+		System.out.println(">> Base limpa com sucesso!");
 		
+		System.out.println(">>> Populando base com dados iniciais...");
 		companyRepo.save(CompanyFactory.create("123456789", "UOL Diveo"));
 		companyRepo.save(CompanyFactory.create("123456790", "UOL Portal"));
 		
 		Company company = companyRepo.findByDocument("123456789");
 		company.setUsers(Arrays.asList(UserFactory.create("jgm.melo@gmail.com", "123", "Jonas"), UserFactory.create("jgm.melo@uol.com.br", "123", "Jonas G.")));
 		companyRepo.save(company);
+		System.out.println(">>> Base populada com sucesso!");
 	}
 }
