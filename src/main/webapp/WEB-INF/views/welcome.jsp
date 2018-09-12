@@ -8,10 +8,9 @@
 </head>
 <body>
 
-	<form action="/test/generate" method="POST">
-    	<input id="email" name="email"/>
-    	<button type="submit">Gerar</button>
-    </form>
-
+	<ul>
+  		<li><a href="/login">Login</a></li>
+	</ul>
+	
 </body>
 </html>

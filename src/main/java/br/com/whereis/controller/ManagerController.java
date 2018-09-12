@@ -5,16 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ManagerController {
 
 	@RequestMapping("/")
-	@ResponseBody
-	private String home() {
-		return "Welcome!";
+	private ModelAndView welcome() {
+		return new ModelAndView("welcome");
 	}
 	
 	@RequestMapping(value = "/{feature}", method = RequestMethod.GET)

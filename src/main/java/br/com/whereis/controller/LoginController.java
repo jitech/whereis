@@ -1,5 +1,7 @@
 package br.com.whereis.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,15 +21,23 @@ public class LoginController {
 	private LoginService service;
 	
 	@RequestMapping(value = "/enter", method = RequestMethod.POST)
-    public ModelAndView enter(@RequestParam("email") String email, @RequestParam("password") String password, Model model) { 
+    public ModelAndView enter(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session) { 
 		
-		User user = service.verify(email, password);
-		
-		if(user == null) {
-			return new ModelAndView("login");
+		try {
+				User user = service.verify(email, password);
+			
+				if(user == null) {
+					model.addAttribute("message", "Dados incorretos!");
+					return new ModelAndView("login");
+				}
+					
+				session.setAttribute("user", user);
+				return new ModelAndView("inicio");
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			model.addAttribute("message", "Erro ao carregar!");
+			return new ModelAndView("message");
 		}
-		
-		model.addAttribute("user", user);
-		return new ModelAndView("inicio");
     }
 }

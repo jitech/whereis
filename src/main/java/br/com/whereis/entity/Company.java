@@ -1,11 +1,11 @@
 package br.com.whereis.entity;
 
 import java.util.Date;
-import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,8 +18,8 @@ public class Company {
 	private ObjectId id;
     private String document;
     private String name;
-    private List<User> users;
-    private Status status;
+    private Status status;    
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date include;
        
 	public Company() {
@@ -37,36 +37,39 @@ public class Company {
 	public ObjectId getId() {
 		return id;
 	}
+	
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
+	
 	public String getDocument() {
 		return document;
 	}
+	
 	public void setDocument(String document) {
 		this.document = document;
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<User> getUsers() {
-		return users;
-	}
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+	
 	public Status getStatus() {
 		return status;
 	}
+	
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+	
 	public Date getInclude() {
 		return include;
 	}
+	
 	public void setInclude(Date include) {
 		this.include = include;
 	}

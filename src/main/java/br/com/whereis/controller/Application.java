@@ -1,7 +1,5 @@
 package br.com.whereis.controller;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +14,7 @@ import br.com.whereis.factory.CompanyFactory;
 import br.com.whereis.factory.UserFactory;
 import br.com.whereis.repository.CompanyRepository;
 import br.com.whereis.repository.TestRepository;
+import br.com.whereis.repository.UserRepository;
 import br.com.whereis.util.ParameterUtil;
 import br.com.whereis.util.PasswordUtil;
 
@@ -29,6 +28,9 @@ public class Application implements CommandLineRunner{
 	@Autowired
 	private TestRepository testRepo;
 	
+	@Autowired
+	private UserRepository userRepo;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -38,6 +40,8 @@ public class Application implements CommandLineRunner{
 		System.out.println(">> Limpando base...");
 		companyRepo.deleteAll();
 		testRepo.deleteAll();
+		userRepo.deleteAll();
+		
 		System.out.println(">> Base limpa com sucesso!");
 		
 		System.out.println(">>> Populando base com dados iniciais...");
@@ -45,16 +49,17 @@ public class Application implements CommandLineRunner{
 		companyRepo.save(CompanyFactory.create("123456790", "UOL Portal"));
 		
 		Company company = companyRepo.findByDocument("123456789");
-		company.setUsers(Arrays.asList(UserFactory.create("jgm.melo@gmail.com", "123", "Jonas"), UserFactory.create("jgm.melo@uol.com.br", "123", "Jonas G.")));
-		companyRepo.save(company);
 		
-		for(int x = 1 ; x < 10 ; x++) {
-		Test test = new Test(PasswordUtil.encripty(x+"X"),"Test "+x, "Test describe", Language.JAVA, Status.ACTIVE);	
-		Object[] testCaseOneparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};
-		test.addTestCase("sum", testCaseOneparameters, (Integer.parseInt(testCaseOneparameters[0].toString()) + Integer.parseInt(testCaseOneparameters[1].toString())));			
-		Object[] testCaseTwoparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};
-		test.addTestCase("sum", testCaseTwoparameters, (Integer.parseInt(testCaseTwoparameters[0].toString()) + Integer.parseInt(testCaseTwoparameters[1].toString())));
-		testRepo.save(test);
+		userRepo.save(UserFactory.create("jgm.melo@gmail.com", null, null, null));
+		userRepo.save(UserFactory.create("jgm.melo@uol.com.br", PasswordUtil.encripty("123"), "Jonas", company));
+		
+		for(int x = 1 ; x < 100 ; x++) {
+			Test test = new Test(PasswordUtil.encripty(x+"X"),"Test "+x, "Test describe", Language.JAVA, Status.ACTIVE);	
+			Object[] testCaseOneparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};
+			test.addTestCase("sum", testCaseOneparameters, (Integer.parseInt(testCaseOneparameters[0].toString()) + Integer.parseInt(testCaseOneparameters[1].toString())));			
+			Object[] testCaseTwoparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};
+			test.addTestCase("sum", testCaseTwoparameters, (Integer.parseInt(testCaseTwoparameters[0].toString()) + Integer.parseInt(testCaseTwoparameters[1].toString())));
+			testRepo.save(test);
 		}
 		
 		System.out.println(">>> Base populada com sucesso!");

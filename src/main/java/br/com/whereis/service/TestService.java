@@ -15,27 +15,12 @@ public class TestService {
 	@Autowired
 	private TestRepository testRepo;
 	
-	public Test loadByCode(String code) {
-		
-		try {			
-				return testRepo.findByCode(code);
-			
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
+	public Test loadByCode(String code) throws Exception{		
+		return testRepo.findByCode(code);
 	}
 	
-	public Test loadTestRandom() {
-		
-		try {
-				List<Test> tests = testRepo.findAll();							
-				int value = new Random().nextInt(tests.size()); 			
-				return tests.get(value); 
-			
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
+	public Test loadTestRandom() throws Exception{		
+		List<Test> tests = testRepo.findAll();							
+		return tests.get(new Random().nextInt(tests.size()));
 	}
 }
