@@ -5,7 +5,6 @@ import java.util.Date;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +18,6 @@ public class Company {
     private String document;
     private String name;
     private Status status;    
-    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date include;
        
 	public Company() {

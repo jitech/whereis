@@ -36,7 +36,7 @@ public class LoginController {
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			model.addAttribute("message", "Erro ao carregar!");
+			model.addAttribute("message", "Erro ao logar!");
 			return new ModelAndView("message");
 		}
     }
