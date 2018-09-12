@@ -30,7 +30,7 @@ public class LoginController {
 					model.addAttribute("message", "Dados incorretos!");
 					return new ModelAndView("login");
 				}
-					
+			
 				session.setAttribute("user", user);
 				return new ModelAndView("inicio");
 			
@@ -40,4 +40,10 @@ public class LoginController {
 			return new ModelAndView("message");
 		}
     }
+	
+	@RequestMapping(value = "/exit", method = RequestMethod.GET)
+	public ModelAndView exit(HttpSession session) {
+		session.removeAttribute("user");
+		return new ModelAndView("welcome");
+	}
 }

@@ -10,8 +10,8 @@
 <body>
     
     <form action="/enter" method="post">
-    	<input type="text" id="email" name="email"/>
-    	<input type="password" id="password" name="password"/>
+    	<input type="text" id="email" name="email" value="jgm.melo@uol.com.br"/>
+    	<input type="password" id="password" name="password" value="123"/>
     	<button type="submit">Entrar</button>
     </form>
     

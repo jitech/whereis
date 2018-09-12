@@ -8,22 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	Hello! ${user.name}
 	<ul>
   		<li><a href="/company/123456789">My Company</a></li>
   		<li><a href="/test/create">Create Test</a></li>
+  		<li>Testes feitos: ${user.tests}</li>
+  		<li><a href="/exit">Exit</a></li>
 	</ul>
-	Testes: ${user.tests}
-	<table border="1">
-	<c:forEach items="${user.tests}" var="test">
-    <tr>      
-        <td>${test.test}</td>
-        <td>${test.complexity}</td>
-        <td>${test.status}</td>
-        <td>${test.date}</td>        
-    </tr>
-	</c:forEach>
-	</table>
 	
 </body>
 </html>
