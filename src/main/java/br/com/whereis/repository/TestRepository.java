@@ -7,6 +7,9 @@ import br.com.whereis.entity.Test;
 
 public interface TestRepository extends MongoRepository<Test, String>{
 	
+	@Query("{'code':?0}")
+	public Test findByCode(String code);
+	
 	@Query("{'name':?0}")
 	public Test findByName(String name);
 }

@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 @Document(collection="test")
 public class Test {
 
+	private String code;
 	private String name;
 	private String describe;
 	private List<TestCase> testCases = new ArrayList<TestCase>();
@@ -22,12 +23,21 @@ public class Test {
 		super();
 	}
 	
-	public Test(String name, String describe, Language language, Status status) {
+	public Test(String code, String name, String describe, Language language, Status status) {
 		super();
+		this.code = code;
 		this.name = name;
 		this.describe = describe;
 		this.language = language;
 		this.status = status;	
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getName() {
