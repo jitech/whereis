@@ -35,7 +35,7 @@ public class TestController extends GenericController{
     public ModelAndView create(Model model) {
 		
 		try {
-				if(!userIsConnected()){
+				if(loadLoggedUser() == null){
 					return new ModelAndView("/login");				
 				}
 				
@@ -52,7 +52,7 @@ public class TestController extends GenericController{
     public ModelAndView generate(Model model) {	
 		
 		try {
-				if(!userIsConnected()){
+				if(loadLoggedUser() == null){
 					return new ModelAndView("/login");				
 				}
 			
@@ -70,7 +70,7 @@ public class TestController extends GenericController{
     public ModelAndView upload(HttpServletRequest request, @RequestParam("test") String test,  Model model) {
 		
 		try {			
-				if(!userIsConnected()){
+				if(loadLoggedUser() == null){
 					return new ModelAndView("/login");				
 				}
 			

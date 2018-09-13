@@ -27,7 +27,7 @@ public class LoginController extends GenericController{
 				User user = service.verify(email, password);
 			
 				if(user == null) {
-					model.addAttribute("message", environment.getProperty("message.login.incorrect"));
+					model.addAttribute("message", loadMessage("message.login.incorrect"));
 					return new ModelAndView("login");
 				}
 			
@@ -36,7 +36,7 @@ public class LoginController extends GenericController{
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			model.addAttribute("message", environment.getProperty("message.login.error"));
+			model.addAttribute("message", loadMessage("message.login.error"));
 			return new ModelAndView("message");
 		}
     }

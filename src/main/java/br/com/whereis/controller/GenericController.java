@@ -22,12 +22,7 @@ public class GenericController {
 		return (User) session.getAttribute("user");
 	}
 	
-	public boolean userIsConnected() throws Exception{
-		
-		if(loadLoggedUser() == null) {
-			return false;
-		}
-		
-		return true;
+	public String loadMessage(String message) {
+		return environment.getProperty(message);
 	}
 }
