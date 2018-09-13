@@ -9,7 +9,7 @@
 <body>
 
 	<form action="/test/generate" method="POST">
-    	<input id="email" name="email"/>
+    	<input id="email" name="email" placeholder="E-mail do candidato"/>
     	<button type="submit">Gerar</button>
     </form>
 

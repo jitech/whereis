@@ -11,7 +11,6 @@
 
 	Hello! ${user.name}
 	<ul>
-  		<li><a href="/company/123456789">My Company</a></li>
   		<li><a href="/test/create">Create Test</a></li>
   		<li>Testes feitos: ${user.tests}</li>
   		<li><a href="/exit">Exit</a></li>

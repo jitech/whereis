@@ -20,7 +20,7 @@ public class LoginController {
 	@Autowired
 	private LoginService service;
 	
-	@RequestMapping(value = "/enter", method = RequestMethod.POST)
+	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
     public ModelAndView enter(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session) { 
 		
 		try {

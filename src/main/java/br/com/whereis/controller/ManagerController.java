@@ -19,4 +19,9 @@ public class ManagerController {
     public ModelAndView load(@PathVariable("feature") String feature, Model model) {         
 		return new ModelAndView(feature);
     }
+	
+	@RequestMapping(value = {"/test/generate", "/message"}, method = RequestMethod.GET)
+    public ModelAndView load() {         
+		return new ModelAndView("inicio");
+    }
 }
