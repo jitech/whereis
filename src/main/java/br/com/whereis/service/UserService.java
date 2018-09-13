@@ -18,6 +18,20 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 	
+	public User register(String name, String email, String password) throws Exception{
+		
+		User user = userRepo.findByEmail(email);
+		
+		if(user == null) {
+			user = UserFactory.create(email, password, name, null);		
+		
+		}else {
+			return null;
+		}
+		
+		return userRepo.save(user);
+	}
+	
 	public User createForTest(String email, String testCode) throws Exception{
 		
 		User user = userRepo.findByEmail(email);

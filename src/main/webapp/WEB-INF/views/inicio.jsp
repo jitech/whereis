@@ -12,9 +12,10 @@
 	Hello! ${user.name}
 	<ul>
   		<li><a href="/test/create">Create Test</a></li>
-  		<li>Testes feitos: ${user.tests}</li>
   		<li><a href="/exit">Exit</a></li>
 	</ul>
+	
+	${user}
 	
 </body>
 </html>

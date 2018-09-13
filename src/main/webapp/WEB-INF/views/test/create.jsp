@@ -8,9 +8,9 @@
 </head>
 <body>
 
-	<form action="/test/generate" method="POST">
-    	<input id="email" name="email" placeholder="E-mail do candidato"/>
-    	<button type="submit">Gerar</button>
+	<form action="/test/create" method="POST">
+    	<!--input id="email" name="email" placeholder="E-mail do candidato"/-->
+    	<button type="submit">Gerar meu teste</button>
     </form>
 
 </body>

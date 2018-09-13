@@ -15,5 +15,7 @@
     	<button type="submit">Entrar</button>
     </form>
     
+    ${message}
+    
 </body>
 </html>

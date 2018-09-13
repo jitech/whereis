@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.whereis.entity.User;
@@ -22,7 +20,6 @@ import br.com.whereis.factory.UserTestFactory;
 import br.com.whereis.service.TestService;
 import br.com.whereis.service.UserService;
 import br.com.whereis.util.FileUtil;
-import br.com.whereis.util.TestUtil;
 
 @Controller
 @RequestMapping("/test")
@@ -51,37 +48,16 @@ public class TestController extends GenericController{
 		}
     }
 	
-	@RequestMapping(value = "/generate", method = RequestMethod.POST)
-    public ModelAndView generate(@RequestParam("email") String email, Model model) {	
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ModelAndView generate(Model model) {	
 		
 		try {
 				if(!userIsConnected()){
 					return new ModelAndView("/login");				
 				}
 			
-				String testCode = testService.loadTestRandom().getCode();
-				
-				userService.createForTest(email, testCode);	
-				model.addAttribute("message", "Teste criado com sucesso! Envie o link para o candidato <br/> "+TestUtil.createTestURL(testCode));
-				return new ModelAndView("message");
-				
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			model.addAttribute("message", "Erro ao carregar!");
-			return new ModelAndView("message");
-		}
-    }
-	
-	@RequestMapping(value = "/make/{code}", method = RequestMethod.GET)
-    public ModelAndView load(@PathVariable("code") String code, Model model) {  
-		
-		try {
-				if(!userIsConnected()){
-					return new ModelAndView("/login");				
-				}
-			
-				model.addAttribute("test", testService.loadByCode(code));
-				return new ModelAndView("detail");
+				model.addAttribute("test", testService.loadTestRandom());			
+				return new ModelAndView("test/detail");
 				
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -100,15 +76,14 @@ public class TestController extends GenericController{
 			
 				User user = userService.load(loadLoggedUser());
 				
-				MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;    	
-				File file = FileUtil.saveFileIntoDirectory(multipartRequest.getFile("file"), user.getEmail());
+				File file = FileUtil.saveFileIntoDirectory(request, user.getEmail());
 				
 				if(user.getTests() == null) {
 					user.setTests(new ArrayList<UserTest>());
 				}
 				
 				user.getTests().add(UserTestFactory.create(test, 2, UserTestStatus.OK, file.getAbsolutePath()));
-				
+
 				userService.update(user);
 	
 				model.addAttribute("message", "Registrado com sucesso!");

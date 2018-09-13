@@ -15,7 +15,7 @@ import br.com.whereis.service.LoginService;
 
 @Controller
 @RequestMapping("/")
-public class LoginController {
+public class LoginController extends GenericController{
 
 	@Autowired
 	private LoginService service;
@@ -27,7 +27,7 @@ public class LoginController {
 				User user = service.verify(email, password);
 			
 				if(user == null) {
-					model.addAttribute("message", "Dados incorretos!");
+					model.addAttribute("message", environment.getProperty("message.login.incorrect"));
 					return new ModelAndView("login");
 				}
 			
@@ -36,7 +36,7 @@ public class LoginController {
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			model.addAttribute("message", "Erro ao logar!");
+			model.addAttribute("message", environment.getProperty("message.login.error"));
 			return new ModelAndView("message");
 		}
     }
