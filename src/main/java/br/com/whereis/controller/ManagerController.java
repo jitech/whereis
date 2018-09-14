@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ManagerController {
+public class ManagerController extends GenericController{
 
 	@RequestMapping("/")
-	private ModelAndView welcome() {
-		return new ModelAndView("welcome");
+	private ModelAndView welcome() throws Exception {
+		if(loadLoggedUser() != null){
+			return new ModelAndView("/inicio");				
+		}
+		
+		return new ModelAndView("/welcome");
 	}
 	
 	@RequestMapping(value = "/{feature}", method = RequestMethod.GET)
@@ -20,7 +24,7 @@ public class ManagerController {
 		return new ModelAndView(feature);
     }
 	
-	@RequestMapping(value = {"/test/generate", "/message"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/test/generate", "/message", "/test/upload"}, method = RequestMethod.GET)
     public ModelAndView load() {         
 		return new ModelAndView("inicio");
     }

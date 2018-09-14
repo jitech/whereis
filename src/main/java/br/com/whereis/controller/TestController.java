@@ -1,8 +1,5 @@
 package br.com.whereis.controller;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.whereis.entity.User;
-import br.com.whereis.entity.UserTest;
-import br.com.whereis.entity.UserTestStatus;
-import br.com.whereis.factory.UserTestFactory;
 import br.com.whereis.service.TestService;
-import br.com.whereis.service.UserService;
-import br.com.whereis.util.FileUtil;
 
 @Controller
 @RequestMapping("/test")
@@ -27,9 +18,6 @@ public class TestController extends GenericController{
 	
 	@Autowired
 	private TestService testService;
-	
-	@Autowired
-	private UserService userService;
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create(Model model) {
@@ -43,7 +31,7 @@ public class TestController extends GenericController{
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			model.addAttribute("message", "Erro ao carregar!");
+			model.addAttribute("message", loadMessage("message.load.error"));
 			return new ModelAndView("message");
 		}
     }
@@ -61,7 +49,7 @@ public class TestController extends GenericController{
 				
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			model.addAttribute("message", "Erro ao carregar!");
+			model.addAttribute("message", loadMessage("message.load.error"));
 			return new ModelAndView("message");
 		}
     }
@@ -73,25 +61,16 @@ public class TestController extends GenericController{
 				if(loadLoggedUser() == null){
 					return new ModelAndView("/login");				
 				}
-			
-				User user = userService.load(loadLoggedUser());
 				
-				File file = FileUtil.saveFileIntoDirectory(request, user.getEmail());
-				
-				if(user.getTests() == null) {
-					user.setTests(new ArrayList<UserTest>());
+				if(testService.registerUserTest(request, loadLoggedUser(), test)) {
+					model.addAttribute("message", loadMessage("message.test.sucess"));
 				}
-				
-				user.getTests().add(UserTestFactory.create(test, 2, UserTestStatus.OK, file.getAbsolutePath()));
-
-				userService.update(user);
 	
-				model.addAttribute("message", "Registrado com sucesso!");
 				return new ModelAndView("message");
 				
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			model.addAttribute("message", "Erro ao registrar!");
+			model.addAttribute("message", loadMessage("message.test.error"));
 			return new ModelAndView("message");
 		}
     }

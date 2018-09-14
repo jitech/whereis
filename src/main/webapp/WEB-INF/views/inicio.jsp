@@ -15,7 +15,33 @@
   		<li><a href="/exit">Exit</a></li>
 	</ul>
 	
-	${user}
-	
+	<c:forEach var="test" items="${user.tests}">
+	Report: <br/>
+			<c:choose>
+    			<c:when test="${test.complexity >= 1 && test.complexity <= 10}">
+					<p>It's very good code!</p>
+    			</c:when>  
+    			<c:when test="${test.complexity >= 11 && test.complexity <= 21}">
+					<p>It's medium good code!</p>
+    			</c:when>    
+    			<c:when test="${test.complexity >= 21 && test.complexity <= 50}">
+					<p>It's bad code!</p>
+    			</c:when> 
+    			<c:when test="${test.complexity > 50}">
+					<p>It's very bad code!</p>
+    			</c:when> 
+			</c:choose>
+			
+			<c:choose>
+    			<c:when test="${test.status == 'OK'}">
+					<p>The algorithm does what needs to be done!</p>
+    			</c:when>  
+    			<c:when test="${test.status == 'NOK'}">
+					<p>The algorithm does't what needs to be done!</p>
+    			</c:when>  
+			</c:choose>
+			
+	</c:forEach>
+
 </body>
 </html>

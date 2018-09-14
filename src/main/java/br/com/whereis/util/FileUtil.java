@@ -15,7 +15,7 @@ public class FileUtil {
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;  
 		MultipartFile multipart = multipartRequest.getFile("file");
 		MessageDigest m = MessageDigest.getInstance("MD5");
-		m.update(fileName.getBytes(),0,fileName.length());				
+		m.update(fileName.getBytes(),0,fileName.length());	
 		String name = new BigInteger(1,m.digest()).toString(16);				
 	    File convFile = new File("/export/"+name+".jar");
 	    multipart.transferTo(convFile);
