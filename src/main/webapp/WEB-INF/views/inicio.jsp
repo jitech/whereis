@@ -12,11 +12,17 @@
 	Hello! ${user.name}
 	<ul>
   		<li><a href="/test/create">Create Test</a></li>
+  		<li><a href="/user/list">Users</a></li>
   		<li><a href="/exit">Exit</a></li>
 	</ul>
 	
-	<c:forEach var="test" items="${user.tests}">
-	Report: <br/>
+	<c:forEach var="user" items="${users}">
+		
+		Report for user: <b>${user.name}</b> 
+		<br/>
+	
+		<c:forEach var="test" items="${user.tests}">
+		
 			<c:choose>
     			<c:when test="${test.complexity >= 1 && test.complexity <= 10}">
 					<p>It's very good code!</p>
@@ -41,6 +47,7 @@
     			</c:when>  
 			</c:choose>
 			
+		</c:forEach>
 	</c:forEach>
 
 </body>

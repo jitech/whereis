@@ -25,7 +25,11 @@ public class ManagerController extends GenericController{
     }
 	
 	@RequestMapping(value = {"/test/generate", "/message", "/test/upload"}, method = RequestMethod.GET)
-    public ModelAndView load() {         
-		return new ModelAndView("inicio");
+    public ModelAndView load() throws Exception {         
+		if(loadLoggedUser() != null){
+			return new ModelAndView("/inicio");				
+		}
+		
+		return new ModelAndView("/login");
     }
 }
