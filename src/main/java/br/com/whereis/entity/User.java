@@ -116,4 +116,34 @@ public class User {
 		
     	return jsonString;
     }
+	
+	public Integer loadTotalComplexity() {
+		
+		Integer totalComplexity = 0;
+		
+		for(UserTest userTest : getTests()) {
+			
+			totalComplexity = totalComplexity + userTest.getComplexity();
+		}
+		
+		if(totalComplexity > 0) {
+			return totalComplexity/getTests().size();
+		}
+		
+		return null;
+	}
+	
+	public Integer loadTestNOK() {
+		
+		Integer total = 0;
+		
+		for(UserTest userTest : getTests()) {
+			
+			if(userTest.getStatus().equals(UserTestStatus.NOK)) {
+				total++;
+			}
+		}
+			
+		return total;
+	}
 }

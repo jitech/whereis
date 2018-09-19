@@ -20,7 +20,7 @@ public class LoginController extends GenericController{
 	@Autowired
 	private LoginService service;
 	
-	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
+	@RequestMapping(value = "/index", method = RequestMethod.POST)
     public ModelAndView enter(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session) { 
 		
 		try {
@@ -28,11 +28,11 @@ public class LoginController extends GenericController{
 			
 				if(user == null) {
 					model.addAttribute("message", loadMessage("message.login.incorrect"));
-					return new ModelAndView("login");
+					return new ModelAndView("/login");
 				}
 			
 				session.setAttribute("user", user);
-				return new ModelAndView("inicio");
+				return new ModelAndView("/index");
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -44,6 +44,6 @@ public class LoginController extends GenericController{
 	@RequestMapping(value = "/exit", method = RequestMethod.GET)
 	public ModelAndView exit(HttpSession session) {
 		session.removeAttribute("user");
-		return new ModelAndView("welcome");
+		return new ModelAndView("/welcome");
 	}
 }

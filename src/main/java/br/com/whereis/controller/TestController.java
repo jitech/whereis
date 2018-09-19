@@ -13,31 +13,30 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.whereis.service.TestService;
 
 @Controller
-@RequestMapping("/test")
 public class TestController extends GenericController{
 	
 	@Autowired
 	private TestService testService;
 	
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create(Model model) {
+	@RequestMapping(value = "/create-user-test", method = RequestMethod.GET)
+    public ModelAndView loadPageCreateUserTest(Model model) {
 		
 		try {
 				if(loadLoggedUser() == null){
 					return new ModelAndView("/login");				
 				}
 				
-				return new ModelAndView("test/create");
+				return new ModelAndView("/create-user-test");
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
 			model.addAttribute("message", loadMessage("message.load.error"));
-			return new ModelAndView("message");
+			return new ModelAndView("/message");
 		}
     }
 	
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView generate(Model model) {	
+	@RequestMapping(value = "/create-user-test", method = RequestMethod.POST)
+    public ModelAndView loadUserTest(Model model) {	
 		
 		try {
 				if(loadLoggedUser() == null){
@@ -45,16 +44,16 @@ public class TestController extends GenericController{
 				}
 			
 				model.addAttribute("test", testService.loadTestRandom());			
-				return new ModelAndView("test/detail");
+				return new ModelAndView("/user-test");
 				
 		}catch(Exception ex) {
 			ex.printStackTrace();
 			model.addAttribute("message", loadMessage("message.load.error"));
-			return new ModelAndView("message");
+			return new ModelAndView("/message");
 		}
     }
 	
-	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	@RequestMapping(value = "/update-user-test", method = RequestMethod.POST)
     public ModelAndView upload(HttpServletRequest request, @RequestParam("test") String test,  Model model) {
 		
 		try {			
@@ -66,12 +65,12 @@ public class TestController extends GenericController{
 					model.addAttribute("message", loadMessage("message.test.sucess"));
 				}
 	
-				return new ModelAndView("message");
+				return new ModelAndView("/message");
 				
 		}catch(Exception ex) {
 			ex.printStackTrace();
 			model.addAttribute("message", loadMessage("message.test.error"));
-			return new ModelAndView("message");
+			return new ModelAndView("/message");
 		}
     }
 }

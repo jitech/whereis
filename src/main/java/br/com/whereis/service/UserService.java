@@ -47,11 +47,11 @@ public class UserService {
 		
 		user.getTests().add(UserTestFactory.create(testCode, null, UserTestStatus.WAIT, null));		
 		userRepo.save(user);		
-		return load(user);
+		return load(user.getEmail());
 	}
 	
-	public User load(User user) throws Exception{	
-		return userRepo.findByEmail(user.getEmail());
+	public User load(String email) throws Exception{	
+		return userRepo.findByEmail(email);
 	}
 	
 	public void update(User user) throws Exception{	

@@ -17,7 +17,7 @@ public class FileUtil {
 		MessageDigest m = MessageDigest.getInstance("MD5");
 		m.update(fileName.getBytes(),0,fileName.length());	
 		String name = new BigInteger(1,m.digest()).toString(16);				
-	    File convFile = new File("/export/"+name+".jar");
+	    File convFile = new File("/home/jonas/Developer/export/"+name+".jar");
 	    multipart.transferTo(convFile);
 	    return convFile;
 	}

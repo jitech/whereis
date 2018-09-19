@@ -13,7 +13,7 @@ public class ManagerController extends GenericController{
 	@RequestMapping("/")
 	private ModelAndView welcome() throws Exception {
 		if(loadLoggedUser() != null){
-			return new ModelAndView("/inicio");				
+			return new ModelAndView("/index");				
 		}
 		
 		return new ModelAndView("/welcome");
@@ -24,10 +24,10 @@ public class ManagerController extends GenericController{
 		return new ModelAndView(feature);
     }
 	
-	@RequestMapping(value = {"/test/generate", "/message", "/test/upload"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/update-user-test", "/message"}, method = RequestMethod.GET)
     public ModelAndView load() throws Exception {         
 		if(loadLoggedUser() != null){
-			return new ModelAndView("/inicio");				
+			return new ModelAndView("/index");				
 		}
 		
 		return new ModelAndView("/login");
