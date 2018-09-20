@@ -11,25 +11,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class ManagerController extends GenericController{
 
 	@RequestMapping("/")
-	private ModelAndView welcome() throws Exception {
-		if(loadLoggedUser() != null){
-			return new ModelAndView("/index");				
-		}
-		
-		return new ModelAndView("/welcome");
+	private ModelAndView index(Model model) throws Exception {
+		model.addAttribute("feature", "index");
+		return new ModelAndView("/page");
 	}
 	
 	@RequestMapping(value = "/{feature}", method = RequestMethod.GET)
     public ModelAndView load(@PathVariable("feature") String feature, Model model) {         
-		return new ModelAndView(feature);
-    }
-	
-	@RequestMapping(value = {"/update-user-test", "/message"}, method = RequestMethod.GET)
-    public ModelAndView load() throws Exception {         
-		if(loadLoggedUser() != null){
-			return new ModelAndView("/index");				
-		}
-		
-		return new ModelAndView("/login");
+		model.addAttribute("feature", feature);
+		return new ModelAndView("/page");
     }
 }

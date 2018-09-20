@@ -4,15 +4,10 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Welcome</title>
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"/>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body class="body" style="margin: 0px">
-
-	<a href="/login">Login</a>
+<body>
 	
-	<jsp:include page="footer.jsp" />
+	Privacy policy...
 	
 </body>
 </html>

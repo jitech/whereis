@@ -14,36 +14,39 @@ import br.com.whereis.entity.User;
 import br.com.whereis.service.LoginService;
 
 @Controller
-@RequestMapping("/")
 public class LoginController extends GenericController{
 
 	@Autowired
 	private LoginService service;
 	
-	@RequestMapping(value = "/index", method = RequestMethod.POST)
+	@RequestMapping(value = "/home", method = RequestMethod.POST)
     public ModelAndView enter(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session) { 
 		
 		try {
 				User user = service.verify(email, password);
 			
 				if(user == null) {
-					model.addAttribute("message", loadMessage("message.login.incorrect"));
-					return new ModelAndView("/login");
+					model.addAttribute("feature", "login");
+					model.addAttribute("message", loadMessage("message.login.incorrect"));									
+				}else {
+					model.addAttribute("feature", "home");	
+					session.setAttribute("user", user);
 				}
-			
-				session.setAttribute("user", user);
-				return new ModelAndView("/index");
+						
+				return new ModelAndView("/page");
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			model.addAttribute("feature", "login");
 			model.addAttribute("message", loadMessage("message.login.error"));
-			return new ModelAndView("message");
+			return new ModelAndView("/page");
 		}
     }
 	
 	@RequestMapping(value = "/exit", method = RequestMethod.GET)
-	public ModelAndView exit(HttpSession session) {
+	public ModelAndView exit(HttpSession session, Model model) {
 		session.removeAttribute("user");
-		return new ModelAndView("/welcome");
+		model.addAttribute("feature", "index");
+		return new ModelAndView("/page");
 	}
 }

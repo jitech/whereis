@@ -10,29 +10,33 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body class="body" style="margin: 0px">
+<body>
     
     <div style="border-bottom: 1px solid #DDD; width: 100%; display: table; background-color: #fafafb; border-top: 3px solid #F48024">
     	
-    	<center>
     	<div style="display: table; width: 80%">
-    		<div style="display: table; float: left; margin: 15px">
+
+    		<div style="display: table; float: left; margin: 15px;">
+    			About us &#xb7; Privacy policy &#xb7; Terms of use
+    		</div>
+
+    		<div style="display: table; float: right; margin: 15px">   			
+    			<c:choose>
+					<c:when test="${user == null}">
+        				<a href="/login">Entrar</a>
+   					</c:when>
+   					<c:when test="${user != null}">
+        				<a href="/exit">Exit</a>
+   					</c:when>
+   				</c:choose>
+    		</div>
+    		
+    		<div style="display: table; float: right; margin: 15px">
    				<c:if test="${user != null}">
-   				Hello, ${user.name}
+   					Hello, ${user.name}
    				</c:if>
     		</div>
-    	
-    		<div style="display: table; float: right; margin: 15px">   		
-    			<c:if test="${user != null}">
-    				<a href="/exit">Exit</a>
-    			</c:if>		
-    		</div>
-    	
-    		<div style="display: table; float: right; margin: 15px;">
-    			About us | Privacy policy | Terms of use
-    		</div>
     	</div>
-    	</center>
     	
     </div>
     

@@ -21,3 +21,12 @@
 	font-family: 'Roboto Condensed', sans-serif; 
 	font-size: 14px;"
 }
+
+a{
+	text-decoration: none;	
+}
+
+a:hover { 
+   	text-decoration: none;	
+   	color: #F48024;
+}

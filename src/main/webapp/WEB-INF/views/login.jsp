@@ -1,22 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-  pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Login</title>
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"/>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body class="body">
+<body>
     
-    <jsp:include page="header.jsp" />
-    
-    <center>
-    <div style="border: 1px solid #DDD; width: 70%; display: table; margin-top: 15px; background-color: #fafafb; padding-bottom: 30px">
-			
-		<form action="/index" method="post">
+	<form action="/home" method="post">
 		<div style="width: 100%; text-align: center; display: table; margin-top: 20px">
 			Entre e use!
 		</div>
@@ -34,12 +25,7 @@
 		<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 5px">
 			${message}
 		</div>
-		</form>		
+	</form>		
 
-	</div>
-	</center>
-	
-	<jsp:include page="footer.jsp" />
-     
 </body>
 </html>
