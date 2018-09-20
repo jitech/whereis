@@ -10,11 +10,13 @@
 </head>
 <body class="body">
     
-    <div style="display: table; width: 100%; margin-bottom: 10px; border: 1px solid #DDD">
-    	<div style="display: table; float: left; font-size: 13px; margin: 15px">
-    		Copyright © 2018 WHERE IT
-    	</div>
-    </div>
+    <center>
+    <div style="border: 1px solid #FFF; width: 70%; display: table; margin-top: 15px; padding: 15px; background-color: #FFF">
+		<div style="border: 0px solid #DDD; width: 100%; font-size: 14px; display: table;">
+			© 2018 Stack Exchange Inc
+		</div>
+	</div>
+	<center>
     
 </body>
 </html>

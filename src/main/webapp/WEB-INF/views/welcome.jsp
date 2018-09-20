@@ -8,7 +8,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body class="body">
+<body class="body" style="margin: 0px">
 
 	<a href="/login">Login</a>
 	
