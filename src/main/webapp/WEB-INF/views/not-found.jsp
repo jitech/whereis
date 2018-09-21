@@ -7,7 +7,7 @@
 </head>
 <body>
 	
-	Page not found
+	Page not found!
 	
 </body>
 </html>

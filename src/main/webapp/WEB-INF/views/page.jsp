@@ -14,12 +14,12 @@
 	<center>
 	<jsp:include page="header.jsp" />
 	
-	<div style="width: 80%; display: table; background-color: #fafafb; border: 1px solid #DDD; margin-top: 25px"> 
+	<div style="width: 80%; display: table; margin-top: 25px"> 
 	<c:choose>
 		<c:when test="${feature == 'index'}">
         	<jsp:include page="index.jsp" />
    		</c:when>
-		<c:when test="${feature == 'home'}">
+		<c:when test="${feature == 'home' and user != null}">
         	<jsp:include page="home.jsp" />
    		</c:when>
    		<c:when test="${feature == 'login'}">

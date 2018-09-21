@@ -17,7 +17,7 @@
     	<div style="display: table; width: 80%">
 
     		<div style="display: table; float: left; margin: 15px;">
-    			About us &#xb7; Privacy policy &#xb7; Terms of use
+    			<a href="/about-us">About us</a> &#xb7; <a href="/privacy-policy">Privacy policy</a> &#xb7; Terms of use
     		</div>
 
     		<div style="display: table; float: right; margin: 15px">   			
