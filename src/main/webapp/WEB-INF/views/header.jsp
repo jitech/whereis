@@ -23,7 +23,7 @@
         				<a href="/login">Entrar</a>
    					</c:when>
    					<c:when test="${user != null}">
-        				<a href="/exit">Exit</a>
+        				<a href="/home">Home</a> &#xb7; <a href="/exit">Exit</a>
    					</c:when>
    				</c:choose>
     		</div>

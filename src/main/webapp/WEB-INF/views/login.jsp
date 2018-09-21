@@ -9,7 +9,7 @@
     
 	<form action="/home" method="post" style="width: 300px; background-color: #fafafb; border: 1px solid #DDD; padding-bottom: 25px; margin-top: 100px">
 		<div style="text-align: center; display: table; margin-top: 20px">
-			Entre e use!
+			Sign in now!
 		</div>
 		<div style="text-align: center; font-size: 16px; display: table; margin-top: 10px">			
 			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px">	

@@ -21,13 +21,13 @@
 			&#10004; Code and generate a .jar. You can use eclipse or another ide of your own.
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; display: table; margin-top: 10px">
-			<img src="tax-test.png">
+			<img src="images/tax-test.png">
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; display: table; margin-top: 15px">
 			<form action="/send" method="post">
-				<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 18px; color: #FFF; padding: 8px; float: right; margin: 4px">Enviar .jar</button>
+				<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 18px; color: #FFF; padding: 8px; float: right; margin: 4px">Send code</button>
 			</form>
-			<button style="background-color: #dd4b39; border: 1px solid #dd4b39;font-family: 'Roboto Condensed', sans-serif; font-size: 18px; color: #FFF; padding: 8px; float: right; margin: 4px">Desistir</button>				
+			<button style="background-color: #dd4b39; border: 1px solid #dd4b39;font-family: 'Roboto Condensed', sans-serif; font-size: 18px; color: #FFF; padding: 8px; float: right; margin: 4px">Leave</button>				
 		</div>
 	</div>
 

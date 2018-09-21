@@ -18,16 +18,16 @@
 	<c:choose>
 		<c:when test="${feature == 'index'}">
         	<jsp:include page="index.jsp" />
-   		</c:when>	
-   		<c:when test="${feature == 'login'}">
-        	<jsp:include page="login.jsp" />
-   		</c:when>
+   		</c:when>  		
    		<c:when test="${feature == 'about-us'}">
         	<jsp:include page="about-us.jsp" />
    		</c:when>
    		<c:when test="${feature == 'privacy-policy'}">
         	<jsp:include page="privacy-policy.jsp" />
    		</c:when>  
+   		<c:when test="${feature == 'login' and user == null}">
+        	<jsp:include page="login.jsp" />
+   		</c:when>
    		<c:when test="${feature == 'home' and user != null}">
         	<jsp:include page="home.jsp" />
    		</c:when>
