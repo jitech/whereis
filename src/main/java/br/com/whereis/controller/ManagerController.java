@@ -17,7 +17,7 @@ public class ManagerController extends GenericController{
 	}
 	
 	@RequestMapping(value = "/{feature}", method = RequestMethod.GET)
-    public ModelAndView load(@PathVariable("feature") String feature, Model model) {         
+    public ModelAndView loadFeatureByGetMethod(@PathVariable("feature") String feature, Model model) {         
 		model.addAttribute("feature", feature);
 		return new ModelAndView("/page");
     }

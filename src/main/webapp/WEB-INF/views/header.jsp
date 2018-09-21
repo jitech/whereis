@@ -6,9 +6,6 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Header</title>
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"/>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
     
