@@ -9,7 +9,8 @@
 </head>
 <body>
     
-    <div style="border-bottom: 1px solid #DDD; width: 100%; display: table; background-color: #fafafb; border-top: 3px solid #F48024">
+    <div style="border-bottom: 1px solid #DDD; width: 100%; display: table; background-color: #fafafb; border-top: 3px solid #F48024;position: fixed;
+    top:0; left: 0;">
     	
     	<div style="display: table; width: 80%">
 
@@ -23,15 +24,9 @@
         				<a href="/login">Entrar</a>
    					</c:when>
    					<c:when test="${user != null}">
-        				<a href="/home">Home</a> &#xb7; <a href="/exit">Exit</a>
+        				<a href="/home">Hi, ${user.name}</a> &#xb7; <a href="/exit">Exit</a>
    					</c:when>
    				</c:choose>
-    		</div>
-    		
-    		<div style="display: table; float: right; margin: 15px">
-   				<c:if test="${user != null}">
-   					Hello, ${user.name}
-   				</c:if>
     		</div>
     	</div>
     	

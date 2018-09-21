@@ -14,7 +14,7 @@
 	<center>
 	<jsp:include page="header.jsp" />
 	
-	<div style="width: 80%; display: table; margin-top: 25px"> 
+	<div style="width: 80%; display: table; margin-top: 105px; margin-bottom: 105px"> 
 	<c:choose>
 		<c:when test="${feature == 'index'}">
         	<jsp:include page="index.jsp" />
