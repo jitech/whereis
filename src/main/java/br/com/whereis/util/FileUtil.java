@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public class FileUtil {
 		
-	public static File saveFileIntoDirectory(HttpServletRequest request, String fileName) throws Exception{		
+	public static String saveFileIntoDirectory(HttpServletRequest request, String fileName) throws Exception{		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;  
 		MultipartFile multipart = multipartRequest.getFile("file");
 		MessageDigest m = MessageDigest.getInstance("MD5");
@@ -19,6 +19,6 @@ public class FileUtil {
 		String name = new BigInteger(1,m.digest()).toString(16);				
 	    File convFile = new File("/home/jonas/Developer/export/"+name+".jar");
 	    multipart.transferTo(convFile);
-	    return convFile;
+	    return convFile.getAbsolutePath();
 	}
 }
