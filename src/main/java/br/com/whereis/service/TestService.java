@@ -53,23 +53,21 @@ public class TestService {
 			System.out.println("# Classe: "+c.getClassName());
 			System.out.println("# Complexidade Ciclomática: "+c.getComplexity());
 			
+			UserTestStatus status = UserTestStatus.OK;
+			
 			for(TestCase testCase : t.getTestCases()) {
 				
-			}
-			
-			System.out.println("# Status do método fatorar(): funcionando = "+code.isCorrectMethod(path, "fatorar", 5, 120));
-			
-			UserTestStatus status = UserTestStatus.NOK;
-			
-			if(code.isCorrectMethod(path, "fatorar", 5, 120)) {
-				status = UserTestStatus.OK;
+				if(!code.isCorrectMethod(path, testCase.getMethod(), testCase.getParameters(), testCase.getExpected())) {
+					System.out.println(">> Method is not OK!");
+					status = UserTestStatus.NOK;
+					break;
+				}	
 			}
 			
 			user.getTests().add(UserTestFactory.create(test, c.getComplexity(), status, path));
 			userService.update(user);
 		}
-		
-			
+				
 		return true;
 	}
 }
