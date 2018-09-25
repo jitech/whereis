@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.whereis.entity.Test;
+import br.com.whereis.entity.TestCase;
 import br.com.whereis.entity.User;
 import br.com.whereis.entity.UserTest;
 import br.com.whereis.entity.UserTestStatus;
@@ -51,6 +52,11 @@ public class TestService {
 		for(CodeAnalyze c : code.loadReport(path).getAnalyzes()) {
 			System.out.println("# Classe: "+c.getClassName());
 			System.out.println("# Complexidade Ciclomática: "+c.getComplexity());
+			
+			for(TestCase testCase : t.getTestCases()) {
+				
+			}
+			
 			System.out.println("# Status do método fatorar(): funcionando = "+code.isCorrectMethod(path, "fatorar", 5, 120));
 			
 			UserTestStatus status = UserTestStatus.NOK;
