@@ -15,6 +15,8 @@ import br.com.whereis.entity.UserTest;
 import br.com.whereis.entity.UserTestStatus;
 import br.com.whereis.factory.UserTestFactory;
 import br.com.whereis.repository.TestRepository;
+import br.com.whereis.util.CodeAnalyze;
+import br.com.whereis.util.CodeAnalyzer;
 import br.com.whereis.util.FileUtil;
 
 @Service
@@ -40,6 +42,14 @@ public class TestService {
 		
 		if(user.getTests() == null) {
 			user.setTests(new ArrayList<UserTest>());
+		}
+		
+		CodeAnalyzer code = new CodeAnalyzer();
+		
+		for(CodeAnalyze c : code.loadReport(path).getAnalyzes()) {
+			System.out.println("# Classe: "+c.getClassName());
+			System.out.println("# Complexidade Ciclomática: "+c.getComplexity());
+			System.out.println("# Status do método fatorar(): funcionando = "+code.isCorrectMethod("fatorar", 5, 120));
 		}
 		
 		user.getTests().add(UserTestFactory.create(test, 2, UserTestStatus.OK, path));
