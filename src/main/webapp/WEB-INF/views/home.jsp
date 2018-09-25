@@ -7,7 +7,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-	
+
+	<c:choose>	
+		<c:when test="${message != null}">  
+			<div id="message" style="border: 1px dashed #E1ECF4; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #E1ECF4">			
+				<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; color: #39739d">
+					${message}
+				</div>
+			</div>
+		</c:when>
+	</c:choose>
+
 	<div style="border: 1px solid #DDD; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 22px; display: table; margin-top: 10px">
 			Jonas Goulart Melo

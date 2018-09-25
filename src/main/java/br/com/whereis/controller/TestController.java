@@ -44,7 +44,7 @@ public class TestController extends GenericController{
 		}
     }
 	
-	@RequestMapping(value = "/sendJar", method = RequestMethod.POST)
+	@RequestMapping(value = "/send", method = RequestMethod.POST)
     public ModelAndView sendJar(HttpServletRequest request, Model model, HttpSession session) {
 		
 		try {			
@@ -55,7 +55,7 @@ public class TestController extends GenericController{
 				Test test = (Test) session.getAttribute("test");
 				
 				if(testService.registerUserTest(request, loadLoggedUser(), test.getCode())) {
-					model.addAttribute("feature", "message");
+					model.addAttribute("feature", "home");
 					model.addAttribute("message", loadMessage("message.test.sucess"));
 					session.removeAttribute("test");
 				}
@@ -64,6 +64,7 @@ public class TestController extends GenericController{
 				
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			model.addAttribute("feature", "test");
 			model.addAttribute("message", loadMessage("message.test.error"));
 			return new ModelAndView("/page");
 		}
