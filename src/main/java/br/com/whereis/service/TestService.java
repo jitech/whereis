@@ -40,6 +40,8 @@ public class TestService {
 	public boolean registerUserTest(HttpServletRequest request, User user, String test) throws Exception{
 		String path = FileUtil.saveFileIntoDirectory(request, user+test);
 		
+		Test t = testRepo.findByCode(test);
+		
 		if(user.getTests() == null) {
 			user.setTests(new ArrayList<UserTest>());
 		}
@@ -49,11 +51,19 @@ public class TestService {
 		for(CodeAnalyze c : code.loadReport(path).getAnalyzes()) {
 			System.out.println("# Classe: "+c.getClassName());
 			System.out.println("# Complexidade Ciclomática: "+c.getComplexity());
-			System.out.println("# Status do método fatorar(): funcionando = "+code.isCorrectMethod("fatorar", 5, 120));
+			System.out.println("# Status do método fatorar(): funcionando = "+code.isCorrectMethod(path, "fatorar", 5, 120));
+			
+			UserTestStatus status = UserTestStatus.NOK;
+			
+			if(code.isCorrectMethod(path, "fatorar", 5, 120)) {
+				status = UserTestStatus.OK;
+			}
+			
+			user.getTests().add(UserTestFactory.create(test, c.getComplexity(), status, path));
+			userService.update(user);
 		}
 		
-		user.getTests().add(UserTestFactory.create(test, 2, UserTestStatus.OK, path));
-		userService.update(user);	
+			
 		return true;
 	}
 }

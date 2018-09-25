@@ -44,14 +44,14 @@ public final class CodeAnalyzer implements ICoverageVisitor {
 		return report;
 	}
 	
-	public boolean isCorrectMethod(String methodName, Object param, Object expected) {
+	public boolean isCorrectMethod(String pathFile, String methodName, Object param, Object expected) {
 		
 		try {
 				@SuppressWarnings("rawtypes")
 				Class params[] = new Class[1];
 				params[0] = Integer.class;
 			
-				URL url = new URL("file:/home/jonas/Documents/test.jar");
+				URL url = new URL("file:"+pathFile);
 				URL[] urls = {url};
 		
 				URLClassLoader child = new URLClassLoader(urls);
