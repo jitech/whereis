@@ -1,6 +1,5 @@
 package br.com.whereis.service;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -37,13 +36,13 @@ public class TestService {
 	}
 	
 	public boolean registerUserTest(HttpServletRequest request, User user, String test) throws Exception{
-		File file = FileUtil.saveFileIntoDirectory(request, user+test);
+		String path = FileUtil.saveFileIntoDirectory(request, user+test);
 		
 		if(user.getTests() == null) {
 			user.setTests(new ArrayList<UserTest>());
 		}
 		
-		user.getTests().add(UserTestFactory.create(test, 2, UserTestStatus.OK, file.getAbsolutePath()));
+		user.getTests().add(UserTestFactory.create(test, 2, UserTestStatus.OK, path));
 		userService.update(user);	
 		return true;
 	}

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.whereis.entity.Test;
 import br.com.whereis.service.TestService;
 
 @Controller
@@ -44,24 +44,20 @@ public class TestController extends GenericController{
 		}
     }
 	
-	@RequestMapping(value = "/send", method = RequestMethod.POST)
-    public ModelAndView sendTest(Model model, HttpSession session) { 
-		session.removeAttribute("test");
-		model.addAttribute("feature", "home");
-		return new ModelAndView("/page");
-	}
-	
-	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public ModelAndView upload(HttpServletRequest request, @RequestParam("test") String test,  Model model, HttpSession session) {
+	@RequestMapping(value = "/sendJar", method = RequestMethod.POST)
+    public ModelAndView sendJar(HttpServletRequest request, Model model, HttpSession session) {
 		
 		try {			
 				if(loadLoggedUser() == null){
 					model.addAttribute("feature", "login");			
 				}
 				
-				if(testService.registerUserTest(request, loadLoggedUser(), test)) {
-					model.addAttribute("feature", "home");
+				Test test = (Test) session.getAttribute("test");
+				
+				if(testService.registerUserTest(request, loadLoggedUser(), test.getCode())) {
+					model.addAttribute("feature", "message");
 					model.addAttribute("message", loadMessage("message.test.sucess"));
+					session.removeAttribute("test");
 				}
 				
 				return new ModelAndView("/page");

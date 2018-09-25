@@ -4,15 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Message</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
-<body class="body">
-
-	<jsp:include page="header.jsp" />
+<body>
 
 	${message}
 	
-	<jsp:include page="footer.jsp" />
-
 </body>
 </html>

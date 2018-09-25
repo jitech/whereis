@@ -34,6 +34,9 @@
    		<c:when test="${feature == 'test' and user != null and test != null}">
         	<jsp:include page="test.jsp" />
    		</c:when>
+   		<c:when test="${feature == 'message' and user != null}">
+        	<jsp:include page="message.jsp" />
+   		</c:when>
     	<c:otherwise>
         	<jsp:include page="not-found.jsp" />
     	</c:otherwise> 	
