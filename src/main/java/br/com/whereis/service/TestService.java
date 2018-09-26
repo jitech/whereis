@@ -53,22 +53,26 @@ public class TestService {
 		
 		CodeAnalyzer code = new CodeAnalyzer();
 		
-		for(CodeAnalyze c : code.loadReport(path).getAnalyzes()) {
-
-			UserTestStatus status = UserTestStatus.OK;
+		UserTestStatus status = UserTestStatus.OK;
+		
+		Integer complexity = 0;
+		
+		List<CodeAnalyze> codes = code.loadReport(path).getAnalyzes();
+		
+		for(CodeAnalyze c : codes) {
 			
-			for(TestCase testCase : t.getTestCases()) {
-				
+			complexity = complexity + c.getComplexity();
+			
+			for(TestCase testCase : t.getTestCases()) {				
 				if(!code.isCorrectMethod(path, testCase.getMethod(), testCase.getParameters(), testCase.getExpected())) {
 					status = UserTestStatus.NOK;
 					break;
 				}	
-			}
-			
-			user.getTests().add(UserTestFactory.create(test, c.getComplexity(), status, path));
-			userService.update(user);
+			}				
 		}
-				
+		
+		user.getTests().add(UserTestFactory.create(test, complexity/codes.size(), status, path));
+		userService.update(user);				
 		return true;
 	}
 }
