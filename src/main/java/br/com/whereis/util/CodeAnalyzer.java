@@ -50,8 +50,9 @@ public final class CodeAnalyzer implements ICoverageVisitor {
 				@SuppressWarnings("rawtypes")
 				Class params[] = new Class[param.length];
 				
-				params[0] = param[0].getClass();
-				params[1] = param[1].getClass();
+				for(int x = 0 ; x < param.length; x++) {
+					params[x] = param[x].getClass();
+				}
 							
 				URL url = new URL("file:"+pathFile);
 				URL[] urls = {url};
