@@ -20,18 +20,7 @@
 
 	<div style="border: 1px solid #DDD; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 22px; display: table; margin-top: 10px">
-			Jonas Goulart Melo
-		</div>	
-		<div style="border: 0px solid #DDD; width: 100%; text-align: left; display: table; margin-top: 10px; font-size: 13px">
-			<div style="color: #655347; background-color: #FCD2B4; display: table; padding: 5px; margin: 2px; float: left">
-				Spring MVC
-			</div>
-			<div style="color: #655347; background-color: #FCD2B4; display: table; padding: 5px; margin: 2px; float: left">				
-				JSF
-			</div>
-			<div style="color: #655347; background-color: #FCD2B4; display: table; padding: 5px; margin: 2px; float: left">				
-				Hibernate
-			</div>
+			${user.name}
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
 			&#10004; Already coded ${user.tests.size()} specifications
