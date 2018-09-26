@@ -71,6 +71,9 @@ public final class CodeAnalyzer implements ICoverageVisitor {
 				}
 			
 				return false;
+		}catch(NoSuchMethodException ex) {
+			System.out.println("Método não encontrado...");
+			return false;
 			
 		}catch(Exception ex) {		
 			ex.printStackTrace();

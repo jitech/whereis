@@ -9,17 +9,6 @@
 </head>
 <body>
 
-	<!-- Calculate percents of resolutions OK  -->
-	<c:set var="count" value="0" scope="page" />
-	<c:forEach items="${user.tests}" var="test">  
-		<c:choose>	
-			<c:when test="${test.status == 'OK'}"> 
-				<c:set var="count" value="${count + 1}" scope="page"/>
-			</c:when>
-		</c:choose>  			
-	</c:forEach>
-
-
 	<c:choose>	
 		<c:when test="${message != null}">  
 			<div id="message" style="border: 1px dashed #E1ECF4; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #E1ECF4">			
@@ -38,7 +27,7 @@
 				${user.name}
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-				&#10004; It's code solved <fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentCodeOK()}"/> of the problems
+				&#10004; The coded solutions solved <fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentCodeOK()}"/> of the proposed problems
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
 				&#10004; Average of ${user.loadTotalComplexity()} for McCabe Cyclomatic Complexity Score
@@ -57,7 +46,18 @@
 				</c:choose>
 			</div>		
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-				&#9733; The code quality is good
+				
+				<c:choose>
+					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10}">  
+						&#9733; The code quality is good
+					</c:when>					
+					<c:when test="${user.loadTotalComplexity() > 10 and user.loadTotalComplexity() <= 20}">  
+						&#10004; Need to improve programming concepts
+					</c:when>				
+					<c:when test="${user.loadTotalComplexity() > 20 and user.loadTotalComplexity() <= 50}">  
+						&#10004; Need to improve programming concepts
+					</c:when>				
+				</c:choose>
 			</div>
 		</div>
 		</c:when>
