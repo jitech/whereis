@@ -121,8 +121,7 @@ public class User {
 		
 		Integer totalComplexity = 0;
 		
-		for(UserTest userTest : getTests()) {
-			
+		for(UserTest userTest : getTests()) {			
 			totalComplexity = totalComplexity + userTest.getComplexity();
 		}
 		
@@ -133,17 +132,16 @@ public class User {
 		return null;
 	}
 	
-	public Integer loadTestNOK() {
+	public double loadPercentCodeOK() {
 		
-		Integer total = 0;
+		double total = 0;
 		
-		for(UserTest userTest : getTests()) {
-			
-			if(userTest.getStatus().equals(UserTestStatus.NOK)) {
+		for(UserTest userTest : getTests()) {			
+			if(userTest.getStatus().equals(UserTestStatus.OK)) {
 				total++;
 			}
 		}
 			
-		return total;
+		return ((total/(double)getTests().size()));
 	}
 }

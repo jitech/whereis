@@ -1,12 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
+
+	<!-- Calculate percents of resolutions OK  -->
+	<c:set var="count" value="0" scope="page" />
+	<c:forEach items="${user.tests}" var="test">  
+		<c:choose>	
+			<c:when test="${test.status == 'OK'}"> 
+				<c:set var="count" value="${count + 1}" scope="page"/>
+			</c:when>
+		</c:choose>  			
+	</c:forEach>
+
 
 	<c:choose>	
 		<c:when test="${message != null}">  
@@ -26,7 +38,7 @@
 				${user.name}
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-				&#10004; Already coded ${user.tests.size()} specifications
+				&#10004; It's code solved <fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentCodeOK()}"/> of the problems
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
 				&#10004; Average of ${user.loadTotalComplexity()} for McCabe Cyclomatic Complexity Score
