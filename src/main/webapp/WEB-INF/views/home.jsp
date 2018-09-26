@@ -18,23 +18,39 @@
 		</c:when>
 	</c:choose>
 
-	<div style="border: 1px solid #DDD; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
-		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 22px; display: table; margin-top: 10px">
-			${user.name}
+	<c:choose>
+	
+		<c:when test="${user.tests != null}">
+		<div style="border: 1px solid #DDD; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 22px; display: table; margin-top: 10px">
+				${user.name}
+			</div>
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
+				&#10004; Already coded ${user.tests.size()} specifications
+			</div>
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
+				&#10004; Average of ${user.loadTotalComplexity()} for McCabe Cyclomatic Complexity Score
+			</div>
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
+				<c:choose>
+					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10}">  
+						&#10004; It tends to create codes with low complexity and therefore are easy to maintain
+					</c:when>					
+					<c:when test="${user.loadTotalComplexity() > 10 and user.loadTotalComplexity() <= 20}">  
+						&#10004; Tends to create codes with medium complexity that can make maintenance a bit difficult
+					</c:when>				
+					<c:when test="${user.loadTotalComplexity() > 20 and user.loadTotalComplexity() <= 50}">  
+						&#10004; Tends to create highly complex codes that can make it very difficult to maintain
+					</c:when>				
+				</c:choose>
+			</div>		
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
+				&#9733; The code quality is good
+			</div>
 		</div>
-		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-			&#10004; Already coded ${user.tests.size()} specifications
-		</div>
-		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-			&#10004; It tries to create codes with low complexity and easy maintenance
-		</div>
-		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-			&#10004; Average of ${user.loadTotalComplexity()} for McCabe Cyclomatic Complexity Score
-		</div>
-		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-			&#9733; The code quality is good
-		</div>
-	</div>
+		</c:when>
+		
+	</c:choose>
 	
 	<c:choose>
 	

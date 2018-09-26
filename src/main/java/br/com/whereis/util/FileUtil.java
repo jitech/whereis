@@ -11,13 +11,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public class FileUtil {
 		
-	public static String saveFileIntoDirectory(HttpServletRequest request, String fileName) throws Exception{		
+	public static String saveFileIntoDirectory(HttpServletRequest request, String fileName, String path) throws Exception{		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;  
 		MultipartFile multipart = multipartRequest.getFile("file");
 		MessageDigest m = MessageDigest.getInstance("MD5");
 		m.update(fileName.getBytes(),0,fileName.length());	
 		String name = new BigInteger(1,m.digest()).toString(16);				
-	    File convFile = new File("/home/jonas/Developer/export/"+name+".jar");
+	    File convFile = new File(path+name+".jar");
 	    multipart.transferTo(convFile);
 	    return convFile.getAbsolutePath();
 	}

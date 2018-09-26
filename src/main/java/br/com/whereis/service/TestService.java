@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import br.com.whereis.entity.Test;
@@ -29,6 +30,9 @@ public class TestService {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+    public Environment environment;
+	
 	public Test loadByCode(String code) throws Exception{		
 		return testRepo.findByCode(code);
 	}
@@ -39,7 +43,7 @@ public class TestService {
 	}
 	
 	public boolean registerUserTest(HttpServletRequest request, User user, String test) throws Exception{
-		String path = FileUtil.saveFileIntoDirectory(request, user+test);
+		String path = FileUtil.saveFileIntoDirectory(request, user+test, environment.getProperty("repository.jar"));
 		
 		Test t = testRepo.findByCode(test);
 		

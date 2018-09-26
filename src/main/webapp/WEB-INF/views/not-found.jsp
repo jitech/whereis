@@ -7,7 +7,7 @@
 </head>
 <body>
 	
-	Page not found!
+	Sorry! Page not found. :(
 	
 </body>
 </html>
