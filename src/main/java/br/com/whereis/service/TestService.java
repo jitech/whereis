@@ -50,15 +50,12 @@ public class TestService {
 		CodeAnalyzer code = new CodeAnalyzer();
 		
 		for(CodeAnalyze c : code.loadReport(path).getAnalyzes()) {
-			System.out.println("# Classe: "+c.getClassName());
-			System.out.println("# Complexidade Ciclomática: "+c.getComplexity());
-			
+
 			UserTestStatus status = UserTestStatus.OK;
 			
 			for(TestCase testCase : t.getTestCases()) {
 				
 				if(!code.isCorrectMethod(path, testCase.getMethod(), testCase.getParameters(), testCase.getExpected())) {
-					System.out.println(">> Method is not OK!");
 					status = UserTestStatus.NOK;
 					break;
 				}	

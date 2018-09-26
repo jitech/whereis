@@ -44,13 +44,15 @@ public final class CodeAnalyzer implements ICoverageVisitor {
 		return report;
 	}
 	
-	public boolean isCorrectMethod(String pathFile, String methodName, Object param, Object expected) {
+	public boolean isCorrectMethod(String pathFile, String methodName, Object[] param, Object expected) {
 		
 		try {
 				@SuppressWarnings("rawtypes")
-				Class params[] = new Class[1];
-				params[0] = Integer.class;
-			
+				Class params[] = new Class[param.length];
+				
+				params[0] = param[0].getClass();
+				params[1] = param[1].getClass();
+							
 				URL url = new URL("file:"+pathFile);
 				URL[] urls = {url};
 		
@@ -63,8 +65,8 @@ public final class CodeAnalyzer implements ICoverageVisitor {
 			
 				@SuppressWarnings("unchecked")
 				Method method = cls.getDeclaredMethod(methodName, params);
-					
-				if(method.invoke(obj, param) == expected) {				
+
+				if(method.invoke(obj, param).equals(expected)) {				
 					return true;
 				}
 			

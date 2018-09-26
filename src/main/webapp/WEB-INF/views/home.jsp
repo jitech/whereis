@@ -34,13 +34,13 @@
 			</div>
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-			&#10004; Already coded 5 specifications
+			&#10004; Already coded ${user.tests.size()} specifications
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
 			&#10004; It tries to create codes with low complexity and easy maintenance
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-			&#10004; Average of 4 for McCabe Cyclomatic Complexity Score
+			&#10004; Average of ${user.loadTotalComplexity()} for McCabe Cyclomatic Complexity Score
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
 			&#9733; The code quality is good
