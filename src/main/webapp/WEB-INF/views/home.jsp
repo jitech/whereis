@@ -49,7 +49,7 @@
 				
 				<c:choose>
 					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10}">  
-						&#9733; The code quality is good
+						<b style="color: #f4ae01">&#9733;</b> The code quality is good
 					</c:when>					
 					<c:when test="${user.loadTotalComplexity() > 10 and user.loadTotalComplexity() <= 20}">  
 						&#10004; Need to improve programming concepts
@@ -68,12 +68,12 @@
 	
 		<c:when test="${test != null}">      	
 		<div style="border: 1px dashed #DDD; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 10px; color: #464646">
-				You still have a code to do!
+			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 24px; display: table; margin-top: 10px; color: #464646">
+				<b>You still have a code to deliver!</b>
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 10px; color: #464646">
 				<form action="/test" method="post">
-					<button style="background-color: #f4ae01; border: 1px solid #f4ae01;font-family: 'Roboto Condensed', sans-serif; font-size: 24px; color: #FFF; padding: 8px; margin: 4px">Send code</button>
+					<button style="background-color: #f4ae01; border: 1px solid #f4ae01;font-family: 'Roboto Condensed', sans-serif; font-size: 24px; color: #FFF; padding: 8px; margin: 4px">Take me to a test</button>
 				</form>
 			</div>
 		</div>
@@ -81,11 +81,11 @@
    		
 		<c:when test="${test == null}">
 		<div style="border: 1px solid #DDD; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 10px; color: #464646">
-				Code and show to companies that you know what you are doing
+			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 24px; display: table; margin-top: 10px; color: #464646">
+				<b>Show companies that you are a great java developer</b>
 			</div>
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 4px; color: #464646">
-				Encoding does not have time to send, however it is always good to send as soon as possible
+			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px; color: #464646">
+				Development teams are looking for more and more professionals who are concerned about delivering quality code. <br/> Show that you are that professional!
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 10px; color: #464646">
 				<form action="/test" method="post">

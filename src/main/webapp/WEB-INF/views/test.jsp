@@ -26,7 +26,7 @@
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; display: table; margin-top: 15px">
 			<form action="/send" method="post" enctype="multipart/form-data">
 				<label for="file">Selecionar .jar</label>
-				<input type="file" id="file" name="file" accept="jar/*">
+				<input type="file" id="file" name="file" accept="jar/*" required>
 				<button type="submit" style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 18px; color: #FFF; padding: 8px; float: right; margin: 4px">Send code</button>
 			</form>
 		</div>

@@ -15,16 +15,26 @@
     	<div style="display: table; width: 80%">
 
     		<div style="display: table; float: left; margin: 15px;">
-    			<a href="/about-us">About us</a> &#xb7; <a href="/privacy-policy">Privacy policy</a> &#xb7; Terms of use
+    			<a href="/about-us">About us</a>
+    			<b> &#xb7; </b>
+    			<a href="/jobs">Jobs</a>
+    			<b> &#xb7; </b> 
+    			<a href="/privacy-policy">Privacy policy</a>
+    			<b> &#xb7; </b>
+    			Terms of use   			
     		</div>
 
     		<div style="display: table; float: right; margin: 15px">   			
     			<c:choose>
 					<c:when test="${user == null}">
-        				<a href="/login">Entrar</a>&#xb7; <a href="/register">Register</a>
+        				<a href="/login">Entrar</a>
+        				<b> &#xb7; </b>
+        				<a href="/register">Register</a>
    					</c:when>
    					<c:when test="${user != null}">
-        				<a href="/home">Hi, ${user.name}</a> &#xb7; <a href="/exit">Exit</a>
+        				<a href="/home">Hi, ${user.name}</a>
+        				<b> &#xb7; </b>
+        				<a href="/exit">Exit</a>
    					</c:when>
    				</c:choose>
     		</div>

@@ -13,7 +13,7 @@
 		</div>
 		<div style="text-align: center; font-size: 16px; display: table; margin-top: 10px">	
 			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px">	
-				<input type="text" id="name" name="name" class="input-login" placeholder="name"/>
+				<input type="text" id="name" name="name" class="input-login" placeholder="name and surname"/>
 			</div>		
 			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px">	
 				<input type="text" id="email" name="email" class="input-login" placeholder="e-mail"/>
@@ -25,7 +25,7 @@
 				<input type="checkbox" id="ativo" name="ativo" value="true" required/>I agree to the <a href="/terms">terms of use</a>
 			</div>
 			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px">	
-				<button type="submit" class="button" style="width: 100%;">Register</button>
+				<button type="submit" class="button" style="width: 100%; background-color: #5fba7d; border: 1px solid #5fba7d">Register</button>
 			</div>	
 		</div>
 		<div style="text-align: center; font-size: 16px; display: table; margin-top: 5px">

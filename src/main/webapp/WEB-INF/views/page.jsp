@@ -25,6 +25,9 @@
 	
 	<div style="width: 80%; display: table; margin-top: 105px; margin-bottom: 105px"> 
 	<c:choose>
+		<c:when test="${feature == 'jobs'}">
+        	<jsp:include page="jobs.jsp" />
+   		</c:when>
 		<c:when test="${feature == 'index'}">
         	<jsp:include page="index.jsp" />
    		</c:when>  		
