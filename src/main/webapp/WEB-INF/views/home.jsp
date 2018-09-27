@@ -11,7 +11,7 @@
 
 	<c:choose>	
 		<c:when test="${message != null}">  
-			<div id="message" style="border: 1px dashed #E1ECF4; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #E1ECF4">			
+			<div id="message" style="border: 1px solid #E1ECF4; border-style: dashed; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #E1ECF4">			
 				<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; color: #39739d">
 					${message}
 				</div>

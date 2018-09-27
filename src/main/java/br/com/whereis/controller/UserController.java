@@ -20,23 +20,30 @@ public class UserController extends GenericController{
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value = "/search-user", method = RequestMethod.POST)
-    public ModelAndView search(@RequestParam("email") String email, Model model) {
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ModelAndView search(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String password, Model model) {
 		
 		try {
-				if(loadLoggedUser() == null){
-					return new ModelAndView("/login");	
+				if(loadLoggedUser() != null){
+					model.addAttribute("feature", "home");
+					return new ModelAndView("/page");	
 					
 				}
-				List<User> users = new ArrayList<User>();
-				users.add(userService.load(email));
-				model.addAttribute("users", users);
-				return new ModelAndView("/index");
+				
+				User user = userService.register(name, email, password);
+				
+				if(user != null) {					
+					model.addAttribute("message", loadMessage("message.register.sucess"));
+				}
+				
+				model.addAttribute("feature", "register");
+				return new ModelAndView("/page");
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			model.addAttribute("feature", "register");
 			model.addAttribute("message", loadMessage("message.load.error"));
-			return new ModelAndView("message");
+			return new ModelAndView("/page");
 		}
     }
 }
