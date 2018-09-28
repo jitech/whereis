@@ -13,7 +13,7 @@
 		</div>
 		<div style="text-align: center; font-size: 16px; display: table; margin-top: 10px">			
 			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px">	
-				<input type="text" id="email" name="email" class="input-login" placeholder="E-mail"/>
+				<input type="text" id="email" name="email" class="input-login" placeholder="e-mail"/>
 			</div>
 			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px">	
 				<input type="password" id="password" name="password" class="input-login" placeholder="password" />

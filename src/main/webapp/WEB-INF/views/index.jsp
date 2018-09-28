@@ -9,7 +9,7 @@
 
 	<div style="font-size: 28px; display: table; margin-top: 150px; margin-bottom: 150px">
 		<div style="display: table; float: left; width: 100%; text-align: center; margin: 10px; font-weight: bold;">
-			System.out.print("Java is life!");
+			System.out.print("I love my code!");
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 10px; color: #464646">
 			Code and show to companies that you know what you are doing

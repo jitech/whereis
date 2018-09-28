@@ -7,7 +7,11 @@
 </head>
 <body>
 	
-	Sorry! Page not found. :(
+	<div style="width: 70%; text-align: left; display: table; margin-top: 15px; padding: 20px;">			
+		<div style="width: 100%; text-align: center; font-size: 24px; display: table; margin-top: 10px; color: #464646">
+			<b>Ops! Nothing to see here :(</b>
+		</div>
+	</div>
 	
 </body>
 </html>

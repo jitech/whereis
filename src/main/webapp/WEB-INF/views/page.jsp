@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Where's</title>
+	<title>I love my code</title>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -33,6 +33,9 @@
    		</c:when>  		
    		<c:when test="${feature == 'about-us'}">
         	<jsp:include page="about-us.jsp" />
+   		</c:when>
+   		<c:when test="${feature == 'terms-of-use'}">
+        	<jsp:include page="terms-of-use.jsp" />
    		</c:when>
    		<c:when test="${feature == 'privacy-policy'}">
         	<jsp:include page="privacy-policy.jsp" />

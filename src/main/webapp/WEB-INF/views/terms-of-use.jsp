@@ -7,7 +7,7 @@
 </head>
 <body class="body">
 	
-	About us...
+	Terms of use...
 	
 </body>
 </html>

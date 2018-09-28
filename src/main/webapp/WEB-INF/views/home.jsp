@@ -6,12 +6,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
 
 	<c:choose>	
 		<c:when test="${message != null}">  
-			<div id="message" style="border: 1px solid #E1ECF4; border-style: dashed; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #E1ECF4">			
+			<div id="message" style="border: 1px solid #E1ECF4; border-style: dashed; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #E1ECF4">			
 				<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; color: #39739d">
 					${message}
 				</div>
@@ -22,7 +23,7 @@
 	<c:choose>
 	
 		<c:when test="${user.tests != null}">
-		<div style="border: 1px solid #DDD; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
+		<div style="border: 1px solid #DDD; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 22px; display: table; margin-top: 10px">
 				${user.name}
 			</div>
@@ -42,20 +43,19 @@
 					</c:when>				
 					<c:when test="${user.loadTotalComplexity() > 20 and user.loadTotalComplexity() <= 50}">  
 						&#10004; Tends to create highly complex codes that can make it very difficult to maintain
+					</c:when>	
+					<c:when test="${user.loadTotalComplexity() > 50}">  
+						&#10004; Tends to create very highly complex codes that can make it very difficult to maintain
 					</c:when>				
 				</c:choose>
-			</div>		
+			</div>	
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-				
+				<i class="fa fa-clock-o"></i> Tends to be agile upon delivery
+			</div>	
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">				
 				<c:choose>
-					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10}">  
-						<b style="color: #f4ae01">&#9733;</b> The code quality is good
-					</c:when>					
-					<c:when test="${user.loadTotalComplexity() > 10 and user.loadTotalComplexity() <= 20}">  
-						&#10004; Need to improve programming concepts
-					</c:when>				
-					<c:when test="${user.loadTotalComplexity() > 20 and user.loadTotalComplexity() <= 50}">  
-						&#10004; Need to improve programming concepts
+					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10 and user.loadPercentCodeOK() == 1}">  
+						<b style="color: #f4ae01">&#9733;</b> The code quality is good	
 					</c:when>				
 				</c:choose>
 			</div>
@@ -67,7 +67,7 @@
 	<c:choose>
 	
 		<c:when test="${test != null}">      	
-		<div style="border: 1px dashed #DDD; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
+		<div style="border: 1px dashed #DDD; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
 			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 24px; display: table; margin-top: 10px; color: #464646">
 				<b>You still have a code to deliver!</b>
 			</div>
@@ -80,19 +80,22 @@
    		</c:when>
    		
 		<c:when test="${test == null}">
-		<div style="border: 1px solid #DDD; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
+		<form action="/test" method="post">
+		<div style="border: 1px solid #DDD; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
 			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 24px; display: table; margin-top: 10px; color: #464646">
 				<b>Show companies that you are a great java developer</b>
 			</div>
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px; color: #464646">
-				Development teams are looking for more and more professionals who are concerned about delivering quality code. <br/> Show that you are that professional!
+			<div style="border: 0px solid #DDD; width: 100%; text-align: justify; font-size: 16px; display: table; margin-top: 10px; color: #464646">
+				Development teams are looking for professionals who know the technology well and are able to deliver high quality codes. Show that you are that professional!
 			</div>
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 10px; color: #464646">
-				<form action="/test" method="post">
-					<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 24px; color: #FFF; padding: 8px; margin: 4px">Start now</button>
-				</form>
+			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px; color: #464646">	
+				<input type="checkbox" id="ativo" name="ativo" value="true" required/>I agree to the <a href="/terms-of-use">terms of use</a>
+			</div>
+			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 10px; color: #464646">	
+				<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 24px; color: #FFF; padding: 8px; margin: 4px">Start now</button>				
 			</div>
 		</div>
+		</form>
 		</c:when>
 		
 	</c:choose>

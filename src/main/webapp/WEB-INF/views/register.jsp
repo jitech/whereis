@@ -22,7 +22,7 @@
 				<input type="password" id="password" name="password" class="input-login" placeholder="password" />
 			</div>
 			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px">	
-				<input type="checkbox" id="ativo" name="ativo" value="true" required/>I agree to the <a href="/terms">terms of use</a>
+				<input type="checkbox" id="ativo" name="ativo" value="true" required/>I agree to the <a href="/terms-of-use">terms of use</a>
 			</div>
 			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px">	
 				<button type="submit" class="button" style="width: 100%; background-color: #5fba7d; border: 1px solid #5fba7d">Register</button>

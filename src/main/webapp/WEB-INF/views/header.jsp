@@ -21,7 +21,7 @@
     			<b> &#xb7; </b> 
     			<a href="/privacy-policy">Privacy policy</a>
     			<b> &#xb7; </b>
-    			Terms of use   			
+    			<a href="/terms-of-use">Terms of use</a> 			   			
     		</div>
 
     		<div style="display: table; float: right; margin: 15px">   			
@@ -31,8 +31,8 @@
         				<b> &#xb7; </b>
         				<a href="/register">Register</a>
    					</c:when>
-   					<c:when test="${user != null}">
-        				<a href="/home">Hi, ${user.name}</a>
+   					<c:when test="${user != null}">  					
+        				<a href="/home">Hi, ${user.name.split(" ")[0]}</a>
         				<b> &#xb7; </b>
         				<a href="/exit">Exit</a>
    					</c:when>
