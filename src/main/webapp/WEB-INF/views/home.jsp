@@ -85,13 +85,13 @@
 			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 24px; display: table; margin-top: 10px; color: #464646">
 				<b>Show companies that you are a great java developer</b>
 			</div>
-			<div style="border: 0px solid #DDD; width: 100%; text-align: justify; font-size: 16px; display: table; margin-top: 10px; color: #464646">
+			<div style="border-top: 2px dotted #DDD; width: 100%; text-align: justify; font-size: 18px; display: table; margin-top: 20px; padding-top: 15px; color: #464646">
 				Development teams are looking for professionals who know the technology well and are able to deliver high quality codes. Show that you are that professional!
 			</div>
 			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px; color: #464646">	
 				<input type="checkbox" id="ativo" name="ativo" value="true" required/>I agree to the <a href="/terms-of-use">terms of use</a>
 			</div>
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 10px; color: #464646">	
+			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 30px; color: #464646">	
 				<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 24px; color: #FFF; padding: 8px; margin: 4px">Start now</button>				
 			</div>
 		</div>

@@ -3,6 +3,7 @@ package br.com.whereis.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,4 +44,24 @@ public class UserController extends GenericController{
 			return new ModelAndView("/page");
 		}
     }
+	
+	
+	@RequestMapping(value="/user/{email}", method = RequestMethod.GET)
+    public ModelAndView search(@PathVariable("email") String email, Model model) {
+		
+		try {
+				User user = userService.load(email);
+			
+				System.out.println("User: "+user.getName());
+				
+				model.addAttribute("userDetail", user);
+				model.addAttribute("feature", "user");
+				return new ModelAndView("/page");
+				
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			model.addAttribute("feature", "login");
+			return new ModelAndView("/page");
+		}
+	}
 }

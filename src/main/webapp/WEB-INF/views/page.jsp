@@ -40,6 +40,9 @@
    		<c:when test="${feature == 'privacy-policy'}">
         	<jsp:include page="privacy-policy.jsp" />
    		</c:when>  
+   		<c:when test="${feature == 'user'}">
+        	<jsp:include page="user.jsp" />
+   		</c:when> 
    		<c:when test="${feature == 'register' and user == null}">
         	<jsp:include page="register.jsp" />
    		</c:when>
