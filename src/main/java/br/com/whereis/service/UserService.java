@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
+import br.com.whereis.entity.Status;
 import br.com.whereis.entity.User;
 import br.com.whereis.entity.UserTest;
 import br.com.whereis.entity.UserTestStatus;
@@ -24,7 +25,7 @@ public class UserService {
 	
 	@Autowired
     public Environment environment;
-	
+		
 	public User register(String name, String email, String password) throws Exception{
 		
 		User user = userRepo.findByEmail(email);
@@ -39,11 +40,32 @@ public class UserService {
 		user = userRepo.save(user);
 		
 		if(user != null) {
-			MailUtil.sendEmail(MailFactory.create(email, environment.getProperty("email.register.welcome.to"), environment.getProperty("email.register.welcome.subject"), environment.getProperty("email.register.welcome.content")));
+			MailUtil.sendEmail(
+					MailFactory.create(email, 
+							environment.getProperty("email.register.welcome.to"), 
+							environment.getProperty("email.register.welcome.subject"), 
+							environment.getProperty("email.register.welcome.content").replace("URL",environment.getProperty("email.register.validate.url")+user.getNameProfile())));
 			return user;
 		}
 		
 		return null;
+	}
+	
+	public boolean validateAccount(User user) {
+		
+		try {
+				user.setStatus(Status.ACTIVE);
+
+				if(userRepo.save(user).getStatus().equals(Status.ACTIVE)) {
+					return true;
+				}
+				
+				return false;
+				
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 	
 	public User createForTest(String email, String testCode) throws Exception{

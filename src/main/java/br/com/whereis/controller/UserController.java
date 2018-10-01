@@ -1,5 +1,7 @@
 package br.com.whereis.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,6 +64,24 @@ public class UserController extends GenericController{
 		}catch(Exception ex) {
 			ex.printStackTrace();
 			model.addAttribute("feature", "login");
+			return new ModelAndView("/page");
+		}
+	}
+	
+	@RequestMapping(value="/validate/{nameProfile}", method = RequestMethod.GET)
+    public ModelAndView validate(@PathVariable("nameProfile") String nameProfile, Model model, HttpSession session) {
+		
+		try {
+				User user = userService.loadByNameProfile(nameProfile);
+			
+				if(user != null && userService.validateAccount(user)) {
+					model.addAttribute("feature", "login");
+				}
+													
+				return new ModelAndView("/page");
+				
+		}catch(Exception ex) {
+			ex.printStackTrace();
 			return new ModelAndView("/page");
 		}
 	}
