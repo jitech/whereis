@@ -12,9 +12,9 @@ public class UserFactory {
 	public static User create(String email, String password, String name, Company company) throws Exception{
 		
 		if(company != null) {
-			return new User(email, PasswordUtil.encripty(password), name, Status.ACTIVE, company.getDocument(), new Date());
+			return new User(email, PasswordUtil.encripty(password), name, name.toLowerCase().replace(" ", ""), Status.ACTIVE, company.getDocument(), new Date());
 		}else {
-			return new User(email, PasswordUtil.encripty(password), name, Status.INACTIVE, null, new Date());
+			return new User(email, PasswordUtil.encripty(password), name, name.toLowerCase().replace(" ", ""), Status.INACTIVE, null, new Date());
 		}	
 	}
 }

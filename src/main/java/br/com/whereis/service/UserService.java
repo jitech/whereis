@@ -54,6 +54,10 @@ public class UserService {
 		return userRepo.findByEmail(email);
 	}
 	
+	public User loadByNameProfile(String nameProfile) throws Exception{	
+		return userRepo.findByNameProfile(nameProfile);
+	}
+	
 	public void update(User user) throws Exception{	
 		userRepo.save(user);
 	}

@@ -46,16 +46,17 @@ public class UserController extends GenericController{
     }
 	
 	
-	@RequestMapping(value="/user/{email}", method = RequestMethod.GET)
-    public ModelAndView search(@PathVariable("email") String email, Model model) {
+	@RequestMapping(value="/in/{nameProfile}", method = RequestMethod.GET)
+    public ModelAndView search(@PathVariable("nameProfile") String nameProfile, Model model) {
 		
 		try {
-				User user = userService.load(email);
+				User user = userService.loadByNameProfile(nameProfile);
 			
-				System.out.println("User: "+user.getName());
-				
-				model.addAttribute("userDetail", user);
-				model.addAttribute("feature", "user");
+				if(user != null) {
+					model.addAttribute("in", user);	
+					model.addAttribute("feature", "in");
+				}
+													
 				return new ModelAndView("/page");
 				
 		}catch(Exception ex) {

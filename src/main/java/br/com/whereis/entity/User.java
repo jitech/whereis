@@ -19,6 +19,7 @@ public class User {
 	private String email;
 	private String password;
 	private String name;
+	private String nameProfile;
 	private Status status;
 	private String company;
 	private List<UserTest> tests;
@@ -28,11 +29,12 @@ public class User {
 		super();
 	}
 
-	public User(String email, String password, String name, Status status, String company, Date include) {
+	public User(String email, String password, String name, String nameProfile, Status status, String company, Date include) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.name = name;
+		this.nameProfile = nameProfile;
 		this.status = status;
 		this.company = company;
 		this.include = include;
@@ -70,6 +72,14 @@ public class User {
 		this.name = name;
 	}
 	
+	public String getNameProfile() {
+		return nameProfile;
+	}
+
+	public void setNameProfile(String nameProfile) {
+		this.nameProfile = nameProfile;
+	}
+
 	public String getCompany() {
 		return company;
 	}

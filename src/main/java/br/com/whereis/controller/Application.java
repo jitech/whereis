@@ -51,7 +51,7 @@ public class Application implements CommandLineRunner{
 		Company company = companyRepo.findByDocument("123456789");
 		
 		//userRepo.save(UserFactory.create("jgm.melo@gmail.com", null, null, null));
-		userRepo.save(UserFactory.create("jgm.melo@uol.com.br", "123", "Jonas", company));
+		userRepo.save(UserFactory.create("jgm.melo@uol.com.br", "123", "Jonas Goulart", company));
 		
 		for(int x = 1 ; x < 100 ; x++) {
 			Test test = new Test(PasswordUtil.encripty(x+"X"),"Test "+x, "Test describe", Language.JAVA, Status.ACTIVE);	
