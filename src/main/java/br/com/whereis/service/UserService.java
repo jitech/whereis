@@ -4,20 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import br.com.whereis.entity.User;
 import br.com.whereis.entity.UserTest;
 import br.com.whereis.entity.UserTestStatus;
+import br.com.whereis.factory.MailFactory;
 import br.com.whereis.factory.UserFactory;
 import br.com.whereis.factory.UserTestFactory;
 import br.com.whereis.repository.UserRepository;
+import br.com.whereis.util.MailUtil;
 
 @Service
 public class UserService {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+    public Environment environment;
 	
 	public User register(String name, String email, String password) throws Exception{
 		
@@ -30,7 +36,14 @@ public class UserService {
 			return null;
 		}
 		
-		return userRepo.save(user);
+		user = userRepo.save(user);
+		
+		if(user != null) {
+			MailUtil.sendEmail(MailFactory.create(email, environment.getProperty("email.register.welcome.to"), environment.getProperty("email.register.welcome.subject"), environment.getProperty("email.register.welcome.content")));
+			return user;
+		}
+		
+		return null;
 	}
 	
 	public User createForTest(String email, String testCode) throws Exception{
