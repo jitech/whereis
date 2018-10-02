@@ -21,7 +21,7 @@ public class UserController extends GenericController{
 	private UserService userService;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView search(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String password, Model model) {
+    public ModelAndView register(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String password, Model model) {
 		
 		try {
 				if(loadLoggedUser() != null){
@@ -48,11 +48,11 @@ public class UserController extends GenericController{
     }
 	
 	
-	@RequestMapping(value="/in/{nameProfile}", method = RequestMethod.GET)
-    public ModelAndView search(@PathVariable("nameProfile") String nameProfile, Model model) {
+	@RequestMapping(value="/in/{profile}", method = RequestMethod.GET)
+    public ModelAndView search(@PathVariable("profile") String profile, Model model) {
 		
 		try {
-				User user = userService.loadByNameProfile(nameProfile);
+				User user = userService.loadByNameProfile(profile);
 			
 				if(user != null) {
 					model.addAttribute("in", user);	
@@ -68,13 +68,13 @@ public class UserController extends GenericController{
 		}
 	}
 	
-	@RequestMapping(value="/validate/{nameProfile}", method = RequestMethod.GET)
-    public ModelAndView validate(@PathVariable("nameProfile") String nameProfile, Model model, HttpSession session) {
+	@RequestMapping(value="/active/{id}", method = RequestMethod.GET)
+    public ModelAndView active(@PathVariable("id") String id, Model model, HttpSession session) {
 		
 		try {
-				User user = userService.loadByNameProfile(nameProfile);
+				User user = userService.loadById(id);
 			
-				if(user != null && userService.validateAccount(user)) {
+				if(user != null && userService.activeUser(user)) {
 					model.addAttribute("feature", "login");
 				}
 													

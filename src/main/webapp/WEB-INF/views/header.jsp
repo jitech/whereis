@@ -17,8 +17,6 @@
     		<div style="display: table; float: left; margin: 15px;">
     			<a href="/about-us">About us</a>
     			<b> &#xb7; </b>
-    			<a href="/jobs">Jobs</a>
-    			<b> &#xb7; </b> 
     			<a href="/privacy-policy">Privacy policy</a>
     			<b> &#xb7; </b>
     			<a href="/terms-of-use">Terms of use</a> 			   			

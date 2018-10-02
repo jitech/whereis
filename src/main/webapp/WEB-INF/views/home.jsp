@@ -27,7 +27,7 @@
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 22px; display: table; margin-top: 10px">
 				${user.name}
 			</div>
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 25px">
 				&#10004; The coded solutions solved <fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentCodeOK()}"/> of the proposed problems
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
@@ -36,21 +36,18 @@
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
 				<c:choose>
 					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10}">  
-						&#10004; It tends to create codes with low complexity and therefore are easy to maintain
+						&#10004; Codes with low complexity and therefore are easy to maintain
 					</c:when>					
 					<c:when test="${user.loadTotalComplexity() > 10 and user.loadTotalComplexity() <= 20}">  
-						&#10004; Tends to create codes with medium complexity that can make maintenance a bit difficult
+						&#10004; Codes with medium complexity that can make maintenance a bit difficult
 					</c:when>				
 					<c:when test="${user.loadTotalComplexity() > 20 and user.loadTotalComplexity() <= 50}">  
-						&#10004; Tends to create highly complex codes that can make it very difficult to maintain
+						&#10004; Highly complex codes that can make it very difficult to maintain
 					</c:when>	
 					<c:when test="${user.loadTotalComplexity() > 50}">  
-						&#10004; Tends to create very highly complex codes that can make it very difficult to maintain
+						&#10004; Very highly complex codes that can make it very difficult to maintain
 					</c:when>				
 				</c:choose>
-			</div>	
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-				<i class="fa fa-clock-o"></i> Tends to be agile upon delivery
 			</div>	
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">				
 				<c:choose>

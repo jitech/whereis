@@ -15,10 +15,13 @@
 	
 		<c:when test="${in.tests != null}">
 		<div style="border: 1px solid #DDD; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 20px; background-color: #fafafb">			
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 22px; display: table; margin-top: 10px">
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 26px; display: table; margin-top: 10px; letter-spacing: -0.75px">
 				${in.name}
-			</div>
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
+			</div>	
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 12px; display: table; margin-top: 0px; color: #464646; text-transform: uppercase;">
+				Java Developer at 8 years
+			</div>	
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 25px">
 				&#10004; The coded solutions solved <fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${in.loadPercentCodeOK()}"/> of the proposed problems
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
@@ -39,16 +42,16 @@
 						&#10004; Tends to create very highly complex codes that can make it very difficult to maintain
 					</c:when>				
 				</c:choose>
-			</div>	
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-				<i class="fa fa-clock-o"></i> Tends to be agile upon delivery
-			</div>	
+			</div>		
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">				
 				<c:choose>
 					<c:when test="${in.loadTotalComplexity() > 0 and in.loadTotalComplexity() <= 10 and in.loadPercentCodeOK() == 1}">  
 						<b style="color: #f4ae01">&#9733;</b> The code quality is good	
 					</c:when>				
 				</c:choose>
+			</div>
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 25px; color: #464646">
+				http://localhost:8090/in/${in.nameProfile}
 			</div>
 		</div>
 		</c:when>

@@ -2,6 +2,7 @@ package br.com.whereis.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -41,17 +42,15 @@ public class UserService {
 		
 		if(user != null) {
 			MailUtil.sendEmail(
-					MailFactory.create(email, 
-							environment.getProperty("email.register.welcome.to"), 
-							environment.getProperty("email.register.welcome.subject"), 
-							environment.getProperty("email.register.welcome.content").replace("URL",environment.getProperty("email.register.validate.url")+user.getNameProfile())));
+					MailFactory.create(email, environment.getProperty("email.register.active.to"), environment.getProperty("email.register.active.subject"), 
+							environment.getProperty("email.register.active.content").replace("<URL>",environment.getProperty("email.register.active.url")+user.getId())));
 			return user;
 		}
 		
 		return null;
 	}
 	
-	public boolean validateAccount(User user) {
+	public boolean activeUser(User user) {
 		
 		try {
 				user.setStatus(Status.ACTIVE);
@@ -82,15 +81,20 @@ public class UserService {
 		
 		user.getTests().add(UserTestFactory.create(testCode, null, UserTestStatus.WAIT, null));		
 		userRepo.save(user);		
-		return load(user.getEmail());
+		return loadByEmail(user.getEmail());
 	}
 	
-	public User load(String email) throws Exception{	
+	public User loadByEmail(String email) throws Exception{	
 		return userRepo.findByEmail(email);
 	}
 	
-	public User loadByNameProfile(String nameProfile) throws Exception{	
-		return userRepo.findByNameProfile(nameProfile);
+	public User loadByNameProfile(String profile) throws Exception{	
+		return userRepo.findByNameProfile(profile);
+	}
+	
+	public User loadById(String id) throws Exception{				
+		Optional<User> user = userRepo.findById(id);
+		return user.get();
 	}
 	
 	public void update(User user) throws Exception{	
