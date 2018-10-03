@@ -24,7 +24,7 @@
 				<button type="submit" class="button" style="width: 100%;">Sign in</button>
 			</div>	
 			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px">	
-				<a href="/solicit">Forget password?</a>
+				<a href="/solicit">Forgot password?</a>
 			</div>
 		</div>
 		<div style="text-align: center; font-size: 16px; display: table; margin-top: 5px">
