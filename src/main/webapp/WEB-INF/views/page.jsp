@@ -40,10 +40,10 @@
    		<c:when test="${feature == 'privacy-policy'}">
         	<jsp:include page="privacy-policy.jsp" />
    		</c:when>  
-   		<c:when test="${feature == 'solicit'}">
+   		<c:when test="${feature == 'solicit' and user == null}">
         	<jsp:include page="solicit.jsp" />
    		</c:when>
-   		<c:when test="${feature == 'reset'}">
+   		<c:when test="${feature == 'reset' and user == null}">
         	<jsp:include page="reset.jsp" />
    		</c:when>
    		<c:when test="${feature == 'in' and in != null}">

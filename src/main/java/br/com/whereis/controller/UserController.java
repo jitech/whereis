@@ -129,7 +129,7 @@ public class UserController extends GenericController{
     public ModelAndView resetPassword(@RequestParam("password") String password, Model model, HttpSession session) {
 		
 		try {				
-				if(userService.resetPassword(session.getAttribute("codePasswordReset").toString(), password)) {					
+				if(userService.resetPassword(session.getAttribute("codePasswordReset").toString(), password)) {	
 					session.removeAttribute("codePasswordReset");
 					model.addAttribute("message", loadMessage("message.password.reset.sucess"));					
 				}else {
