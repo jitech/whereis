@@ -1,6 +1,7 @@
 package br.com.whereis.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ import br.com.whereis.factory.UserFactory;
 import br.com.whereis.factory.UserTestFactory;
 import br.com.whereis.repository.UserRepository;
 import br.com.whereis.util.MailUtil;
+import br.com.whereis.util.PasswordUtil;
 
 @Service
 public class UserService {
@@ -67,6 +69,54 @@ public class UserService {
 		}
 	}
 	
+	public boolean solicitPasswordReset(String email) throws Exception{
+		
+		try {
+				User user = userRepo.findByEmail(email);
+				
+				if(user != null) {				
+					user.setCodePasswordReset(PasswordUtil.encripty(user.getEmail()+new Date()));
+					
+					if(userRepo.save(user) != null) {
+						
+						if(MailUtil.sendEmail(
+								MailFactory.create(email, environment.getProperty("email.password.rest.to"), environment.getProperty("email.password.rest.subject"), 
+										environment.getProperty("email.password.rest.content").replace("<URL>",environment.getProperty("email.password.rest.url")+user.getCodePasswordReset())))) {
+							return true;
+						}		
+					}			
+				}
+				
+				return false;
+				
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean resetPassword(String code, String password) {
+		
+		try {
+				User user = loadByCodePasswordReset(code);
+				
+				if(user != null) {				
+					user.setPassword(PasswordUtil.encripty(password));
+					user.setCodePasswordReset(null);
+					
+					if(userRepo.save(user) != null) {
+						return true;
+					}
+				}
+
+				return false;
+				
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+	
 	public User createForTest(String email, String testCode) throws Exception{
 		
 		User user = userRepo.findByEmail(email);
@@ -95,6 +145,10 @@ public class UserService {
 	public User loadById(String id) throws Exception{				
 		Optional<User> user = userRepo.findById(id);
 		return user.get();
+	}
+	
+	public User loadByCodePasswordReset(String code) throws Exception{				
+		return userRepo.findByCodePasswordReset(code);
 	}
 	
 	public void update(User user) throws Exception{	

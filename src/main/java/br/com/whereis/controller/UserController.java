@@ -21,7 +21,7 @@ public class UserController extends GenericController{
 	private UserService userService;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView register(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String password, Model model) {
+    public ModelAndView registerUser(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String password, Model model) {
 		
 		try {
 				if(loadLoggedUser() != null){
@@ -45,11 +45,10 @@ public class UserController extends GenericController{
 			model.addAttribute("message", loadMessage("message.load.error"));
 			return new ModelAndView("/page");
 		}
-    }
-	
-	
+    }	
+		
 	@RequestMapping(value="/in/{profile}", method = RequestMethod.GET)
-    public ModelAndView search(@PathVariable("profile") String profile, Model model) {
+    public ModelAndView loadPublicProfile(@PathVariable("profile") String profile, Model model) {
 		
 		try {
 				User user = userService.loadByNameProfile(profile);
@@ -69,7 +68,7 @@ public class UserController extends GenericController{
 	}
 	
 	@RequestMapping(value="/active/{id}", method = RequestMethod.GET)
-    public ModelAndView active(@PathVariable("id") String id, Model model, HttpSession session) {
+    public ModelAndView activeUser(@PathVariable("id") String id, Model model, HttpSession session) {
 		
 		try {
 				User user = userService.loadById(id);
@@ -82,6 +81,68 @@ public class UserController extends GenericController{
 				
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			return new ModelAndView("/page");
+		}
+	}
+	
+	@RequestMapping(value="/reset/solicit", method = RequestMethod.POST)
+    public ModelAndView solicitPasswordReset(@RequestParam("email") String email, Model model, HttpSession session) {
+		
+		try {				
+				if(userService.solicitPasswordReset(email)) {					
+					model.addAttribute("message", loadMessage("message.password.reset.solicit.sucess"));					
+				}else {
+					model.addAttribute("message", loadMessage("message.password.reset.error"));
+				}
+				
+				model.addAttribute("feature", "solicit");
+				return new ModelAndView("/page");
+				
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			model.addAttribute("feature", "reset");
+			model.addAttribute("message", loadMessage("message.password.reset.error"));
+			return new ModelAndView("/page");
+		}
+	}
+	
+	@RequestMapping(value="/reset/{code}", method = RequestMethod.GET)
+    public ModelAndView loadFormPasswordReset(@PathVariable("code") String code, Model model, HttpSession session) {
+		
+		try {
+				User user = userService.loadByCodePasswordReset(code);
+			
+				if(user != null) {
+					session.setAttribute("codePasswordReset", code);
+					model.addAttribute("feature", "reset");
+				}
+													
+				return new ModelAndView("/page");
+				
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return new ModelAndView("/page");
+		}
+	}
+	
+	@RequestMapping(value="/reset", method = RequestMethod.POST)
+    public ModelAndView resetPassword(@RequestParam("password") String password, Model model, HttpSession session) {
+		
+		try {				
+				if(userService.resetPassword(session.getAttribute("codePasswordReset").toString(), password)) {					
+					session.removeAttribute("codePasswordReset");
+					model.addAttribute("message", loadMessage("message.password.reset.sucess"));					
+				}else {
+					model.addAttribute("message", loadMessage("message.password.reset.error"));
+				}
+				
+				model.addAttribute("feature", "reset");
+				return new ModelAndView("/page");
+				
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			model.addAttribute("feature", "reset");
+			model.addAttribute("message", loadMessage("message.password.reset.error"));
 			return new ModelAndView("/page");
 		}
 	}

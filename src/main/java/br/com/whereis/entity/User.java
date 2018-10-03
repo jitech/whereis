@@ -24,6 +24,7 @@ public class User {
 	private String company;
 	private List<UserTest> tests;
 	private Date include;
+	private String codePasswordReset;
 		
 	public User() {
 		super();
@@ -110,6 +111,14 @@ public class User {
 
 	public void setInclude(Date include) {
 		this.include = include;
+	}
+
+	public String getCodePasswordReset() {
+		return codePasswordReset;
+	}
+
+	public void setCodePasswordReset(String codePasswordReset) {
+		this.codePasswordReset = codePasswordReset;
 	}
 
 	@Override
