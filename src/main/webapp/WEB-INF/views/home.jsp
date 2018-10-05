@@ -10,52 +10,59 @@
 </head>
 <body>
 
-	<c:choose>	
-		<c:when test="${message != null}">  
-			<div id="message" style="border: 1px solid #E1ECF4; border-style: dashed; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #E1ECF4">			
-				<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; color: #39739d">
+ 	<c:choose>	
+		<c:when test="${message != null}">
+			<div id="message" style="border-left: 4px solid #7ab800; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 15px; padding-left: 45px; padding-right: 45px; background-color: #EEE">			
+				<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 18px; display: table;">
 					${message}
 				</div>
 			</div>
 		</c:when>
 	</c:choose>
 
+
 	<c:choose>
 	
 		<c:when test="${user.tests != null}">
-		<div style="border: 2px dashed #DDD; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #fafafb">			
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 22px; display: table; margin-top: 10px">
-				${user.name}
+		<div style="border: 1px solid #DDD; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #FFF">			
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 12px; display: table; margin-top: 0px; color: #A4A4A4">
+				RESUME<b> &#xb7; </b>MEMBER SINCE 2018
 			</div>
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 24px; display: table; margin-top: 10px; letter-spacing: -0.5px">
+				${user.name}
+			</div>			
 			<div style="border: 0px solid #DDD; width: 100%; color: #535a60; text-align: left; font-size: 16px; display: table; margin-top: 2px">				
 				<c:choose>
 					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10 and user.loadPercentCodeOK() == 1}">  
-						<b style="color: #f4ae01">&#9733;</b> The code quality is good	
+						<b style="color: #f4ae01">&#9733;</b> The code's good	
 					</c:when>				
 				</c:choose>
 			</div>
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 25px; font-style: italic;">
+				"I'm Java Developer at 2010. My expertise are Spring MVC and microservices, Mongo DB and Maria DB."
+			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 25px">
-				The coded solutions solved <fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentCodeOK()}"/> of the proposed problems
+				&#xb7; The coded solutions solved <fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentCodeOK()}"/> of the proposed problems.
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; font-size: 16px; display: table; margin-top: 5px">
-				Average of ${user.loadTotalComplexity()} for McCabe Cyclomatic Complexity Score
+				&#xb7; Average of ${user.loadTotalComplexity()} for McCabe Cyclomatic Complexity Score.
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; font-size: 16px; display: table; margin-top: 5px">
 				<c:choose>
 					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10}">  
-						Codes with low complexity and therefore are easy to maintain
+						&#xb7; Codes with low complexity and therefore are easy to maintain.
 					</c:when>					
 					<c:when test="${user.loadTotalComplexity() > 10 and user.loadTotalComplexity() <= 20}">  
-						Codes with medium complexity that can make maintenance a bit difficult
+						&#xb7; Codes with medium complexity that can make maintenance a bit difficult.
 					</c:when>				
 					<c:when test="${user.loadTotalComplexity() > 20 and user.loadTotalComplexity() <= 50}">  
-						Highly complex codes that can make it very difficult to maintain
+						&#xb7; Highly complex codes that can make it very difficult to maintain.
 					</c:when>	
 					<c:when test="${user.loadTotalComplexity() > 50}">  
-						Very highly complex codes that can make it very difficult to maintain
+						&#xb7; Very highly complex codes that can make it very difficult to maintain.
 					</c:when>				
 				</c:choose>
-			</div>				
+			</div>			
 		</div>
 		</c:when>
 		
@@ -78,25 +85,17 @@
    		
 		<c:when test="${test == null}">
 		<form action="/test" method="post">
-		<div style="border: 2px dashed #DDD; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #fafafb; background-image: url('https://cdn.sstatic.net/img/hero/pattern.svg?v=13ca42e6c21d')">			
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 28px; display: table; margin-top: 10px; color: #464646">
-				<b>Show companies that you are a great java developer</b>
+		<div style="border: 1px solid #DDD; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #fff;">			
+			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 30px; display: table; margin-top: 10px; color: #464646">
+				<b>Show companies that you are a great java developer!</b>
 			</div>
-			<div style="border-top: 2px dotted #DDD; width: 100%; font-size: 18px; display: table; margin-top: 20px; padding-top: 15px; color: #464646">
+			<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #535a60">
 				<center>
 				Development teams are looking for professionals who know the technology well and are able to deliver high quality codes.
 				</center>
 			</div>
-			<div style="width: 100%; font-size: 20px; display: table; padding-top: 15px; color: #464646">
-				<center>
-				Show that you are that professional!
-				</center>
-			</div>
-			<div style="width: 100%; text-align: center; font-size: 16px; display: table; margin-top: 10px; color: #464646">	
-				<input type="checkbox" id="ativo" name="ativo" value="true" required/>I agree to the <a href="/terms-of-use">terms of use</a>
-			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 30px; color: #464646">	
-				<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 24px; color: #FFF; padding: 8px; margin: 4px">Start test now</button>				
+				<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 20px; color: #FFF; padding: 12px; margin: 4px">Show that you are that professional</button>				
 			</div>
 		</div>
 		</form>
