@@ -7,20 +7,20 @@
 </head>
 <body>
 
-	<div style="border: 2px dashed #DDD; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 40px; background-color: #fafafb">			
+	<div style="border: 1px solid #eae9e9; width: 80%; text-align: left; display: table; margin-top: 15px; padding: 40px; background-color: #f8f8f8">
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 22px; display: table; margin-top: 10px">
 			${test.name}
+		</div>
+		<div style="border: 0px solid #DDD; width: 100%; text-align: left; display: table; margin-top: 10px; color: #535a60; font-size: 18px">			
+			${test.describe}<br/>
 		</div>	
-		<div style="border: 0px solid #DDD; width: 100%; text-align: left; display: table; margin-top: 10px">
-			${test.describe}
-		</div>	
-		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-			&#10004; The class represented in the diagram is mandatory, but nothing prevents more classes from being created during encoding.
+		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 20px">			
+			<b style="background-color: #5fba7d; border-radius: 2px; padding: 4px; padding-bottom: 1px; color: #FFF; font-size: 13px">&#10004;</b> The class represented in the diagram is mandatory, but nothing prevents more classes from being created during encoding.
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 10px">
-			&#10004; Code and generate a .jar. You can use eclipse or another ide of your own.
+			<b style="background-color: #5fba7d; border-radius: 2px; padding: 4px; padding-bottom: 1px; color: #FFF; font-size: 13px">&#10004;</b> Code and generate a .jar. You can use ide of your own.
 		</div>
-		<div style="border: 0px solid #DDD; width: 100%; text-align: left; display: table; margin-top: 10px">
+		<div style="border: 0px solid #DDD; width: 100%; text-align: left; display: table; margin-top: 15px">
 			<img src="images/tax-test.png">
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; display: table; margin-top: 15px">

@@ -54,7 +54,7 @@ public class Application implements CommandLineRunner{
 		userRepo.save(UserFactory.create("jgm.melo@uol.com.br", "123", "Jonas Goulart", company));
 		
 		for(int x = 1 ; x < 100 ; x++) {
-			Test test = new Test(PasswordUtil.encripty(x+"X"),"Test "+x, "Test describe", Language.JAVA, Status.ACTIVE);	
+			Test test = new Test(PasswordUtil.encripty(x+"X"),"ICMS and IPI calculator algorithm "+x, "Create a tax calculator algorithm for the Market ABC. The user put the value of product and tax name (ICMS and IPI). The algorithm calcules the value of final tax to market pay.", Language.JAVA, Status.ACTIVE);	
 			Object[] testCaseOneparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};
 			test.addTestCase("sum", testCaseOneparameters, (Integer.parseInt(testCaseOneparameters[0].toString()) + Integer.parseInt(testCaseOneparameters[1].toString())));			
 			Object[] testCaseTwoparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};
