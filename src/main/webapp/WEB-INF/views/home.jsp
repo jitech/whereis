@@ -140,7 +140,7 @@
 							
 				<div style="display: table; width:300px; border: 0px solid red; float: left; margin: 30px">
 					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify;">
-						3. Resume:
+						3. About my code
 					</div>			
 					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify;">
 					<c:choose>
