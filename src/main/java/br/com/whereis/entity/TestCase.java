@@ -2,7 +2,9 @@ package br.com.whereis.entity;
 
 public class TestCase{
 	 
-	private String method;
+	private String className;
+	private String methodName;
+	private String[] typeParameters;
 	private Object[] parameters;
 	private Object expected;
 	 						
@@ -10,19 +12,37 @@ public class TestCase{
 		super();
 	}
 
-	public TestCase(String method, Object[] parameters, Object expected) {
+	public TestCase(String className, String methodName, String[] typeParameters, Object[] parameters, Object expected) {
 		super();
-		this.method = method;
+		this.className = className;
+		this.methodName = methodName;
+		this.typeParameters = typeParameters;
 		this.parameters = parameters;
 		this.expected = expected;
 	}
 
-	public String getMethod() {
-		return method;
+	public String getClassName() {
+		return className;
 	}
 
-	public void setMethod(String method) {
-		this.method = method;
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
+	public String getMethodName() {
+		return methodName;
+	}
+
+	public void setMethodName(String methodName) {
+		this.methodName = methodName;
+	}
+
+	public String[] getTypeParameters() {
+		return typeParameters;
+	}
+
+	public void setTypeParameters(String[] typeParameters) {
+		this.typeParameters = typeParameters;
 	}
 
 	public Object[] getParameters() {

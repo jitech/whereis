@@ -2,6 +2,7 @@ package br.com.whereis.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -16,7 +17,6 @@ public final class CodeAnalyzer implements ICoverageVisitor {
 
 	private final Analyzer analyzer;
 	private CodeAnalyzeReport report;
-	private IClassCoverage iClassCoverage;
 
 	public CodeAnalyzer() {
 		this.analyzer = new Analyzer(new ExecutionDataStore(), this);
@@ -35,50 +35,11 @@ public final class CodeAnalyzer implements ICoverageVisitor {
 	 * */
 	public void visitCoverage(final IClassCoverage iClassCoverage) {	
 		this.report.getAnalyzes().add(new CodeAnalyze(iClassCoverage.getName(), iClassCoverage.getComplexityCounter().getTotalCount()));
-		this.iClassCoverage = iClassCoverage;
 	}
 	
 	
 	public CodeAnalyzeReport loadReport(final String location) throws IOException {
 		this.analyzer.analyzeAll(new File(location));
 		return report;
-	}
-	
-	public boolean isCorrectMethod(String pathFile, String methodName, Object[] param, Object expected) {
-		
-		try {
-				@SuppressWarnings("rawtypes")
-				Class params[] = new Class[param.length];
-				
-				for(int x = 0 ; x < param.length; x++) {
-					params[x] = param[x].getClass();
-				}
-							
-				URL url = new URL("file:"+pathFile);
-				URL[] urls = {url};
-		
-				URLClassLoader child = new URLClassLoader(urls);
-			
-				@SuppressWarnings("rawtypes")
-				Class cls = Class.forName(iClassCoverage.getName().replaceAll("/", "."),true, child);
-		
-				Object obj = cls.newInstance();
-			
-				@SuppressWarnings("unchecked")
-				Method method = cls.getDeclaredMethod(methodName, params);
-
-				if(method.invoke(obj, param).equals(expected)) {				
-					return true;
-				}
-			
-				return false;
-		}catch(NoSuchMethodException ex) {
-			System.out.println("Método não encontrado...");
-			return false;
-			
-		}catch(Exception ex) {		
-			ex.printStackTrace();
-			return false;
-		}
 	}
 }

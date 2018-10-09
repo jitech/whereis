@@ -80,8 +80,8 @@ public class Test {
 		this.status = status;
 	}
 
-	public void addTestCase(String methodToTest, Object[] parameters, Object expected) {							
-		getTestCases().add(new TestCase(methodToTest, parameters, expected));
+	public void addTestCase(String className, String methodName, String[] typeParameters, Object[] parameters, Object expected) {							
+		getTestCases().add(new TestCase(className, methodName, typeParameters, parameters, expected));
 	}
 	
 	@Override

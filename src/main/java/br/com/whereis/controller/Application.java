@@ -15,7 +15,6 @@ import br.com.whereis.factory.UserFactory;
 import br.com.whereis.repository.CompanyRepository;
 import br.com.whereis.repository.TestRepository;
 import br.com.whereis.repository.UserRepository;
-import br.com.whereis.util.ParameterUtil;
 import br.com.whereis.util.PasswordUtil;
 
 @SpringBootApplication(scanBasePackages={"br.com.whereis.service", "br.com.whereis.controller"})
@@ -53,12 +52,15 @@ public class Application implements CommandLineRunner{
 		//userRepo.save(UserFactory.create("jgm.melo@gmail.com", null, null, null));
 		userRepo.save(UserFactory.create("jgm.melo@uol.com.br", "123", "Jonas Goulart", company));
 		
-		for(int x = 1 ; x < 100 ; x++) {
-			Test test = new Test(PasswordUtil.encripty(x+"X"),"ICMS and IPI calculator algorithm "+x, "Create a tax calculator algorithm for the Market ABC. The user put the value of product and tax name (ICMS and IPI). The algorithm calcules the value of final tax to market pay.", Language.JAVA, Status.ACTIVE);	
-			Object[] testCaseOneparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};
-			test.addTestCase("sum", testCaseOneparameters, (Integer.parseInt(testCaseOneparameters[0].toString()) + Integer.parseInt(testCaseOneparameters[1].toString())));			
-			Object[] testCaseTwoparameters = {ParameterUtil.generateByRange100(), ParameterUtil.generateByRange100()};
-			test.addTestCase("sum", testCaseTwoparameters, (Integer.parseInt(testCaseTwoparameters[0].toString()) + Integer.parseInt(testCaseTwoparameters[1].toString())));
+		for(int x = 1 ; x < 2 ; x++) {
+			Test test = new Test(PasswordUtil.encripty("ICMS and IPI calculator algorithm"),"ICMS and IPI calculator algorithm", "Create a tax calculator algorithm for the Market ABC. The user put the value of product and tax name (ICMS and IPI). The algorithm calcules the value of final tax to market pay. The aliquots ICMS and IPI are 3% and 2.5% respectively.", Language.JAVA, Status.ACTIVE);	
+			String[] typeParameters = {"double", "String"};
+			Object[] parameters1 = {1000.0, "ICMS"};
+			test.addTestCase("TaxCalculator", "calc", typeParameters, parameters1, 30.0);			
+			Object[] parameters2 = {2000.0, "ICMS"};
+			test.addTestCase("TaxCalculator","calc", typeParameters, parameters2, 60.0);
+			Object[] parameters3 = {1000.0, "IPI"};
+			test.addTestCase("TaxCalculator","calc", typeParameters, parameters3, 25.0);
 			testRepo.save(test);
 		}
 		

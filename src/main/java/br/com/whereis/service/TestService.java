@@ -20,6 +20,7 @@ import br.com.whereis.repository.TestRepository;
 import br.com.whereis.util.CodeAnalyze;
 import br.com.whereis.util.CodeAnalyzer;
 import br.com.whereis.util.FileUtil;
+import br.com.whereis.util.MethodUtil;
 
 @Service
 public class TestService {
@@ -59,17 +60,16 @@ public class TestService {
 		
 		List<CodeAnalyze> codes = code.loadReport(path).getAnalyzes();
 		
-		for(CodeAnalyze c : codes) {
-			
+		for(CodeAnalyze c : codes) {		
 			complexity = complexity + c.getComplexity();
-			
-			for(TestCase testCase : t.getTestCases()) {				
-				if(!code.isCorrectMethod(path, testCase.getMethod(), testCase.getParameters(), testCase.getExpected())) {
-					status = UserTestStatus.NOK;
-					break;
-				}	
-			}				
 		}
+		
+		for(TestCase testCase : t.getTestCases()) {				
+			if(!MethodUtil.isCorrectMethod(path, testCase)) {
+				status = UserTestStatus.NOK;
+				break;
+			}	
+		}						
 		
 		user.getTests().add(UserTestFactory.create(test, complexity/codes.size(), status, path));
 		userService.update(user);				
