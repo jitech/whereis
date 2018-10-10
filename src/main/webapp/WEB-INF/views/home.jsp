@@ -22,7 +22,7 @@
   display: block;
   margin: 15px auto;
   max-width: 100%;
-  max-height: 100px;
+  max-height: 200px;
 }
 
 .circle-bg {
@@ -58,8 +58,24 @@
 
 .percentage {
   fill: #666;
-  font-family: sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 0.5em;
+  text-anchor: middle;
+  color: #ff9f00;
+}
+
+.range {
+  fill: #666;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.18em;
+  text-anchor: middle;
+  color: #ff9f00;
+}
+
+.text {
+  fill: #666;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.14em;
   text-anchor: middle;
 }
 	</style>
@@ -80,100 +96,74 @@
 	
 		<c:when test="${user.tests != null}">
 		<div style="border: 1px solid #eae9e9; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #f8f8f8">			
+			
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 24px; display: table; margin-top: 0px; letter-spacing: -0.5px">
 				${user.name}
-			</div>							
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 15px; font-style: italic;">
-				"I'm Java Developer at 2010. My expertise are Spring MVC and microservices, Mongo DB and Maria DB."
 			</div>
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 25px">
 			
-				<div style="display: table; width:200px; border: 0px solid red; float: left; margin: 30px">				
-					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify;">
-						1. Percentage of submitted tests where the code did what it had to do:
-					</div>
-					<div class="flex-wrapper">
-  						<div class="single-chart">
-    						<svg viewbox="0 0 36 36" class="circular-chart orange">
-      							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<path class="circle" stroke-dasharray="${user.loadPercentCodeOK()*100}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<text x="18" y="20.35" class="percentage"><fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentCodeOK()}"/></text>
-    						</svg>
-  						</div>
-					</div>		
-				</div>
-				
-				<div style="display: table; width:200px; border: 0px solid red; float: left; margin: 30px">				
-					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify;">
-						2. Percentage of average for McCabe Cyclomatic Complexity Score (0 to 100):
-					</div>
-					<div class="flex-wrapper">
-  						<div class="single-chart">
-  						
-  							<c:choose>
-								<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10}">  
-									<svg viewbox="0 0 36 36" class="circular-chart green">
-      									<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      									<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      									<text x="18" y="20.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/></text>
-    								</svg>
-								</c:when>					
-								<c:when test="${user.loadTotalComplexity() > 10 and user.loadTotalComplexity() <= 20}">  
-									<svg viewbox="0 0 36 36" class="circular-chart orange">
-      									<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      									<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      									<text x="18" y="20.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/></text>
-    								</svg>
-								</c:when>
-								<c:when test="${user.loadTotalComplexity() > 20}">  
-									<svg viewbox="0 0 36 36" class="circular-chart red">
-      									<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      									<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      									<text x="18" y="20.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/></text>
-    								</svg>
-								</c:when>							
-							</c:choose>
-
-  						</div>
-					</div>	
-				</div>
+			<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 2px; letter-spacing: -2px">
+				<c:choose>
+					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10 and user.loadPercentCodeOK() == 1}">  
+						<b style="color: #f4ae01">&#9733;</b> Code well
+					</c:when>				
+				</c:choose>
+			</div>
+										
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 8px; margin-bottom: 20px">
+				<div style="width: 97.5%; display: table; color: #535a60; float: left; margin: 2.5px; border-radius: 4px">"I'm Java Developer at 2010. My expertise are Spring MVC and microservices with spring boot, Mongo DB and Maria DB"</div>				
+			</div>
 							
-				<div style="display: table; width:300px; border: 0px solid red; float: left; margin: 30px">
-					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify;">
-						3. About my code
-					</div>			
-					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify;">
-					<c:choose>
-					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10}">  
-						Codes with low complexity and therefore are easy to maintain.
-					</c:when>					
-					<c:when test="${user.loadTotalComplexity() > 10 and user.loadTotalComplexity() <= 20}">  
-						Codes with medium complexity that can make maintenance a bit difficult.
-					</c:when>				
-					<c:when test="${user.loadTotalComplexity() > 20 and user.loadTotalComplexity() <= 50}">  
-						&#xb7; Highly complex codes that can make it very difficult to maintain.
-					</c:when>	
-					<c:when test="${user.loadTotalComplexity() > 50}">  
-						&#xb7; Very highly complex codes that can make it very difficult to maintain.
-					</c:when>				
+			<div class="flex-wrapper">					
+  				<div class="single-chart">
+    				<svg viewbox="0 0 36 36" class="circular-chart orange">
+      					<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      					<path class="circle" stroke-dasharray="${user.loadPercentCodeOK()*100}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      					<text x="18" y="18.35" class="percentage">
+      						<fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentCodeOK()}"/>
+      					</text>
+      					<text x="18" y="21.35" class="text">of the code did</text>
+      					<text x="18" y="23.60" class="text">what it had to do!</text>
+    				</svg>
+  				</div>
+  				<div class="single-chart" style="border-left: 1px solid #eae9e9">
+    				<c:choose>
+						<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10}">  
+							<svg viewbox="0 0 36 36" class="circular-chart green">
+      							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/></text>
+      							<text x="18" y="21.00" class="range">/50</text>
+      							<text x="18" y="24.50" class="text">Low</text>
+      							<text x="18" y="26.75" class="text">Cyclomatic</text>
+      							<text x="18" y="29.10" class="text">Complexity</text>
+    						</svg>
+						</c:when>					
+						<c:when test="${user.loadTotalComplexity() > 10 and user.loadTotalComplexity() <= 20}">  
+							<svg viewbox="0 0 36 36" class="circular-chart orange">
+      							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/></text>
+      							<text x="18" y="21.00" class="range">/50</text>
+      							<text x="18" y="24.50" class="text">Medium</text>
+      							<text x="18" y="26.75" class="text">Cyclomatic</text>
+      							<text x="18" y="29.10" class="text">Complexity</text>
+						</c:when>
+						<c:when test="${user.loadTotalComplexity() > 20}">  
+							<svg viewbox="0 0 36 36" class="circular-chart red">
+      							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+								<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/></text>
+      							<text x="18" y="21.00" class="range">/50</text>
+      							<text x="18" y="24.50" class="text">High</text>
+      							<text x="18" y="26.75" class="text">Cyclomatic</text>
+      							<text x="18" y="29.10" class="text">Complexity</text>  						
+      						</svg>
+						</c:when>							
 					</c:choose>
-					</div>
-					<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 15px; letter-spacing: -2px">
-						<c:choose>
-							<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10 and user.loadPercentCodeOK() == 1}">  
-								<b style="color: #f4ae01">&#9733;</b> Code well
-							</c:when>				
-						</c:choose>
-					</div>
-					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify; margin-top: 15px; letter-spacing: -1.5px">
-						<div id="profile_label" style="background-color: #eee; display: table; border: 1px solid #eae9e9; padding: 8px; float: left;">Profile:</div>					
-						<div id="profile" style="background-color: #FFF; display: table; border: 1px solid #eae9e9; padding: 8px; float: left;">http://localhost:8090/in/${user.nameProfile}</div>	
-					</div>					
-				</div>
-			
+  				</div>
 			</div>
-				
-		</div>
+
+		</div>	
 		</c:when>
 		
 	</c:choose>

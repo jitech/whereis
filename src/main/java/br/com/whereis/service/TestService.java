@@ -38,8 +38,24 @@ public class TestService {
 		return testRepo.findByCode(code);
 	}
 	
-	public Test loadTestRandom() throws Exception{		
-		List<Test> tests = testRepo.findAll();							
+	public Test loadTestRandom(User user) throws Exception{		
+		List<Test> tests = testRepo.findAll();	
+		
+		if(user.getTests() != null) {
+			for(UserTest userTest : user.getTests()) {	
+				for(Test test : tests) {
+					if(test.getCode().equals(userTest.getTest())) {
+						tests.remove(test);
+						break;
+					}
+				}
+			}
+		}
+		
+		if(tests.isEmpty()) {
+			return null;
+		}
+		
 		return tests.get(new Random().nextInt(tests.size()));
 	}
 	

@@ -8,6 +8,62 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<style type="text/css">
+		.flex-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.single-chart {
+  width: 100%;
+  justify-content: space-around ;
+}
+
+.circular-chart {
+  display: block;
+  margin: 15px auto;
+  max-width: 100%;
+  max-height: 100px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.circular-chart.orange .circle {
+  stroke: #ff9f00;
+}
+
+.circular-chart.green .circle {
+  stroke: #4CC790;
+}
+
+.circular-chart.red .circle {
+  stroke: #dd4b39;
+}
+
+.percentage {
+  fill: #666;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+	</style>
 </head>
 <body>
 
@@ -17,30 +73,73 @@
 		<div style="border: 1px solid #eae9e9; width: 70%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #f8f8f8">			
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 24px; display: table; margin-top: 0px; letter-spacing: -0.5px">
 				${in.name}
-			</div>				
-			<div style="border: 0px solid #DDD; width: 100%; color: #535a60; text-align: left; font-size: 16px; display: table; margin-top: 2px">				
-				<c:choose>
-					<c:when test="${in.loadTotalComplexity() > 0 and in.loadTotalComplexity() <= 10 and in.loadPercentCodeOK() == 1}">  
-						<b style="color: #f4ae01">&#9733;</b> Code well
-					</c:when>				
-				</c:choose>
-			</div>			
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 25px; font-style: italic;">
+			</div>							
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 15px; font-style: italic;">
 				"I'm Java Developer at 2010. My expertise are Spring MVC and microservices, Mongo DB and Maria DB."
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 25px">
-				&#xb7; The coded solutions solved <fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${in.loadPercentCodeOK()}"/> of the proposed problems.
-			</div>
-			<div style="border: 0px solid #DDD; width: 100%; font-size: 16px; display: table; margin-top: 5px">
-				&#xb7; Average of ${in.loadTotalComplexity()} for McCabe Cyclomatic Complexity Score.
-			</div>
-			<div style="border: 0px solid #DDD; width: 100%; font-size: 16px; display: table; margin-top: 5px">
-				<c:choose>
+			
+				<div style="display: table; width:200px; border: 0px solid red; float: left; margin: 30px">				
+					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify;">
+						1. Percentage of submitted tests where the code did what it had to do:
+					</div>
+					<div class="flex-wrapper">
+  						<div class="single-chart">
+    						<svg viewbox="0 0 36 36" class="circular-chart orange">
+      							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<path class="circle" stroke-dasharray="${in.loadPercentCodeOK()*100}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<text x="18" y="20.35" class="percentage"><fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${in.loadPercentCodeOK()}"/></text>
+    						</svg>
+  						</div>
+					</div>		
+				</div>
+				
+				<div style="display: table; width:200px; border: 0px solid red; float: left; margin: 30px">				
+					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify;">
+						2. Percentage of average for McCabe Cyclomatic Complexity Score (0 to 100):
+					</div>
+					<div class="flex-wrapper">
+  						<div class="single-chart">
+  						
+  							<c:choose>
+								<c:when test="${in.loadTotalComplexity() > 0 and in.loadTotalComplexity() <= 10}">  
+									<svg viewbox="0 0 36 36" class="circular-chart green">
+      									<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      									<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      									<text x="18" y="20.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${in.loadTotalComplexity()}"/></text>
+    								</svg>
+								</c:when>					
+								<c:when test="${in.loadTotalComplexity() > 10 and in.loadTotalComplexity() <= 20}">  
+									<svg viewbox="0 0 36 36" class="circular-chart orange">
+      									<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      									<path class="circle" stroke-dasharray="${in.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      									<text x="18" y="20.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${in.loadTotalComplexity()}"/></text>
+    								</svg>
+								</c:when>
+								<c:when test="${in.loadTotalComplexity() > 20}">  
+									<svg viewbox="0 0 36 36" class="circular-chart red">
+      									<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      									<path class="circle" stroke-dasharray="${in.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      									<text x="18" y="20.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${in.loadTotalComplexity()}"/></text>
+    								</svg>
+								</c:when>							
+							</c:choose>
+
+  						</div>
+					</div>	
+				</div>
+							
+				<div style="display: table; width:300px; border: 0px solid red; float: left; margin: 30px">
+					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify;">
+						3. About my code
+					</div>			
+					<div style="display: table; color: #535a60; font-size: 16px; text-align: justify;">
+					<c:choose>
 					<c:when test="${in.loadTotalComplexity() > 0 and in.loadTotalComplexity() <= 10}">  
-						&#xb7; Codes with low complexity and therefore are easy to maintain.
+						Codes with low complexity and therefore are easy to maintain.
 					</c:when>					
 					<c:when test="${in.loadTotalComplexity() > 10 and in.loadTotalComplexity() <= 20}">  
-						&#xb7; Codes with medium complexity that can make maintenance a bit difficult.
+						Codes with medium complexity that can make maintenance a bit difficult.
 					</c:when>				
 					<c:when test="${in.loadTotalComplexity() > 20 and in.loadTotalComplexity() <= 50}">  
 						&#xb7; Highly complex codes that can make it very difficult to maintain.
@@ -48,15 +147,23 @@
 					<c:when test="${in.loadTotalComplexity() > 50}">  
 						&#xb7; Very highly complex codes that can make it very difficult to maintain.
 					</c:when>				
-				</c:choose>
-			</div>			
-			<div style="border: 0px solid #DDD; width: 100%; color: #535a60; text-align: right; font-size: 10px; display: table; margin-top: 20px;">				
-				SÃO PAULO, SP - BRAZIL
-			</div>					
+					</c:choose>
+					</div>
+					<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 15px; letter-spacing: -2px">
+						<c:choose>
+							<c:when test="${in.loadTotalComplexity() > 0 and in.loadTotalComplexity() <= 10 and in.loadPercentCodeOK() == 1}">  
+								<b style="color: #f4ae01">&#9733;</b> Code well
+							</c:when>				
+						</c:choose>
+					</div>				
+				</div>
+			
+			</div>
+				
 		</div>
 		</c:when>
 		
-	</c:choose>
+	</c:choose>	
 	
 </body>
 </html>

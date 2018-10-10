@@ -29,8 +29,17 @@ public class TestController extends GenericController{
 				}
 								
 				if(loadLoggedUser() != null) {
-					session.setAttribute("test", testService.loadTestRandom());
-					model.addAttribute("feature", "test");				
+					
+					Test test = testService.loadTestRandom(loadLoggedUser());
+					
+					if(test != null) {
+						session.setAttribute("test", test);
+						model.addAttribute("feature", "test");	
+					}else {
+						model.addAttribute("message", loadMessage("message.test.not-found"));
+						model.addAttribute("feature", "home");
+					}				
+								
 				}else {
 					model.addAttribute("feature", "login");			
 				}
