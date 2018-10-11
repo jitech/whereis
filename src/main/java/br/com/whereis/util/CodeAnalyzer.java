@@ -2,10 +2,6 @@ package br.com.whereis.util;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 
 import org.jacoco.core.analysis.Analyzer;

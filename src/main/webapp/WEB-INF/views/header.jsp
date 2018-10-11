@@ -21,7 +21,7 @@
     			</a>	   			
     		</div>
 
-    		<div style="display: table; float: right; margin: 15px">   			
+    		<div style="display: table; float: right; margin: 20px">   			
     			<c:choose>
 					<c:when test="${user == null}">
         				<a href="/login">Entrar</a>
