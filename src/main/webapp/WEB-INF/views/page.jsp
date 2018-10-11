@@ -19,7 +19,7 @@
 		});
 	</script>
 </head>
-<body class="body" style="margin: 0px;">
+<body class="body" style="margin: 0px; background-color: #FAFAFA">
 	
 	<center>
 	<jsp:include page="header.jsp" />

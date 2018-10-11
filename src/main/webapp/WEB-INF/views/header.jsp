@@ -16,7 +16,9 @@
     	<div style="display: table; width: 80%">
 
     		<div style="display: table; float: left; margin: 15px;">
-    			<a href="/home" style="letter-spacing: -2.5px; font-size: 22px; font-weight: bold; margin-right: 35px">< I loveMyCode ></a>	   			
+    			<a href="/index" style="letter-spacing: -2.5px; font-size: 22px; font-weight: bold; margin-right: 35px">
+    				<img src="images/icon.svg" width="18.5px">I loveMyCode
+    			</a>	   			
     		</div>
 
     		<div style="display: table; float: right; margin: 15px">   			
