@@ -9,7 +9,7 @@
 </head>
 <body>
     
-	<form action="/reset/solicit" method="post" style="width: 230px; background-color: #fafafb; border: 2px dashed #DDD; padding: 30px; padding-bottom: 50px; margin-top: 100px">
+    <form action="/reset/solicit" method="post" style="width: 230px; border: 1px solid #eae9e9; padding: 30px; padding-bottom: 50px; margin-top: 100px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4)">   
 		<div style="text-align: center; display: table; margin-top: 20px; font-size: 24px; letter-spacing: -2px">
 			@Secured("JAVA_EXPERT")
 		</div>
