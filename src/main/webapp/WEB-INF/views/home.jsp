@@ -97,22 +97,22 @@
 		<c:when test="${user.tests != null}">
 		<div style="border: 1px solid #eae9e9; width: 90%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);">
 			
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 24px; display: table; margin-top: 0px; letter-spacing: -0.5px">
+			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 26px; display: table; margin-top: 0px; letter-spacing: -0.5px">
 				${user.name}
 			</div>
 			
-			<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 2px; letter-spacing: -2px">
+			<div style="display: table; color: #858C93; font-size: 16px; text-align: justify; margin-top: 0px; letter-spacing: -0.5px">			
+				Number of coded features: ${user.tests.size()}
+			</div>
+			
+			<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 4px; letter-spacing: -2px">
 				<c:choose>
 					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10 and user.loadPercentCodeOK() == 1}">  
-						<b style="color: #f4ae01">&#9733;</b> Code well
+						<b style="color: #f4ae01">&#9733;</b> Codes very well
 					</c:when>				
 				</c:choose>
 			</div>
-										
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; margin-top: 8px; margin-bottom: 20px">
-				<div style="width: 97.5%; display: table; color: #707070; float: left; margin: 2.5px; border-radius: 4px">"I'm Java Developer at 2010. My expertise are Spring MVC and microservices with spring boot, Mongo DB and Maria DB"</div>				
-			</div>
-							
+												
 			<div class="flex-wrapper">
 				<div class="single-chart">
     				<svg viewbox="0 0 36 36" class="circular-chart orange">
