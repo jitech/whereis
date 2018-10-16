@@ -87,7 +87,12 @@ public class TestService {
 			}	
 		}						
 			
-		user.getTests().add(UserTestFactory.create(test, complexity/codes.size(), status, path));
+		if(status.equals(UserTestStatus.OK)) {
+			user.getTests().add(UserTestFactory.create(test, complexity/codes.size(), status, path));
+		}else {
+			user.getTests().add(UserTestFactory.create(test, null, status, path));
+		}
+		
 		userService.update(user);				
 		return true;
 	}

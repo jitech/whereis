@@ -140,8 +140,10 @@ public class User {
 		
 		Integer totalComplexity = 0;
 		
-		for(UserTest userTest : getTests()) {			
-			totalComplexity = totalComplexity + userTest.getComplexity();
+		for(UserTest userTest : getTests()) {	
+			if(userTest.getStatus().equals(UserTestStatus.OK)) {
+				totalComplexity = totalComplexity + userTest.getComplexity();
+			}		
 		}
 		
 		if(totalComplexity > 0) {
