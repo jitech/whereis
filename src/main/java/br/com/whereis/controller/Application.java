@@ -52,8 +52,8 @@ public class Application implements CommandLineRunner{
 		//userRepo.save(UserFactory.create("jgm.melo@gmail.com", null, null, null));
 		userRepo.save(UserFactory.create("esc_jmelo@uoldiveo.com", "123", "Jonas Goulart", company));
 		
-		for(int x = 1 ; x < 2 ; x++) {
-			Test test = new Test(PasswordUtil.encripty("ICMS and IPI calculator algorithm"),"ICMS and IPI calculator algorithm", "Create a tax calculator algorithm for the Market ABC. The user put the value of product and tax name (ICMS and IPI). The algorithm calcules the value of final tax to market pay. The aliquots ICMS and IPI are 3% and 2.5% respectively.", Language.JAVA, Status.ACTIVE);	
+		for(int x = 1 ; x < 4 ; x++) {
+			Test test = new Test(PasswordUtil.encripty("ICMS and IPI calculator algorithm"+x),"ICMS and IPI calculator algorithm", "Create a tax calculator algorithm for the Market ABC. The user put the value of product and tax name (ICMS and IPI). The algorithm calcules the value of final tax to market pay. The aliquots ICMS and IPI are 3% and 2.5% respectively.", Language.JAVA, Status.ACTIVE);	
 			String[] typeParameters = {"double", "String"};
 			Object[] parameters1 = {1000.0, "ICMS"};
 			test.addTestCase("TaxManager", "calc", typeParameters, parameters1, 30.0);			

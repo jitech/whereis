@@ -139,15 +139,17 @@ public class User {
 	public Integer loadTotalComplexity() {
 		
 		Integer totalComplexity = 0;
+		Integer count = 0;
 		
 		for(UserTest userTest : getTests()) {	
 			if(userTest.getStatus().equals(UserTestStatus.OK)) {
 				totalComplexity = totalComplexity + userTest.getComplexity();
+				count++;
 			}		
 		}
 		
 		if(totalComplexity > 0) {
-			return totalComplexity/getTests().size();
+			return totalComplexity/count;
 		}
 		
 		return null;

@@ -16,8 +16,8 @@
     	<div style="display: table; width: 80%">
 
     		<div style="display: table; float: left; margin: 15px;">
-    			<a href="/index">
-    				<img src="images/logo.png">
+    			<a href="/index" style="letter-spacing: -2.5px; font-size: 22px; font-weight: bold; margin-right: 35px">
+    				I loveMyCode
     			</a>	   			
     		</div>
 

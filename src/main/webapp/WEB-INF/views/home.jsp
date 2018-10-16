@@ -84,7 +84,7 @@
 
  	<c:choose>	
 		<c:when test="${message != null}">			
-			<div id="message" style="border: 1px solid #eae9e9; border-left: 4px solid #F48024; width: 95.2%; text-align: left; display: table; margin-top: 15px; padding: 15px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);">		
+			<div id="message" style="border: 1px solid #eae9e9; border-left: 4px solid #F48024; width: 65.2%; text-align: left; display: table; margin-top: 15px; padding: 15px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);">		
 				<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; color: #707070">
 					${message}
 				</div>
@@ -95,7 +95,7 @@
 	<c:choose>
 	
 		<c:when test="${user.tests != null}">
-		<div style="border: 1px solid #eae9e9; width: 90%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);">
+		<div style="border: 1px solid #eae9e9; width: 60%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);">
 			
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 26px; display: table; margin-top: 0px; letter-spacing: -0.5px">
 				${user.name}
@@ -124,6 +124,11 @@
       					<text x="18" y="21.40" class="text">CODE DOES WHAT</text>
       					<text x="18" y="23.60" class="text">IT SHOULD</text>
     				</svg>
+    				<center>
+    				<div style="display: table; color: #858C93; font-size: 14px; text-align: justify; margin-top: 0px; letter-spacing: -0.5px; margin-top: 35px">			
+						&#10004; The higher the percentage, the better
+					</div>		
+					</center>		
   				</div>
   				<div class="single-chart" style="border-left: 1px solid #eae9e9">
     				<c:choose>
@@ -154,6 +159,11 @@
       						</svg>
 						</c:when>							
 					</c:choose>
+					<center>
+					<div style="display: table; color: #858C93; font-size: 14px; text-align: justify; margin-top: 0px; letter-spacing: -0.5px; margin-top: 35px; margin-left: 25px">			
+						&#10004; The lower the score, the better the code
+					</div>		
+					</center>				
   				</div>
 			</div>
 
@@ -166,7 +176,7 @@
 	<c:choose>
 	
 		<c:when test="${test != null}">      	
-		<div style="border: 1px solid #eae9e9; width: 90%; text-align: left; display: table; margin-top: 30px; padding: 45px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);
+		<div style="border: 1px solid #eae9e9; width: 60%; text-align: left; display: table; margin-top: 30px; padding: 45px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);
 		">				
 			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 24px; display: table; margin-top: 10px; color: #464646; letter-spacing: -0.5px">
 				<b>You still have a code to deliver!</b>
@@ -183,7 +193,7 @@
    		
 		<c:when test="${test == null}">
 		<form action="/test" method="post">
-		<div style="border: 1px solid #eae9e9; width: 90%; text-align: left; display: table; margin-top: 30px; padding: 45px; background-color: #fff;box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);
+		<div style="border: 1px solid #eae9e9; width: 60%; text-align: left; display: table; margin-top: 30px; padding: 45px; background-color: #fff;box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);
 		">			
 			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 30px; display: table; margin-top: 10px; color: #464646; letter-spacing: -0.5px">
 				<b>Show companies that you are a great java developer!</b>
