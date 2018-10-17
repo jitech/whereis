@@ -99,13 +99,12 @@
 			
 			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 26px; display: table; margin-top: 0px; letter-spacing: -0.5px">
 				${user.name}
+				<div style="display: table; color: #858C93; font-size: 12px; font-weight: normal; float: right; text-align: justify; margin-top: 0px; letter-spacing: -0.5px">			
+					Coded features: ${user.tests.size()}
+				</div>
 			</div>
-			
-			<div style="display: table; color: #858C93; font-size: 16px; text-align: justify; margin-top: 0px; letter-spacing: -0.5px">			
-				Number of coded features: ${user.tests.size()}
-			</div>
-			
-			<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 4px; letter-spacing: -2px">
+				
+			<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: -5px; letter-spacing: -2px;">
 				<c:choose>
 					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10 and user.loadPercentCodeOK() == 1}">  
 						<b style="color: #f4ae01">&#9733;</b> Codes very well
@@ -113,7 +112,7 @@
 				</c:choose>
 			</div>
 												
-			<div class="flex-wrapper">
+			<div class="flex-wrapper" style="margin-top: 20px">
 				<div class="single-chart">
     				<svg viewbox="0 0 36 36" class="circular-chart orange">
       					<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
