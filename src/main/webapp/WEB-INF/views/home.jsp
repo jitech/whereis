@@ -135,7 +135,7 @@
 							<svg viewbox="0 0 36 36" class="circular-chart green">
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
       							<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/>/50</text>
+      							<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/>/100</text>
       							<text x="18" y="21.40" class="text">CODE WITH LOW</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>
     						</svg>
@@ -144,7 +144,7 @@
 							<svg viewbox="0 0 36 36" class="circular-chart orange">
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
       							<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/>/50</text>
+      							<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/>/100</text>
       							<text x="18" y="21.40" class="text">CODE WITH MEDIUM</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>
 						</c:when>
@@ -152,7 +152,7 @@
 							<svg viewbox="0 0 36 36" class="circular-chart red">
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
       							<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-								<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/>/50</text>
+								<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/>/100</text>
       							<text x="18" y="21.40" class="text">CODE WITH HIGH</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>						
       						</svg>
