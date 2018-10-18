@@ -95,24 +95,25 @@
 	<c:choose>
 	
 		<c:when test="${user.tests != null}">
-		<div style="border: 1px solid #eae9e9; width: 60%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);">
+		<div style="width: 60%; text-align: left; display: table; margin-top: 15px; background-color: #fff;">
 			
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 26px; display: table; margin-top: 0px; letter-spacing: -0.5px">
-				${user.name}
-				<div style="display: table; color: #858C93; font-size: 12px; font-weight: normal; float: right; text-align: justify; margin-top: 0px; letter-spacing: -0.5px">			
-					Coded features: ${user.tests.size()}
-				</div>
+			<div style="width: 100%; text-align: left; font-size: 32px; margin-bottom: 0px; display: table; color: #464646; letter-spacing: -2px">
+				<b>Me, ${user.name}</b>
 			</div>
-				
-			<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: -5px; letter-spacing: -2px;">
+			
+			<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 25px; letter-spacing: -2px;">
 				<c:choose>
 					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10 and user.loadPercentCodeOK() == 1}">  
-						<b style="color: #f4ae01">&#9733;</b> Codes very well
+						<b style="color: #f4ae01">&#9733;</b> Your code is good
 					</c:when>				
 				</c:choose>
 			</div>
-												
-			<div class="flex-wrapper" style="margin-top: 20px">
+			
+			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 13px; font-weight: normal; float: right; text-align: justify; margin-top: 5px; letter-spacing: -0.5px">			
+				Codes: ${user.tests.size()}
+			</div>
+															
+			<div class="flex-wrapper" style="margin-top: 60px; margin-bottom: 30px">
 				<div class="single-chart">
     				<svg viewbox="0 0 36 36" class="circular-chart orange">
       					<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -192,15 +193,9 @@
    		
 		<c:when test="${test == null}">
 		<form action="/test" method="post">
-		<div style="border: 1px solid #eae9e9; width: 60%; text-align: left; display: table; margin-top: 30px; padding: 45px; background-color: #fff;box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);
-		">			
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 30px; display: table; margin-top: 10px; color: #464646; letter-spacing: -0.5px">
-				<b>Show companies that you are a great java developer!</b>
-			</div>
-			<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px">
-				<center>
-				Development teams are looking for developers to create quality codes!
-				</center>
+		<div style="width: 60%; text-align: left; display: table; margin-top: 50px; background-color: #fff;">			
+			<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px; line-height: 1.58">
+				Development teams are looking for developers who use good development practices and thus, good quality codes and easy maintenance. A good developer should be aware of the quality of your code.						
 			</div>
 			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 30px;">	
 				<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 20px; color: #FFF; padding: 12px; margin: 4px; letter-spacing: -0.8px; width: 200px">START NOW</button>
