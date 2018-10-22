@@ -92,27 +92,34 @@
 		</c:when>
 	</c:choose>
 	
-	<c:choose>
-	
-		<c:when test="${user.tests != null}">
 		<div style="width: 60%; text-align: left; display: table; margin-top: 15px; background-color: #fff;">
 			
 			<div style="width: 100%; text-align: left; font-size: 32px; margin-bottom: 0px; display: table; color: #464646; letter-spacing: -2px">
 				<b>Me, ${user.name}</b>
 			</div>
 			
+			<c:choose>
+			<c:when test="${user.tests != null and user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10 and user.loadPercentCodeOK() == 1}"> 
 			<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 25px; letter-spacing: -2px;">
+				<b style="color: #f4ae01">&#9733;</b> Your code is good
+			</div>
+			</c:when>
+			</c:choose>
+			
+			
+			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 13px; font-weight: normal; float: right; text-align: justify; margin-top: 5px; letter-spacing: -0.5px">
 				<c:choose>
-					<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10 and user.loadPercentCodeOK() == 1}">  
-						<b style="color: #f4ae01">&#9733;</b> Your code is good
-					</c:when>				
-				</c:choose>
+					<c:when test="${user.tests != null && user.tests.size() > 0}">
+						Codes: ${user.tests.size()}
+					</c:when>
+					<c:otherwise>
+						No test done so far.
+					</c:otherwise>
+				</c:choose>			
 			</div>
 			
-			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 13px; font-weight: normal; float: right; text-align: justify; margin-top: 5px; letter-spacing: -0.5px">			
-				Codes: ${user.tests.size()}
-			</div>
-															
+			<c:choose>
+			<c:when test="${user.tests != null}">											
 			<div class="flex-wrapper" style="margin-top: 60px; margin-bottom: 30px">
 				<div class="single-chart">
     				<svg viewbox="0 0 36 36" class="circular-chart orange">
@@ -166,12 +173,10 @@
 					</center>				
   				</div>
 			</div>
+			</c:when>
+			</c:choose>
 
 		</div>	
-				 
-		</c:when>
-		
-	</c:choose>
 	
 	<c:choose>
 	
