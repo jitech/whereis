@@ -78,6 +78,7 @@
   font-size: 0.12em;
   text-anchor: middle;
 }
+
 	</style>
 </head>
 <body>
@@ -177,39 +178,54 @@
 			</c:choose>
 
 		</div>	
-	
-	<c:choose>
-	
-		<c:when test="${test != null}">      	
-		<div style="border: 1px solid #eae9e9; width: 60%; text-align: left; display: table; margin-top: 30px; padding: 45px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);
-		">				
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 24px; display: table; margin-top: 10px; color: #464646; letter-spacing: -0.5px">
-				<b>You still have a code to deliver!</b>
-			</div>
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 10px; color: #464646">
-				<form action="/test" method="post">
-					<button style="background-color: #f4ae01; border: 1px solid #f4ae01;font-family: 'Roboto Condensed', sans-serif; font-size: 24px; color: #FFF; padding: 8px; margin: 4px">
-					Continue the test &#62;
-					</button>
-				</form>
-			</div>
-		</div>
-   		</c:when>
-   		
-		<c:when test="${test == null}">
-		<form action="/test" method="post">
-		<div style="width: 60%; text-align: left; display: table; margin-top: 50px; background-color: #fff;">			
-			<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px; line-height: 1.58">
-				Development teams are looking for developers who use good development practices and thus, good quality codes and easy maintenance. A good developer should be aware of the quality of your code.						
-			</div>
-			<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 30px;">	
-				<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 20px; color: #FFF; padding: 12px; margin: 4px; letter-spacing: -0.8px; width: 200px">START NOW</button>
-			</div>
-		</div>
-		</form>
-		</c:when>
 		
-	</c:choose>
+		<div style="width: 60%; text-align: left; display: table; margin-top: 15px; background-color: #fff; margin-top: 50px;">
+			<div style="width: 100%; text-align: left; font-size: 28px; margin-bottom: 0px; display: table; color: #464646; letter-spacing: -2px">
+				<b>What does this number mean?</b>
+			</div>
+		</div>
+		
+		<div style="width: 60%; text-align: left; display: table; background-color: #fff;">			
+			<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px; line-height: 1.58">				
+				Make a test <b> &#xb7; </b> We validate the quality of your code
+			</div>
+		</div>
+				
+		<div style="width: 60%; text-align: left; display: table; margin-top: 15px; background-color: #fff; margin-top: 50px;">
+			<div style="width: 100%; text-align: left; font-size: 28px; margin-bottom: 0px; display: table; color: #464646; letter-spacing: -2px">
+				<b>Let's go!</b>
+			</div>
+		</div>
+	
+		<c:choose>
+   		
+   			<c:when test="${test != null}">
+				<form action="/test" method="post">
+					<div style="width: 60%; text-align: left; display: table; background-color: #fff;">			
+						<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px; line-height: 1.58">				
+							Development teams are looking for professionals who develop clean, well-structured codes, easy to understand and easy to maintain. A good developer should create code with low complexity and high cohesion. Show that you are one of them! Solve problems proposed by us and have your performance registered and within everyone's reach.						
+						</div>
+						<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 30px;">	
+							<button style="background-color: #f4ae01; border: 1px solid #f4ae01;font-family: 'Roboto Condensed', sans-serif; font-size: 16px; color: #FFF; padding: 12px; margin: 4px; letter-spacing: -0.8px; width: 210px">YOU STILL HAVE A CODE TO DELIVERY, CLICK TO CONTINUE</button>
+						</div>
+					</div>
+				</form>
+			</c:when>
+   		
+			<c:when test="${test == null}">
+				<form action="/test" method="post">
+					<div style="width: 60%; text-align: left; display: table; background-color: #fff;">			
+						<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px; line-height: 1.58">			
+							Development teams are looking for professionals who develop clean, well-structured codes, easy to understand and easy to maintain. A good developer should create code with low complexity and high cohesion. Show that you are one of them!						
+						</div>
+						<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 30px;">	
+							<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 20px; color: #FFF; padding: 12px; margin: 4px; letter-spacing: -0.8px; width: 200px">START NOW</button>
+						</div>
+					</div>
+				</form>
+			</c:when>
+		
+		</c:choose>
 	
 </body>
 </html>
