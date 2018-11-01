@@ -136,10 +136,10 @@ public class User {
     	return jsonString;
     }
 	
-	public Integer loadTotalComplexity() {
-		
-		Integer totalComplexity = 0;
-		Integer count = 0;
+	public double loadPercentComplexity() {
+				
+		double totalComplexity = 0.0;
+		double count = 0.0;
 		
 		for(UserTest userTest : getTests()) {	
 			if(userTest.getStatus().equals(UserTestStatus.OK)) {
@@ -148,16 +148,16 @@ public class User {
 			}		
 		}
 		
-		if(totalComplexity > 0) {
+		if(totalComplexity > 0.0) {
 			return totalComplexity/count;
 		}
 		
-		return null;
+		return 100;
 	}
 	
 	public double loadPercentCodeOK() {
 		
-		double total = 0;
+		double total = 0.0;
 		
 		for(UserTest userTest : getTests()) {			
 			if(userTest.getStatus().equals(UserTestStatus.OK)) {

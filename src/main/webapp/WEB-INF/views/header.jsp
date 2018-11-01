@@ -10,7 +10,7 @@
 <body>
     
     <div style="width: 100%; display: table; background-color: rgba(255, 255, 255, 0.95); border-top: 3px solid #F48024; position: fixed;
-    top:0; left: 0; text-align: center; padding-top: 18px; padding-bottom: 18px; box-shadow: 0 4px 12px 0 rgba(0,0,0,.05)!important;">
+    top:0; left: 0; padding-top: 18px; padding-bottom: 18px; box-shadow: 0 4px 12px 0 rgba(0,0,0,.05)!important;">
     	
     	<c:choose>
 			<c:when test="${user == null}">

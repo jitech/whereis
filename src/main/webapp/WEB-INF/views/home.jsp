@@ -79,13 +79,16 @@
   text-anchor: middle;
 }
 
+.pw-icon-clock:before {
+    content: '\e805';
+}
 	</style>
 </head>
 <body>
 
  	<c:choose>	
 		<c:when test="${message != null}">			
-			<div id="message" style="border: 1px solid #eae9e9; border-left: 4px solid #F48024; width: 65.2%; text-align: left; display: table; margin-top: 15px; padding: 15px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);">		
+			<div id="message" style="border: 1px solid #eae9e9; border-left: 4px solid #F48024; width: 65.2%; text-align: left; display: table; margin-top: 15px; padding: 15px; background-color: #fff;">		
 				<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; color: #707070">
 					${message}
 				</div>
@@ -100,28 +103,34 @@
 			</div>
 			
 			<c:choose>
-			<c:when test="${user.tests != null and user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10 and user.loadPercentCodeOK() == 1}"> 
-			<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 25px; letter-spacing: -2px;">
-				<b style="color: #f4ae01">&#9733;</b> Your code is good
-			</div>
-			</c:when>
+				<c:when test="${user.tests != null and user.loadPercentComplexity() > 0 and user.loadPercentComplexity() <= 10 and user.loadPercentCodeOK() == 1}"> 
+					<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 25px; letter-spacing: -2px;">
+						<b style="color: #f4ae01">&#9733;</b> Your code is good
+					</div>
+				</c:when>
 			</c:choose>
-			
-			
-			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 13px; font-weight: normal; float: right; text-align: justify; margin-top: 5px; letter-spacing: -0.5px">
+					
+			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 11px; font-weight: normal; float: right; text-align: justify; margin-top: 20px; letter-spacing: -0.8px">
 				<c:choose>
-					<c:when test="${user.tests != null && user.tests.size() > 0}">
-						Codes: ${user.tests.size()}
+					<c:when test="${user.tests != null && user.tests.size() > 0}">				
+						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px">
+							GOOD JAVA CODE
+						</div>
+						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px">
+							LAST CODE ON 01/11/2018
+						</div>
 					</c:when>
-					<c:otherwise>
-						No test done so far.
+					<c:otherwise>					
+						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px">
+							No test done so far.
+						</div>
 					</c:otherwise>
 				</c:choose>			
 			</div>
 			
 			<c:choose>
 			<c:when test="${user.tests != null}">											
-			<div class="flex-wrapper" style="margin-top: 60px; margin-bottom: 30px">
+			<div class="flex-wrapper" style="margin-top: 80px; margin-bottom: 30px">
 				<div class="single-chart">
     				<svg viewbox="0 0 36 36" class="circular-chart orange">
       					<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -140,28 +149,34 @@
   				</div>
   				<div class="single-chart" style="border-left: 1px solid #eae9e9">
     				<c:choose>
-						<c:when test="${user.loadTotalComplexity() > 0 and user.loadTotalComplexity() <= 10}">  
+						<c:when test="${user.loadPercentComplexity() > 0 and user.loadPercentComplexity() <= 10}">  
 							<svg viewbox="0 0 36 36" class="circular-chart green">
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/>/100</text>
+      							<path class="circle" stroke-dasharray="${user.loadPercentComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<text x="18" y="18.35" class="percentage">
+      								<fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentComplexity()/100}"/>
+      							</text>
       							<text x="18" y="21.40" class="text">CODE WITH LOW</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>
     						</svg>
 						</c:when>					
-						<c:when test="${user.loadTotalComplexity() > 10 and user.loadTotalComplexity() <= 20}">  
+						<c:when test="${user.loadPercentComplexity() > 10 and user.loadPercentComplexity() <= 20}">  
 							<svg viewbox="0 0 36 36" class="circular-chart orange">
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/>/100</text>
+      							<path class="circle" stroke-dasharray="${user.loadPercentComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<text x="18" y="18.35" class="percentage">
+      								<fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentComplexity()/100}"/>
+      							</text>
       							<text x="18" y="21.40" class="text">CODE WITH MEDIUM</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>
 						</c:when>
-						<c:when test="${user.loadTotalComplexity() > 20}">  
+						<c:when test="${user.loadPercentComplexity() > 20}">  
 							<svg viewbox="0 0 36 36" class="circular-chart red">
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<path class="circle" stroke-dasharray="${user.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-								<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadTotalComplexity()}"/>/100</text>
+      							<path class="circle" stroke-dasharray="${user.loadPercentComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+								<text x="18" y="18.35" class="percentage">
+									<fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentComplexity()/100}"/>
+								</text>
       							<text x="18" y="21.40" class="text">CODE WITH HIGH</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>						
       						</svg>
@@ -177,18 +192,6 @@
 			</c:when>
 			</c:choose>
 
-		</div>	
-		
-		<div style="width: 60%; text-align: left; display: table; margin-top: 15px; background-color: #fff; margin-top: 50px;">
-			<div style="width: 100%; text-align: left; font-size: 28px; margin-bottom: 0px; display: table; color: #464646; letter-spacing: -2px">
-				<b>What does this number mean?</b>
-			</div>
-		</div>
-		
-		<div style="width: 60%; text-align: left; display: table; background-color: #fff;">			
-			<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px; line-height: 1.58">				
-				Make a test <b> &#xb7; </b> We validate the quality of your code
-			</div>
 		</div>
 				
 		<div style="width: 60%; text-align: left; display: table; margin-top: 15px; background-color: #fff; margin-top: 50px;">
@@ -202,8 +205,8 @@
    			<c:when test="${test != null}">
 				<form action="/test" method="post">
 					<div style="width: 60%; text-align: left; display: table; background-color: #fff;">			
-						<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px; line-height: 1.58">				
-							Development teams are looking for professionals who develop clean, well-structured codes, easy to understand and easy to maintain. A good developer should create code with low complexity and high cohesion. Show that you are one of them! Solve problems proposed by us and have your performance registered and within everyone's reach.						
+						<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px; line-height: 1.58">			
+							Development teams are looking for professionals who develop clean, well-structured codes, easy to understand and easy to maintain. A good developer should create code with low complexity and high cohesion. Show that you are one of them!						
 						</div>
 						<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 30px;">	
 							<button style="background-color: #f4ae01; border: 1px solid #f4ae01;font-family: 'Roboto Condensed', sans-serif; font-size: 16px; color: #FFF; padding: 12px; margin: 4px; letter-spacing: -0.8px; width: 210px">YOU STILL HAVE A CODE TO DELIVERY, CLICK TO CONTINUE</button>
