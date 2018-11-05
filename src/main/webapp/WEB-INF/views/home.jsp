@@ -104,24 +104,24 @@
 			
 			<c:choose>
 				<c:when test="${user.tests != null and user.loadPercentComplexity() > 0 and user.loadPercentComplexity() <= 10 and user.loadPercentCodeOK() == 1}"> 
-					<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 25px; letter-spacing: -2px;">
+					<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 20px; letter-spacing: -2px;">
 						<b style="color: #f4ae01">&#9733;</b> Your code is good
 					</div>
 				</c:when>
 			</c:choose>
 					
-			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 14px; font-weight: normal; float: right; text-align: justify; margin-top: 20px; letter-spacing: -0.8px">
+			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 14px; font-weight: normal; float: right; text-align: justify; margin-top: 14px; letter-spacing: -0.8px">
 				<c:choose>
-					<c:when test="${user.tests != null && user.tests.size() > 0}">				
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px">
+					<c:when test="${user.tests != null && user.tests.size() > 0}">
+						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
 							GOOD JAVA CODE
 						</div>
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px">
-							LAST CODE ON 01/11/2018
+						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+							LAST CODE ON &nbsp; 01/11/2018
 						</div>
 					</c:when>
 					<c:otherwise>					
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px">
+						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px; letter-spacing: -1px;">
 							No test!
 						</div>					
 					</c:otherwise>					
@@ -129,14 +129,14 @@
 				
 				<c:choose>  		
    					<c:when test="${test == null}">
-   						<div style="background-color: #4c89e3; border: 1px solid #4c89e3; border-radius: 20px; display: table; float: left; margin-right: 6px">						
+   						<div style="background-color: #fff; border: 0px solid #4c89e3; border-radius: 20px; display: table; float: left; margin-right: 6px">						
 							<form action="/test" method="post">
-								<button style="background-color: #4c89e3; border-radius: 20px; border: 1px solid #4c89e3; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #FFF; padding: 8px; letter-spacing: -0.8px;">START NOW</button>
+								<button style="background-color: #FFF; border-radius: 20px; border: 1px solid #ccc; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #4c89e3; padding: 8px; letter-spacing: -1px; font-weight: bold;">START NOW</button>
 							</form>
 						</div>
    					</c:when>
    					<c:otherwise>
-   						<div style="background-color: #f4ae01; border: 1px solid #f4ae01; border-radius: 20px; display: table; float: left; margin-right: 6px">						
+   						<div style="background-color: #f4ae01; border: 0px solid #f4ae01; border-radius: 20px; display: table; float: left; margin-right: 6px">						
 							<form action="/test" method="post">
 								<button style="background-color: #f4ae01; border-radius: 20px; border: 1px solid #f4ae01; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #FFF; padding: 8px; letter-spacing: -0.8px;">START NOW</button>
 							</form>
@@ -202,7 +202,7 @@
 					</c:choose>
 					<center>
 					<div style="display: table; color: #858C93; font-size: 14px; text-align: justify; margin-top: 0px; letter-spacing: -0.5px; margin-top: 35px; margin-left: 25px">			
-						&#10004; The lower the score, the better the code
+						&#10004; The lower the percentage, the better
 					</div>		
 					</center>				
   				</div>
