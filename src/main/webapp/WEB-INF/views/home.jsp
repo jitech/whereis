@@ -110,7 +110,7 @@
 				</c:when>
 			</c:choose>
 					
-			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 11px; font-weight: normal; float: right; text-align: justify; margin-top: 20px; letter-spacing: -0.8px">
+			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 14px; font-weight: normal; float: right; text-align: justify; margin-top: 20px; letter-spacing: -0.8px">
 				<c:choose>
 					<c:when test="${user.tests != null && user.tests.size() > 0}">				
 						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px">
@@ -122,10 +122,28 @@
 					</c:when>
 					<c:otherwise>					
 						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px">
-							No test done so far.
+							No test!
+						</div>					
+					</c:otherwise>					
+				</c:choose>		
+				
+				<c:choose>  		
+   					<c:when test="${test == null}">
+   						<div style="background-color: #4c89e3; border: 1px solid #4c89e3; border-radius: 20px; display: table; float: left; margin-right: 6px">						
+							<form action="/test" method="post">
+								<button style="background-color: #4c89e3; border-radius: 20px; border: 1px solid #4c89e3; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #FFF; padding: 8px; letter-spacing: -0.8px;">START NOW</button>
+							</form>
 						</div>
-					</c:otherwise>
-				</c:choose>			
+   					</c:when>
+   					<c:otherwise>
+   						<div style="background-color: #f4ae01; border: 1px solid #f4ae01; border-radius: 20px; display: table; float: left; margin-right: 6px">						
+							<form action="/test" method="post">
+								<button style="background-color: #f4ae01; border-radius: 20px; border: 1px solid #f4ae01; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #FFF; padding: 8px; letter-spacing: -0.8px;">START NOW</button>
+							</form>
+						</div>
+   					</c:otherwise>
+   				</c:choose>
+   				
 			</div>
 			
 			<c:choose>
@@ -193,42 +211,6 @@
 			</c:choose>
 
 		</div>
-				
-		<div style="width: 60%; text-align: left; display: table; margin-top: 15px; background-color: #fff; margin-top: 50px;">
-			<div style="width: 100%; text-align: left; font-size: 28px; margin-bottom: 0px; display: table; color: #464646; letter-spacing: -2px">
-				<b>Let's go!</b>
-			</div>
-		</div>
-	
-		<c:choose>
-   		
-   			<c:when test="${test != null}">
-				<form action="/test" method="post">
-					<div style="width: 60%; text-align: left; display: table; background-color: #fff;">			
-						<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px; line-height: 1.58">			
-							Development teams are looking for professionals who develop clean, well-structured codes, easy to understand and easy to maintain. A good developer should create code with low complexity and high cohesion. Show that you are one of them!						
-						</div>
-						<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 30px;">	
-							<button style="background-color: #f4ae01; border: 1px solid #f4ae01;font-family: 'Roboto Condensed', sans-serif; font-size: 16px; color: #FFF; padding: 12px; margin: 4px; letter-spacing: -0.8px; width: 210px">YOU STILL HAVE A CODE TO DELIVERY, CLICK TO CONTINUE</button>
-						</div>
-					</div>
-				</form>
-			</c:when>
-   		
-			<c:when test="${test == null}">
-				<form action="/test" method="post">
-					<div style="width: 60%; text-align: left; display: table; background-color: #fff;">			
-						<div style="width: 100%; font-size: 18px; display: table; margin-top: 5px; color: #707070; letter-spacing: -0.5px; line-height: 1.58">			
-							Development teams are looking for professionals who develop clean, well-structured codes, easy to understand and easy to maintain. A good developer should create code with low complexity and high cohesion. Show that you are one of them!						
-						</div>
-						<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 30px;">	
-							<button style="background-color: #4c89e3; border: 1px solid #4c89e3;font-family: 'Roboto Condensed', sans-serif; font-size: 20px; color: #FFF; padding: 12px; margin: 4px; letter-spacing: -0.8px; width: 200px">START NOW</button>
-						</div>
-					</div>
-				</form>
-			</c:when>
-		
-		</c:choose>
 	
 </body>
 </html>
