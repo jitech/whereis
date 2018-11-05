@@ -88,7 +88,7 @@
 
  	<c:choose>	
 		<c:when test="${message != null}">			
-			<div id="message" style="border: 1px solid #eae9e9; border-left: 4px solid #F48024; width: 65.2%; text-align: left; display: table; margin-top: 15px; padding: 15px; background-color: #fff;">		
+			<div id="message" style="border: 1px solid #eae9e9; border-left: 3px solid #F48024; width: 100%; text-align: left; display: table; margin-top: 15px; padding: 15px; background-color: #fff;">		
 				<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; color: #707070">
 					${message}
 				</div>
