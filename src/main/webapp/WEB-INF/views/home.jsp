@@ -130,7 +130,7 @@
    					<c:when test="${test == null}">
    						<div style="background-color: #fff; border: 0px solid #4c89e3; border-radius: 15px; display: table; float: left; margin-right: 6px">						
 							<form action="/test" method="post">
-								<button style="background-color: #FFF; border-radius: 15px; border: 1px solid #ccc; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #4c89e3; padding: 9.7px; letter-spacing: -1px; font-weight: bold;">START NOW &#x2771;</button>
+								<button style="background-color: #FFF; border-radius: 15px; border: 1px solid #ccc; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #4c89e3; padding: 9.7px; letter-spacing: -1px; font-weight: bold;">TAKE A TEST &#x2771;</button>
 							</form>
 						</div>
    					</c:when>
