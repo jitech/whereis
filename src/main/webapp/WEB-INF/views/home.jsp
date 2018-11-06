@@ -48,8 +48,8 @@
   stroke: #ff9f00;
 }
 
-.circular-chart.green .circle {
-  stroke: #4CC790;
+.circular-chart.blue .circle {
+  stroke: #4c89e3;
 }
 
 .circular-chart.red .circle {
@@ -101,27 +101,26 @@
 			<div style="width: 100%; text-align: left; font-size: 32px; margin-bottom: 0px; display: table; color: #464646; letter-spacing: -2px">
 				<b>Me, ${user.name}</b>
 			</div>
-			
-			<c:choose>
-				<c:when test="${user.tests != null and user.loadPercentComplexity() > 0 and user.loadPercentComplexity() <= 10 and user.loadPercentCodeOK() == 1}"> 
-					<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 20px; letter-spacing: -2px;">
-						<b style="color: #f4ae01">&#9733;</b> Your code is good
-					</div>
-				</c:when>
-			</c:choose>
 					
-			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 14px; font-weight: normal; float: right; text-align: justify; margin-top: 14px; letter-spacing: -0.8px">
+			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 14px; font-weight: normal; float: right; text-align: justify; margin-top: 20px; letter-spacing: -0.8px">
 				<c:choose>
 					<c:when test="${user.tests != null && user.tests.size() > 0}">
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
-							GOOD JAVA CODE
+						
+						<c:choose>
+							<c:when test="${user.tests != null and user.loadPercentComplexity() > 0 and user.loadPercentComplexity() <= 10 and user.loadPercentCodeOK() == 1}">
+								<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 15px; display: table; padding: 9px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+									<b style="color: #ff9f00">&#x2605;</b> Your code is good
+								</div>
+							</c:when>
+						</c:choose>
+						
+						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 15px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+							Last code on &nbsp; 01/11/2018
 						</div>
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
-							LAST CODE ON &nbsp; 01/11/2018
-						</div>
+						
 					</c:when>
 					<c:otherwise>					
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 20px; display: table; padding: 8px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px; letter-spacing: -1px;">
+						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 15px; display: table; padding: 10px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px; letter-spacing: -1px;">
 							No test!
 						</div>					
 					</c:otherwise>					
@@ -129,16 +128,16 @@
 				
 				<c:choose>  		
    					<c:when test="${test == null}">
-   						<div style="background-color: #fff; border: 0px solid #4c89e3; border-radius: 20px; display: table; float: left; margin-right: 6px">						
+   						<div style="background-color: #fff; border: 0px solid #4c89e3; border-radius: 15px; display: table; float: left; margin-right: 6px">						
 							<form action="/test" method="post">
-								<button style="background-color: #FFF; border-radius: 20px; border: 1px solid #ccc; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #4c89e3; padding: 8px; letter-spacing: -1px; font-weight: bold;">START NOW</button>
+								<button style="background-color: #FFF; border-radius: 15px; border: 1px solid #ccc; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #4c89e3; padding: 9.7px; letter-spacing: -1px; font-weight: bold;">START NOW &#x2771;</button>
 							</form>
 						</div>
    					</c:when>
    					<c:otherwise>
-   						<div style="background-color: #f4ae01; border: 0px solid #f4ae01; border-radius: 20px; display: table; float: left; margin-right: 6px">						
+   						<div style="background-color: #fff; border: 0px solid #f4ae01; border-radius: 15px; display: table; float: left; margin-right: 6px">						
 							<form action="/test" method="post">
-								<button style="background-color: #f4ae01; border-radius: 20px; border: 1px solid #f4ae01; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #FFF; padding: 8px; letter-spacing: -0.8px;">START NOW</button>
+								<button style="background-color: #fff; border-radius: 15px; border: 1px solid #ccc; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #f4ae01; padding: 9.7px; letter-spacing: -0.8px;">TO BE CONTINUED &#x2771;</button>
 							</form>
 						</div>
    					</c:otherwise>
@@ -148,7 +147,7 @@
 			
 			<c:choose>
 			<c:when test="${user.tests != null}">											
-			<div class="flex-wrapper" style="margin-top: 80px; margin-bottom: 30px">
+			<div class="flex-wrapper" style="margin-top: 120px; margin-bottom: 30px">
 				<div class="single-chart">
     				<svg viewbox="0 0 36 36" class="circular-chart orange">
       					<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -168,7 +167,7 @@
   				<div class="single-chart" style="border-left: 1px solid #eae9e9">
     				<c:choose>
 						<c:when test="${user.loadPercentComplexity() > 0 and user.loadPercentComplexity() <= 10}">  
-							<svg viewbox="0 0 36 36" class="circular-chart green">
+							<svg viewbox="0 0 36 36" class="circular-chart blue">
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
       							<path class="circle" stroke-dasharray="${user.loadPercentComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
       							<text x="18" y="18.35" class="percentage">

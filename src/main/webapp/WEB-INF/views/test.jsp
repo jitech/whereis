@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<div style="border: 1px solid #eae9e9; width: 90%; text-align: left; display: table; margin-top: 15px; padding: 40px; background-color: #fff; box-shadow: 0 6px 16px 0 rgba(115,143,147,.4);">
+	<div style="width: 90%; text-align: left; display: table; margin-top: 15px; padding: 40px; background-color: #fff;">
 		<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 22px; display: table; margin-top: 10px">
 			${test.name}
 		</div>
