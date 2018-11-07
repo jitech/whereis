@@ -49,7 +49,7 @@
 }
 
 .circular-chart.blue .circle {
-  stroke: #4c89e3;
+  stroke: #6db33f;
 }
 
 .circular-chart.red .circle {
@@ -88,7 +88,7 @@
 
  	<c:choose>	
 		<c:when test="${message != null}">			
-			<div id="message" style="border: 1px solid #eae9e9; border-left: 3px solid #F48024; width: 100%; text-align: left; display: table; margin-top: 15px; padding: 15px; background-color: #fff;">		
+			<div id="message" style="border: 1px solid #DEE4DA; box-shadow: -4px 0 #6db33f; width: 100%; text-align: left; display: table; margin-top: 15px; padding: 15px; background-color: #DEE4DA;">		
 				<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-size: 16px; display: table; color: #707070">
 					${message}
 				</div>
@@ -108,40 +108,25 @@
 						
 						<c:choose>
 							<c:when test="${user.tests != null and user.loadPercentComplexity() > 0 and user.loadPercentComplexity() <= 10 and user.loadPercentCodeOK() == 1}">
-								<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 15px; display: table; padding: 9px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+								<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 7px; display: table; padding: 9px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
 									<b style="color: #ff9f00">&#x2605;</b> Your code is good
 								</div>
 							</c:when>
 						</c:choose>
 						
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 15px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
-							Last code on &nbsp; 01/11/2018
+						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+							Last code on 01/11/2018
 						</div>
 						
 					</c:when>
 					<c:otherwise>					
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 15px; display: table; padding: 10px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px; letter-spacing: -1px;">
-							No test!
+						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 7px; display: table; padding: 10px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px; letter-spacing: -1px;">
+							No code!
 						</div>					
 					</c:otherwise>					
 				</c:choose>		
 				
-				<c:choose>  		
-   					<c:when test="${test == null}">
-   						<div style="background-color: #fff; border: 0px solid #4c89e3; border-radius: 15px; display: table; float: left; margin-right: 6px">						
-							<form action="/test" method="post">
-								<button style="background-color: #FFF; border-radius: 15px; border: 1px solid #ccc; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #4c89e3; padding: 9.7px; letter-spacing: -1px; font-weight: bold;">TAKE A TEST &#x2771;</button>
-							</form>
-						</div>
-   					</c:when>
-   					<c:otherwise>
-   						<div style="background-color: #fff; border: 0px solid #f4ae01; border-radius: 15px; display: table; float: left; margin-right: 6px">						
-							<form action="/test" method="post">
-								<button style="background-color: #fff; border-radius: 15px; border: 1px solid #ccc; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #f4ae01; padding: 9.7px; letter-spacing: -0.8px;">TO BE CONTINUED &#x2771;</button>
-							</form>
-						</div>
-   					</c:otherwise>
-   				</c:choose>
+				
    				
 			</div>
 			
@@ -171,7 +156,7 @@
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
       							<path class="circle" stroke-dasharray="${user.loadPercentComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
       							<text x="18" y="18.35" class="percentage">
-      								<fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentComplexity()/100}"/>
+      								<fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadPercentComplexity()}"/>
       							</text>
       							<text x="18" y="21.40" class="text">CODE WITH LOW</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>
@@ -182,7 +167,7 @@
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
       							<path class="circle" stroke-dasharray="${user.loadPercentComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
       							<text x="18" y="18.35" class="percentage">
-      								<fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentComplexity()/100}"/>
+      								<fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadPercentComplexity()}"/>
       							</text>
       							<text x="18" y="21.40" class="text">CODE WITH MEDIUM</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>
@@ -192,7 +177,7 @@
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
       							<path class="circle" stroke-dasharray="${user.loadPercentComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
 								<text x="18" y="18.35" class="percentage">
-									<fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${user.loadPercentComplexity()/100}"/>
+									<fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${user.loadPercentComplexity()}"/>
 								</text>
       							<text x="18" y="21.40" class="text">CODE WITH HIGH</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>						
@@ -201,13 +186,32 @@
 					</c:choose>
 					<center>
 					<div style="display: table; color: #858C93; font-size: 14px; text-align: justify; margin-top: 0px; letter-spacing: -0.5px; margin-top: 35px; margin-left: 25px">			
-						&#10004; The lower the percentage, the better
+						&#10004; The lower the score, the better
 					</div>		
 					</center>				
   				</div>
 			</div>
 			</c:when>
 			</c:choose>
+
+			<center>
+			<c:choose>  		
+   				<c:when test="${test == null}">
+   					<div style="background-color: #fff; border: 0px solid #4c89e3; border-radius: 15px; display: table; margin-top: 150px;">						
+						<form action="/test" method="post">
+							<button style="background-color: #6db33f; border: 1px solid #6db33f; font-family: 'Roboto Condensed', sans-serif; font-size: 18px; color: #FFF; padding: 15px; padding-left: 45px; padding-right: 45px; font-weight: bold; box-shadow: 0 4px 12px 0 rgba(0,0,0,.20)!important;">TAKE A TEST &#x2771;</button>
+						</form>
+					</div>
+   				</c:when>
+   				<c:otherwise>
+					<div style="background-color: #fff; border: 0px solid #4c89e3; border-radius: 15px; display: table; margin-top: 150px">						
+						<form action="/test" method="post">
+							<button style="background-color: #f4ae01; border: 1px solid #f4ae01; font-family: 'Roboto Condensed', sans-serif; font-size: 18px; color: #FFF; padding: 15px; padding-left: 45px; padding-right: 45px; font-weight: bold; box-shadow: 0 4px 12px 0 rgba(0,0,0,.20)!important;"><i class="fa fa-file-code-o"></i> &nbsp; BACK TO THE TEST</button>
+						</form>
+					</div>
+   				</c:otherwise>
+   			</c:choose>
+   			</center>
 
 		</div>
 	

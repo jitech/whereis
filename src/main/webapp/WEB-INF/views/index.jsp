@@ -8,10 +8,10 @@
 <body>
 
 	<div style="font-size: 28px; display: table; margin-top: 150px; margin-bottom: 150px">
-		<div style="display: table; float: left; width: 100%; text-align: center; margin: 5px; font-size: 58px; letter-spacing: -2.8px; text-shadow: none; color: #464646">
-			<b>System.out.print("I love my code!");</b>
+		<div style="display: table; float: left; width: 100%; text-align: center; margin: 5px; font-size: 58px; letter-spacing: -3px; text-shadow: none; color: #464646">
+			<b>System.out.print("I'm programmer!");</b>
 		</div>
-		<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 24px; display: table; margin-top: 0px; letter-spacing: -1px; color: #464646">
+		<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 24px; display: table; margin-top: 0px; letter-spacing: -1.2px; color: #464646">
 			Create quality codes that are easy to maintain and meet the expectations!
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 20px;">
