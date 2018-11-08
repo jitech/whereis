@@ -167,4 +167,17 @@ public class User {
 			
 		return ((total/(double)getTests().size()));
 	}
+	
+	public int loadQuantityCodeOK() {
+		
+		int total = 0;
+		
+		for(UserTest userTest : getTests()) {			
+			if(userTest.getStatus().equals(UserTestStatus.OK)) {
+				total++;
+			}
+		}
+			
+		return total;
+	}
 }

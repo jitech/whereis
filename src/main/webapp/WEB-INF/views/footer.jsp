@@ -8,10 +8,9 @@
 </head>
 <body style="margin: 0px; background-color: #FAFAFA">
     
-    <div style="width: 70%; display: table; position:absolute;
-   bottom:0;
-   width:100%;
-   height:60px;">
+    <br/>
+    
+    <div style="width: 70%; display: table;">
 		<div style="border: 0px solid #DDD; width: 100%; font-size: 14px; display: table;">
 			<a href="/about-us">About us</a>
     		<b> &#xb7; </b>

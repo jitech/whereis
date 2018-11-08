@@ -16,7 +16,7 @@
 		</div>
 		<div style="border: 0px solid #DDD; width: 100%; text-align: center; font-size: 20px; display: table; margin-top: 20px;">
 			<form action="/test" method="post">
-				<button style="background-color: #4c89e3; border: 1px solid #4c89e3; font-family: 'Roboto Condensed', sans-serif; font-size: 20px; color: #FFF; padding: 12px; margin: 4px; letter-spacing: -0.8px; width: 200px">START NOW</button>
+				<button style="background-color: #4c89e3; border: 1px solid #4c89e3;  box-shadow: 0 4px 12px 0 rgba(0,0,0,.20)!important; font-family: 'Roboto Condensed', sans-serif; font-size: 20px; color: #FFF; padding: 12px; margin: 4px; letter-spacing: -0.8px; width: 200px">START NOW</button>
 			</form>
 		</div>
 	</div>

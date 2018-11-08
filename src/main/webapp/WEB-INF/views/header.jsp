@@ -14,10 +14,10 @@
     	
     	<c:choose>
 			<c:when test="${user == null}">
-        		<a href="/index" style="letter-spacing: -3.5px; font-size: 36px; font-weight: bold; margin-right: -100px">iProgrammer</a>
+        		<a href="/index" style="letter-spacing: -3.5px; font-size: 36px; font-weight: bold; margin-right: -20px">iProgrammer</a>
    			</c:when>
    			<c:when test="${user != null}">  					
-        		<a href="/home" style="letter-spacing: -3.5px; font-size: 36px; font-weight: bold; margin-right: -100px">iProgrammer</a>
+        		<a href="/home" style="letter-spacing: -3.5px; font-size: 36px; font-weight: bold; margin-right: -20px">iProgrammer</a>
    			</c:when>
    		</c:choose>
     	
