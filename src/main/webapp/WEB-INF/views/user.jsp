@@ -48,8 +48,8 @@
   stroke: #ff9f00;
 }
 
-.circular-chart.green .circle {
-  stroke: #4CC790;
+.circular-chart.blue .circle {
+  stroke: #6db33f;
 }
 
 .circular-chart.red .circle {
@@ -78,32 +78,60 @@
   font-size: 0.12em;
   text-anchor: middle;
 }
+
+.pw-icon-clock:before {
+    content: '\e805';
+}
 	</style>
 </head>
 <body>
-
-	<c:choose>
 	
-		<c:when test="${in.tests != null}">
-		<div style="border: 1px solid #eae9e9; width: 60%; text-align: left; display: table; margin-top: 15px; padding: 45px; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(115,143,147,.4);">
+		<div style="width: 60%; text-align: left; display: table; margin-top: 15px; background-color: #fff;">
 			
-			<div style="border: 0px solid #DDD; width: 100%; text-align: left; font-weight: bold; font-size: 26px; display: table; margin-top: 0px; letter-spacing: -0.5px">
-				${in.name}
+			<div style="width: 100%; text-align: left; font-size: 32px; margin-bottom: 0px; display: table; color: #464646; letter-spacing: -2px">
+				<b>${in.name}</b>
 			</div>
 			
-			<div style="display: table; color: #858C93; font-size: 16px; text-align: justify; margin-top: 0px; letter-spacing: -0.5px">			
-				Number of coded features: ${in.tests.size()}
+			<div style="width: 100%; text-align: left; font-size: 14px; margin-bottom: 20px; display: table; color: rgba(0,0,0,.54); letter-spacing: -1px">
+				member since <fmt:formatDate value="${in.include}" pattern="yyyy/MM/dd" />
 			</div>
-			
-			<div style="display: table; color: #535a60; font-size: 20px; text-align: justify; margin-top: 4px; letter-spacing: -2px">
+		
+			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 14px; font-weight: normal; float: right; text-align: justify; margin-top: 20px; letter-spacing: -0.8px">
 				<c:choose>
-					<c:when test="${in.loadTotalComplexity() > 0 and in.loadTotalComplexity() <= 10 and in.loadPercentCodeOK() == 1}">  
-						<b style="color: #f4ae01">&#9733;</b> Codes very well
-					</c:when>				
-				</c:choose>
+					<c:when test="${in.tests != null && in.tests.size() > 0}">
+						
+						<c:choose>
+							<c:when test="${in.tests != null and in.loadPercentComplexity() > 0 and in.loadPercentComplexity() <= 10 and in.loadPercentCodeOK() == 1}">
+								<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 9px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+									<b style="color: #ff9f00">&#x2605;</b> &nbsp; Code is good
+								</div>
+							</c:when>
+						</c:choose>
+						
+						<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+							<b style="color: #ff9f00; font-size: 12px">&#x2764;</b> &nbsp; Points <fmt:formatNumber type = "number" maxIntegerDigits="8" maxFractionDigits="0" value = "${((in.loadQuantityCodeOK() * 1000 * in.loadPercentCodeOK()) / in.loadPercentComplexity())}"/>
+						</div>
+						
+						<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+							Coded ${in.tests.size()} feature(s)
+						</div>
+						
+						<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+							Last code on <fmt:formatDate value="${in.tests.get(in.tests.size()-1).date}" pattern="yyyy/MM/dd" />
+						</div>
+
+					</c:when>
+					<c:otherwise>					
+						<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 10px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px; letter-spacing: -1px;">
+							No code!
+						</div>					
+					</c:otherwise>					
+				</c:choose>	
 			</div>
-												
-			<div class="flex-wrapper">
+			
+			<c:choose>
+			<c:when test="${in.tests != null}">											
+			<div class="flex-wrapper" style="margin-top: 120px; margin-bottom: 30px">
 				<div class="single-chart">
     				<svg viewbox="0 0 36 36" class="circular-chart orange">
       					<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -122,28 +150,34 @@
   				</div>
   				<div class="single-chart" style="border-left: 1px solid #eae9e9">
     				<c:choose>
-						<c:when test="${in.loadTotalComplexity() > 0 and in.loadTotalComplexity() <= 10}">  
-							<svg viewbox="0 0 36 36" class="circular-chart green">
+						<c:when test="${in.loadPercentComplexity() > 0 and in.loadPercentComplexity() <= 10}">  
+							<svg viewbox="0 0 36 36" class="circular-chart blue">
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<path class="circle" stroke-dasharray="${in.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${in.loadTotalComplexity()}"/>/50</text>
+      							<path class="circle" stroke-dasharray="${in.loadPercentComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<text x="18" y="18.35" class="percentage">
+      								<fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${in.loadPercentComplexity()}"/>
+      							</text>
       							<text x="18" y="21.40" class="text">CODE WITH LOW</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>
     						</svg>
 						</c:when>					
-						<c:when test="${in.loadTotalComplexity() > 10 and in.loadTotalComplexity() <= 20}">  
+						<c:when test="${in.loadPercentComplexity() > 10 and in.loadPercentComplexity() <= 20}">  
 							<svg viewbox="0 0 36 36" class="circular-chart orange">
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<path class="circle" stroke-dasharray="${in.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${in.loadTotalComplexity()}"/>/50</text>
+      							<path class="circle" stroke-dasharray="${in.loadPercentComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      							<text x="18" y="18.35" class="percentage">
+      								<fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${in.loadPercentComplexity()}"/>
+      							</text>
       							<text x="18" y="21.40" class="text">CODE WITH MEDIUM</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>
 						</c:when>
-						<c:when test="${in.loadTotalComplexity() > 20}">  
+						<c:when test="${in.loadPercentComplexity() > 20}">  
 							<svg viewbox="0 0 36 36" class="circular-chart red">
       							<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      							<path class="circle" stroke-dasharray="${in.loadTotalComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-								<text x="18" y="18.35" class="percentage"><fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${in.loadTotalComplexity()}"/>/50</text>
+      							<path class="circle" stroke-dasharray="${in.loadPercentComplexity()}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+								<text x="18" y="18.35" class="percentage">
+									<fmt:formatNumber type = "number" maxIntegerDigits="3" value = "${in.loadPercentComplexity()}"/>
+								</text>
       							<text x="18" y="21.40" class="text">CODE WITH HIGH</text>
       							<text x="18" y="23.60" class="text">COMPLEXITY</text>						
       						</svg>
@@ -151,17 +185,15 @@
 					</c:choose>
 					<center>
 					<div style="display: table; color: #858C93; font-size: 14px; text-align: justify; margin-top: 0px; letter-spacing: -0.5px; margin-top: 35px; margin-left: 25px">			
-						&#10004; The lower the score, the better the code
+						&#10004; The lower the score, the better
 					</div>		
 					</center>				
   				</div>
 			</div>
+			</c:when>
+			</c:choose>
 
-		</div>	
-				 
-		</c:when>
-		
-	</c:choose>	
+		</div>
 	
 </body>
 </html>

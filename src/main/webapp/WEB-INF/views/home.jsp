@@ -88,49 +88,53 @@
 
  	<c:choose>	
 		<c:when test="${message != null}">			
-			<div id="message" style="box-shadow: -2px 0 #F48024; width: 60%; text-align: left; display: table; margin-top: 15px; margin-bottom: 25px; padding: 15px; background-color: #FFF8DC; color: #707070; text-align: left;">		
+			<div id="message" style="box-shadow: -2px 0 #F48024; width: 60%; text-align: left; display: table; margin-top: 15px; margin-bottom: 25px; padding: 15px; background-color: #FFF8DC; color: ; text-align: left;">		
 				${message}
 			</div>
 		</c:when>
 	</c:choose>
 	
-		<div style="width: 60%; text-align: left; display: table; margin-top: 15px; background-color: #fff;">
+		<div style="width: 65%; text-align: left; display: table; margin-top: 15px; background-color: #fff;">
 			
 			<div style="width: 100%; text-align: left; font-size: 32px; margin-bottom: 0px; display: table; color: #464646; letter-spacing: -2px">
 				<b>Me, ${user.name}</b>
 			</div>
 			
-			<div style="width: 100%; text-align: left; font-size: 14px; margin-bottom: 0px; display: table; color: rgba(0,0,0,.54); letter-spacing: -1px">
-				member since <fmt:formatDate value="${user.include}" pattern="yyyy/MM/dd" />
+			<div style="width: 100%; text-align: left; font-size: 14px; margin-bottom: 20px; display: table; color: rgba(0,0,0,.54); letter-spacing: -0.7px">
+				Share my profile:  http://localhost:8090/in/${user.nameProfile}
 			</div>
-					
+		
 			<div style="display: table; width: 100%; color: rgba(0,0,0,.54); font-size: 14px; font-weight: normal; float: right; text-align: justify; margin-top: 20px; letter-spacing: -0.8px">
 				<c:choose>
 					<c:when test="${user.tests != null && user.tests.size() > 0}">
 						
 						<c:choose>
 							<c:when test="${user.tests != null and user.loadPercentComplexity() > 0 and user.loadPercentComplexity() <= 10 and user.loadPercentCodeOK() == 1}">
-								<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 7px; display: table; padding: 9px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
-									<b style="color: #ff9f00">&#x2605;</b> Your code is good
+								<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 9px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+									<b style="color: #ff9f00">&#x2605;</b> &nbsp; Your code is good
 								</div>
 							</c:when>
 						</c:choose>
 						
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
-							Points <fmt:formatNumber type = "number" maxIntegerDigits="8" maxFractionDigits="0" value = "${((user.loadQuantityCodeOK() * 1000 * user.loadPercentCodeOK()) / user.loadPercentComplexity())}"/>
+						<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+							<b style="color: #ff9f00; font-size: 12px">&#x2764;</b> &nbsp; Points <fmt:formatNumber type = "number" maxIntegerDigits="8" maxFractionDigits="0" value = "${((user.loadQuantityCodeOK() * 1000 * user.loadPercentCodeOK()) / user.loadPercentComplexity())}"/>
 						</div>
 						
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+						<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
 							Coded ${user.tests.size()} feature(s)
 						</div>
 						
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+						<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
+							Member since <fmt:formatDate value="${user.include}" pattern="yyyy/MM/dd" />
+						</div>
+						
+						<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 10px; padding-left: 15px; padding-right: 15px; float: left; margin-right: 6px; letter-spacing: -1px;">
 							Last code on <fmt:formatDate value="${user.tests.get(user.tests.size()-1).date}" pattern="yyyy/MM/dd" />
 						</div>
 
 					</c:when>
 					<c:otherwise>					
-						<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 7px; display: table; padding: 10px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px; letter-spacing: -1px;">
+						<div style="background-color: #fff; border: 1px solid #eee; border-radius: 7px; display: table; padding: 10px; padding-left: 12px; padding-right: 12px; float: left; margin-right: 6px; letter-spacing: -1px;">
 							No code!
 						</div>					
 					</c:otherwise>					
